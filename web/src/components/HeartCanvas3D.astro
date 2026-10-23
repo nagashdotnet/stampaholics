@@ -1,0 +1,297 @@
+---
+---
+
+<div class="heart-3d-wrapper" id="heart-3d-container">
+  <canvas id="heart-3d-canvas" class="heart-3d-canvas"></canvas>
+  <div class="heart-3d-hint" data-i18n-pt="Mova o cursor para interagir" data-i18n-en="Move mouse to interact">
+    <span>✦ Mova o cursor</span>
+  </div>
+</div>
+
+<style>
+  .heart-3d-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-width: 440px;
+    height: 440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heart-3d-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    cursor: grab;
+    outline: none;
+  }
+
+  .heart-3d-canvas:active {
+    cursor: grabbing;
+  }
+
+  .heart-3d-hint {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-pink);
+    background: rgba(20, 36, 42, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    border: 1px solid rgba(235, 44, 101, 0.25);
+    pointer-events: none;
+    opacity: 0.85;
+    transition: opacity 0.3s;
+  }
+
+  .heart-3d-wrapper:hover .heart-3d-hint {
+    opacity: 0.4;
+  }
+
+  @media (max-width: 768px) {
+    .heart-3d-wrapper {
+      max-width: 320px;
+      height: 320px;
+    }
+  }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  const container = document.getElementById('heart-3d-container');
+  const canvas = document.getElementById('heart-3d-canvas') as HTMLCanvasElement | null;
+
+  if (container && canvas) {
+    const scene = new THREE.Scene();
+
+    const width = container.clientWidth || 400;
+    const height = container.clientHeight || 400;
+
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(0, 0, 7.5);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+
+    // ==========================================
+    // CRIAÇÃO DO CORAÇÃO GEOMÉTRICO (LOW-POLY / ORIGAMI)
+    // ==========================================
+    // O coração da Stampaholics é composto por facetas triangulares e pontas superiores em V.
+    // Criamos uma geometria facetada customizada com espessura 3D frontal e traseira:
+
+    const vertices = [
+      // Posições frontais (Z positivo)
+      0.0, -2.2, 0.55,    // 0: Ponta inferior frontal
+      -1.4, 0.1, 0.5,     // 1: Canto esquerdo médio
+      1.4, 0.1, 0.5,      // 2: Canto direito médio
+      -1.3, 1.6, 0.45,    // 3: Ponta superior esquerda
+      1.3, 1.6, 0.45,     // 4: Ponta superior direita
+      0.0, 0.35, 0.65,    // 5: Centro frontal elevado (crista do coração)
+      0.0, 1.0, 0.4,      // 6: Entalhe superior central (o V)
+
+      // Posições traseiras (Z negativo simétrico para profundidade 3D real)
+      0.0, -2.2, -0.55,   // 7: Ponta inferior traseira
+      -1.4, 0.1, -0.5,    // 8: Canto esquerdo traseiro
+      1.4, 0.1, -0.5,     // 9: Canto direito traseiro
+      -1.3, 1.6, -0.45,   // 10: Ponta sup. esquerda traseira
+      1.3, 1.6, -0.45,    // 11: Ponta sup. direita traseira
+      0.0, 0.35, -0.65,   // 12: Centro traseiro elevado
+      0.0, 1.0, -0.4      // 13: Entalhe superior traseiro
+    ];
+
+    // Índices das faces triangulares
+    const indices = [
+      // Face Frontal (Origami)
+      0, 1, 5,   // Triângulo inferior esquerdo
+      0, 5, 2,   // Triângulo inferior direito
+      1, 3, 5,   // Asa esquerda inferior
+      3, 6, 5,   // Asa esquerda superior
+      5, 6, 4,   // Asa direita superior
+      5, 4, 2,   // Asa direita inferior
+
+      // Face Traseira
+      7, 12, 8,
+      7, 9, 12,
+      8, 12, 10,
+      10, 12, 13,
+      12, 11, 13,
+      12, 9, 11,
+
+      // Laterais e Chanfros de fechamento 3D
+      0, 7, 1,   1, 7, 8,     // Lateral inferior esquerda
+      0, 2, 7,   2, 9, 7,     // Lateral inferior direita
+      1, 8, 3,   3, 8, 10,    // Lateral asa esquerda
+      2, 4, 9,   4, 11, 9,    // Lateral asa direita
+      3, 10, 6,  6, 10, 13,   // Topo esquerdo interno
+      4, 6, 11,  6, 13, 11    // Topo direito interno
+    ];
+
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    geom.setIndex(indices);
+    geom.computeVertexNormals();
+
+    // Material de Alta Costura / Seda Acetinada Pink/Magenta
+    const material = new THREE.MeshPhysicalMaterial({
+      color: 0xEB2C65,
+      emissive: 0x4A0018,
+      emissiveIntensity: 0.15,
+      roughness: 0.28,
+      metalness: 0.12,
+      clearcoat: 0.8,
+      clearcoatRoughness: 0.2,
+      sheen: 1.0,
+      sheenColor: new THREE.Color(0xFFA6C9),
+      sheenRoughness: 0.3,
+      flatShading: true // Enfatiza as facetas geométricas do origami!
+    });
+
+    const heartMesh = new THREE.Mesh(geom, material);
+    heartMesh.scale.set(0.9, 0.9, 0.9);
+    scene.add(heartMesh);
+
+    // Borda luminosa sutil (Wireframe leve sobreposto)
+    const wireGeom = new THREE.WireframeGeometry(geom);
+    const wireMat = new THREE.LineBasicMaterial({
+      color: 0xFF85A8,
+      transparent: true,
+      opacity: 0.22,
+      linewidth: 1
+    });
+    const wireLine = new THREE.LineSegments(wireGeom, wireMat);
+    wireLine.scale.set(0.902, 0.902, 0.902);
+    scene.add(wireLine);
+
+    // ==========================================
+    // SISTEMA DE ILUMINAÇÃO DE ESTÚDIO
+    // ==========================================
+    // 1. Luz ambiente suave
+    const ambLight = new THREE.AmbientLight(0xFFFFFF, 0.8);
+    scene.add(ambLight);
+
+    // 2. Luz principal frontal (Key Light em tom magenta quente)
+    const keyLight = new THREE.DirectionalLight(0xFFE4EC, 2.2);
+    keyLight.position.set(3, 4, 5);
+    scene.add(keyLight);
+
+    // 3. Luz de preenchimento (Fill Light azul petróleo da marca)
+    const fillLight = new THREE.DirectionalLight(0x274D5E, 1.8);
+    fillLight.position.set(-4, -2, 3);
+    scene.add(fillLight);
+
+    // 4. Rim Light posterior verde da marca (#1FB380) para contraste de borda
+    const rimLight = new THREE.PointLight(0x1FB380, 2.5, 12);
+    rimLight.position.set(0, -2, -3);
+    scene.add(rimLight);
+
+    // ==========================================
+    // INTERAÇÃO COM O MOUSE (PARALLAX & LERP)
+    // ==========================================
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let currentRotX = 0;
+    let currentRotY = 0;
+
+    function onMouseMove(e: MouseEvent) {
+      const rect = container?.getBoundingClientRect();
+      if (!rect) return;
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+
+      mouseX = x;
+      mouseY = y;
+
+      targetRotY = mouseX * 0.9;
+      targetRotX = -mouseY * 0.7;
+    }
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    // Drag manual no canvas para quem quiser girar livremente
+    let isDragging = false;
+    let prevMousePos = { x: 0, y: 0 };
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      prevMousePos = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - prevMousePos.x;
+      const deltaY = e.clientY - prevMousePos.y;
+
+      targetRotY += deltaX * 0.015;
+      targetRotX += deltaY * 0.015;
+
+      prevMousePos = { x: e.clientX, y: e.clientY };
+    });
+
+    // Resize
+    window.addEventListener('resize', () => {
+      if (!container) return;
+      const newW = container.clientWidth;
+      const newH = container.clientHeight;
+      camera.aspect = newW / newH;
+      camera.updateProjectionMatrix();
+      renderer.setSize(newW, newH);
+    });
+
+    // ==========================================
+    // LOOP DE ANIMAÇÃO
+    // ==========================================
+    let clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const elapsedTime = clock.getElapsedTime();
+
+      // Levitação flutuante orgânica (senóide suave)
+      const floatOffset = Math.sin(elapsedTime * 1.6) * 0.12;
+      heartMesh.position.y = floatOffset;
+      wireLine.position.y = floatOffset;
+
+      // Suavização elástica (LERP) para seguir o mouse
+      currentRotX += (targetRotX - currentRotX) * 0.06;
+      currentRotY += (targetRotY - currentRotY) * 0.06;
+
+      // Rotação sutil contínua somada à posição do mouse
+      const idleSpin = Math.sin(elapsedTime * 0.5) * 0.08;
+
+      heartMesh.rotation.x = currentRotX;
+      heartMesh.rotation.y = currentRotY + idleSpin;
+
+      wireLine.rotation.x = heartMesh.rotation.x;
+      wireLine.rotation.y = heartMesh.rotation.y;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  }
+</script>

@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
   description?: string;
@@ -26,9 +28,6 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content="/brand/stampaholics_intheknow.png" />
-
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="/src/styles/global.css" />
 </head>
 <body>
   <slot />

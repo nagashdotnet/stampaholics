@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import ProductCardMinimal from '../components/ProductCardMinimal.astro';
 import ProductDrawer from '../components/ProductDrawer.astro';
 import Calculator from '../components/Calculator.astro';
+import HeartCanvas3D from '../components/HeartCanvas3D.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import products from '../data/products.json';
@@ -36,9 +37,7 @@ const featuredProducts = products.slice(0, 8);
         </div>
 
         <div class="hero-visual-pane">
-          <div class="hero-stage product-contact-shadow">
-            <img src="/products/Kit_Corrida_DryFit_Sacochila.png" alt="Stampaholics Destaque" class="hero-featured-img" />
-          </div>
+          <HeartCanvas3D />
         </div>
       </div>
     </section>

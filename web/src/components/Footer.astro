@@ -5,7 +5,7 @@
   <div class="container footer-grid">
     <div class="footer-brand-pane">
       <div class="footer-brand-logo">
-        <img src="/brand/stampaholics_icon.png" alt="Stampaholics" class="footer-heart" />
+        <img src="/brand/stampaholics_icon.png" alt="Stampaholics" class="footer-heart" width="28" height="28" />
         <span class="footer-brand-title">stampaholics</span>
       </div>
       <p class="footer-tagline" data-i18n-pt="Estúdio de impressão digital têxtil por sublimação e corte a laser para eventos, moda e grandes marcas." data-i18n-en="Digital textile sublimation studio and laser cutting for events, fashion, and enterprise brands.">
@@ -64,9 +64,11 @@
   }
 
   .footer-heart {
-    width: 26px;
-    height: 26px;
+    width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
     object-fit: contain;
+    display: inline-block;
   }
 
   .footer-brand-title {
@@ -93,10 +95,18 @@
   }
 
   .footer-list {
-    list-style: none;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .footer-list li {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .footer-list a {
