@@ -3,30 +3,52 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ProductCardMinimal from '../components/ProductCardMinimal.astro';
 import ProductDrawer from '../components/ProductDrawer.astro';
+import LaserScanShader from '../components/shaders/LaserScanShader.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import products from '../data/products.json';
 ---
 
-<Layout title="Produtos & Soluções Têxteis — Stampaholics">
+<Layout title="Produtos & Confecção — Stampaholics">
   <Navbar currentPath="/produtos" />
 
-  <main class="page-content">
-    <div class="container">
-      <div class="page-header">
-        <span class="eyebrow" data-i18n-pt="Catálogo Completo" data-i18n-en="Full Catalog">Catálogo Completo</span>
-        <h1 class="page-title" data-i18n-pt="Produtos & Linha de Confecção" data-i18n-en="Products & Custom Apparel">Produtos & Linha de Confecção</h1>
-        <p class="page-desc" data-i18n-pt="Todos os produtos são confeccionados em tecidos nobres com sublimação total e corte óptico a laser. Selecione qualquer item para conferir a ficha técnica e solicitar cotação." data-i18n-en="All products are manufactured with high-definition digital sublimation and optical laser cutting. Click any item to view specifications and request a quote.">
-          Todos os produtos são confeccionados em tecidos nobres com sublimação total e corte óptico a laser. Selecione qualquer item para conferir a ficha técnica e solicitar cotação.
-        </p>
-      </div>
+  <main>
+    <!-- Hero com WebGL Laser Scan Shader -->
+    <section class="products-hero-shader section-petrol">
+      <LaserScanShader />
 
-      <div class="products-full-grid">
-        {products.map((p) => (
-          <ProductCardMinimal id={p.id} name={p.name} name_en={p.name_en} image={p.image} />
-        ))}
+      <div class="container hero-shader-content">
+        <span class="eyebrow-intheknow" data-i18n-pt="linha de confecção" data-i18n-en="apparel line">linha de confecção</span>
+        <h1 class="page-title" data-i18n-pt="Produtos & Peças Sob Medida" data-i18n-en="Products & Custom Apparel">Produtos & Peças Sob Medida</h1>
+        <p class="page-desc" data-i18n-pt="Sublimação digital total, calandragem contínua e corte óptico a laser. Selecione uma categoria para explorar os produtos e calcular estimativas." data-i18n-en="All-over sublimation, continuous calendering, and optical laser cut. Select a category to explore items and simulate quotes.">
+          Sublimação digital total, calandragem contínua e corte óptico a laser. Selecione uma categoria para explorar os produtos e calcular estimativas.
+        </p>
+
+        <!-- Filtros Rápidos de Categoria (Sem Barra de Busca) -->
+        <div class="category-filters" id="category-filters">
+          <button class="cat-pill active font-intheknow" data-cat="all" data-i18n-pt="todos" data-i18n-en="all">todos</button>
+          <button class="cat-pill font-intheknow" data-cat="Eventos" data-i18n-pt="eventos & festas" data-i18n-en="events & parties">eventos & festas</button>
+          <button class="cat-pill font-intheknow" data-cat="Esportes" data-i18n-pt="esportes & corrida" data-i18n-en="sports & running">esportes & corrida</button>
+          <button class="cat-pill font-intheknow" data-cat="Moda" data-i18n-pt="moda & praia" data-i18n-en="fashion & resort">moda & praia</button>
+          <button class="cat-pill font-intheknow" data-cat="Corporativo" data-i18n-pt="corporativo & brindes" data-i18n-en="corporate & gifts">corporativo & brindes</button>
+          <button class="cat-pill font-intheknow" data-cat="Decoração" data-i18n-pt="decoração & cenografia" data-i18n-en="decor & stage">decoração & cenografia</button>
+          <button class="cat-pill font-intheknow" data-cat="Comunicação" data-i18n-pt="banners & pdv" data-i18n-en="banners & pos">banners & pdv</button>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Grid de Produtos em Fundo Branco Puro (Estilo _old/v2 com Leve Movimento) -->
+    <section class="products-grid-section section-white bg-geometric-pattern">
+      <div class="container">
+        <div class="products-full-grid" id="products-grid">
+          {products.map((p) => (
+            <div class="product-item-wrap" data-category={p.category}>
+              <ProductCardMinimal id={p.id} name={p.name} name_en={p.name_en} image={p.image} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
 
   <ProductDrawer />
@@ -35,27 +57,67 @@ import products from '../data/products.json';
 </Layout>
 
 <style>
-  .page-content {
-    padding-top: 140px;
-    padding-bottom: 90px;
+  .products-hero-shader {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 70px;
+    overflow: hidden;
   }
 
-  .page-header {
-    max-width: 680px;
-    margin-bottom: 56px;
+  .hero-shader-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
   }
 
   .page-title {
-    font-size: clamp(32px, 4vw, 44px);
+    font-size: clamp(32px, 4vw, 46px);
     font-weight: 700;
     color: #FFFFFF;
     margin-bottom: 12px;
   }
 
   .page-desc {
-    font-size: 15.5px;
+    font-size: 16px;
     color: var(--text-white-muted);
     line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  /* Filtros de Categoria */
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cat-pill {
+    font-size: 17px;
+    color: var(--text-white-muted);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 18px;
+    border-radius: 9999px;
+    transition: all 0.25s var(--ease-boutique);
+    white-space: nowrap;
+  }
+
+  .cat-pill:hover {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .cat-pill.active {
+    background: var(--brand-pink);
+    color: #FFFFFF;
+    border-color: var(--brand-pink);
+    box-shadow: 0 4px 16px var(--brand-pink-glow);
+  }
+
+  /* Seção de Grid */
+  .products-grid-section {
+    padding: 80px 0 100px;
   }
 
   .products-full-grid {
@@ -63,4 +125,37 @@ import products from '../data/products.json';
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 28px;
   }
+
+  .product-item-wrap {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .product-item-wrap:hover {
+    transform: translateY(-4px);
+  }
 </style>
+
+<script>
+  const filterBtns = document.querySelectorAll('.cat-pill');
+  const items = document.querySelectorAll('.product-item-wrap');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const selected = btn.getAttribute('data-cat') || 'all';
+
+      items.forEach((it) => {
+        const itemEl = it as HTMLElement;
+        const itemCat = itemEl.getAttribute('data-category');
+
+        if (selected === 'all' || itemCat === selected) {
+          itemEl.style.display = 'block';
+        } else {
+          itemEl.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

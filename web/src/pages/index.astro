@@ -4,53 +4,57 @@ import Navbar from '../components/Navbar.astro';
 import ProductCardMinimal from '../components/ProductCardMinimal.astro';
 import ProductDrawer from '../components/ProductDrawer.astro';
 import Calculator from '../components/Calculator.astro';
-import HeartCanvas3D from '../components/HeartCanvas3D.astro';
+import SilkWaveShader from '../components/shaders/SilkWaveShader.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import products from '../data/products.json';
 import cases from '../data/cases.json';
 
-// Seleciona 8 produtos de maior destaque para a Home
 const featuredProducts = products.slice(0, 8);
 ---
 
-<Layout title="Stampaholics — Estúdio de Sublimação Digital & Laser Cut">
+<Layout title="Stampaholics — Impressão Digital Têxtil por Sublimação">
   <Navbar currentPath="/" />
 
   <main>
-    <!-- Hero Boutique Sóbrio -->
-    <section class="boutique-hero">
-      <div class="container hero-grid">
+    <!-- Hero com WebGL Silk Wave Shader (Ondulação de Seda ao Vivo) -->
+    <section class="boutique-hero-shader section-petrol">
+      <SilkWaveShader />
+
+      <div class="container hero-shader-grid">
         <div class="hero-text-pane">
-          <span class="eyebrow" data-i18n-pt="Estúdio de Sublimação Têxtil" data-i18n-en="Textile Sublimation Studio">Estúdio de Sublimação Têxtil</span>
-          <h1 class="hero-headline" data-i18n-pt="Impressão digital em tecido para quem exige fidelidade e escala." data-i18n-en="Digital textile printing for those who demand color fidelity and scale.">
-            Impressão digital em tecido para quem exige fidelidade e escala.
+          <span class="eyebrow-intheknow" data-i18n-pt="estamparia digital & corte a laser" data-i18n-en="digital printing & laser cutting">estamparia digital & corte a laser</span>
+          <h1 class="hero-headline" data-i18n-pt="Transformamos ideias em tecido com intensidade e precisão." data-i18n-en="Transforming visual ideas into fabric with vibrant color and precision.">
+            Transformamos ideias em tecido com intensidade e precisão.
           </h1>
-          <p class="hero-lead" data-i18n-pt="Sublimação contínua, corte a laser e acabamento industrial para eventos, festivais, circuitos de corrida e marcas de moda." data-i18n-en="Continuous sublimation, precision laser cutting, and industrial finishing for festivals, marathons, and fashion labels.">
-            Sublimação contínua, corte a laser e acabamento industrial para eventos, festivais, circuitos de corrida e marcas de moda.
+          <p class="hero-lead" data-i18n-pt="Sublimação contínua de alta definição para eventos, festivais, circuitos de corrida e marcas autorais. Toque zero, cores que não desbotam e corte óptico a laser." data-i18n-en="High-definition continuous sublimation for festivals, marathons, and fashion brands. Zero hand-feel, permanent colors, and precision laser cutting.">
+            Sublimação contínua de alta definição para eventos, festivais, circuitos de corrida e marcas autorais. Toque zero, cores que não desbotam e corte óptico a laser.
           </p>
 
           <div class="hero-actions">
-            <a href="/produtos" class="btn-boutique-primary" data-i18n-pt="Explorar Produtos" data-i18n-en="Explore Products">Explorar Produtos</a>
-            <a href="#calculadora" class="btn-boutique-ghost" data-i18n-pt="Simular Preço" data-i18n-en="Simulate Price">Simular Preço</a>
+            <a href="/produtos" class="btn-boutique-primary font-intheknow" data-i18n-pt="conhecer produtos" data-i18n-en="explore products">conhecer produtos</a>
+            <a href="#calculadora" class="btn-boutique-ghost font-intheknow" data-i18n-pt="simular orçamento" data-i18n-en="price simulator">simular orçamento</a>
           </div>
         </div>
 
         <div class="hero-visual-pane">
-          <HeartCanvas3D />
+          <!-- Produto em Destaque Flutuante com Sombra de Contato -->
+          <div class="hero-float-card product-contact-shadow">
+            <img src="/products/Kit_Corrida_DryFit_Sacochila.png" alt="Stampaholics Destaque" class="hero-float-img" />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Destaques de Produtos (Showroom Curado) -->
-    <section class="boutique-section">
+    <!-- Seção de Produtos em Fundo Branco Puro (Estilo _old/v2 com Leve Movimento) -->
+    <section class="boutique-section section-white bg-geometric-pattern">
       <div class="container">
         <div class="section-title-row">
           <div>
-            <span class="eyebrow" data-i18n-pt="Showroom" data-i18n-en="Showroom">Showroom</span>
+            <span class="eyebrow-intheknow" data-i18n-pt="nossa linha" data-i18n-en="our line">nossa linha</span>
             <h2 class="section-h2" data-i18n-pt="Produtos em Destaque" data-i18n-en="Featured Products">Produtos em Destaque</h2>
           </div>
-          <a href="/produtos" class="section-more-link" data-i18n-pt="Ver todos os 24 produtos →" data-i18n-en="View all 24 products →">Ver todos os 24 produtos →</a>
+          <a href="/produtos" class="section-more-link font-intheknow" data-i18n-pt="ver todos os 24 produtos →" data-i18n-en="view all 24 products →">ver todos os 24 produtos →</a>
         </div>
 
         <div class="minimal-products-grid">
@@ -61,39 +65,39 @@ const featuredProducts = products.slice(0, 8);
       </div>
     </section>
 
-    <!-- 3 Pilares de Serviços -->
-    <section class="boutique-section-dark">
+    <!-- Seção de Serviços em Azul Petróleo com Grafismos da Marca -->
+    <section class="boutique-section-dark section-petrol">
       <div class="container">
         <div class="section-title-row">
           <div>
-            <span class="eyebrow" data-i18n-pt="Capacidade Produtiva" data-i18n-en="Production Capacity">Capacidade Produtiva</span>
+            <span class="eyebrow-intheknow" data-i18n-pt="capacidade fabril" data-i18n-en="plant capacity">capacidade fabril</span>
             <h2 class="section-h2" data-i18n-pt="Nossos Serviços" data-i18n-en="Our Services">Nossos Serviços</h2>
           </div>
-          <a href="/servicos" class="section-more-link" data-i18n-pt="Ver especificações e tecidos →" data-i18n-en="View specs & fabrics →">Ver especificações e tecidos →</a>
+          <a href="/servicos" class="section-more-link font-intheknow" data-i18n-pt="ver guia de tecidos →" data-i18n-en="view fabric guide →">ver guia de tecidos →</a>
         </div>
 
         <div class="services-trio-grid">
           <div class="service-trio-card">
-            <span class="service-index">01</span>
-            <h3 class="service-card-title" data-i18n-pt="Sublimação por Metro" data-i18n-en="Roll-to-Roll Sublimation">Sublimação por Metro</h3>
-            <p class="service-card-desc" data-i18n-pt="Calandragem contínua em rolos contínuos de tecido com fidelidade cromática e preto profundo em alta temperatura." data-i18n-en="Continuous rotary heat transfer on continuous fabric rolls with deep blacks and vivid color gamut.">
-              Calandragem contínua em rolos contínuos de tecido com fidelidade cromática e preto profundo em alta temperatura.
+            <span class="service-index font-intheknow">01</span>
+            <h3 class="service-card-title" data-i18n-pt="Sublimação por Metro" data-i18n-en="Roll Sublimation">Sublimação por Metro</h3>
+            <p class="service-card-desc" data-i18n-pt="Calandragem industrial contínua a 210°C em rolos inteiros de tecido sintético, garantindo pretos profundos e toque zero." data-i18n-en="Continuous rotary heat transfer on continuous fabric rolls with deep blacks and vivid colors.">
+              Calandragem industrial contínua a 210°C em rolos inteiros de tecido sintético, garantindo pretos profundos e toque zero.
             </p>
           </div>
 
           <div class="service-trio-card">
-            <span class="service-index">02</span>
-            <h3 class="service-card-title" data-i18n-pt="Corte a Laser Óptico" data-i18n-en="Optical Laser Cutting">Corte a Laser Óptico</h3>
-            <p class="service-card-desc" data-i18n-pt="Câmeras ópticas que leem o desenho impresso e realizam corte milimétrico com bordas seladas termicamente sem desfiar." data-i18n-en="Vision-guided laser cutting that seals fabric edges with millimeter precision, eliminating fraying.">
-              Câmeras ópticas que leem o desenho impresso e realizam corte milimétrico com bordas seladas termicamente sem desfiar.
+            <span class="service-index font-intheknow">02</span>
+            <h3 class="service-card-title" data-i18n-pt="Corte a Laser Óptico" data-i18n-en="Laser Cutting">Corte a Laser Óptico</h3>
+            <p class="service-card-desc" data-i18n-pt="Mesas automatizadas com câmeras CCD que leem a estampa e cortam milimetricamente selando as bordas sem desfiar." data-i18n-en="Automated vision-guided laser cutting that seals edges with millimeter precision, eliminating fraying.">
+              Mesas automatizadas com câmeras CCD que leem a estampa e cortam milimetricamente selando as bordas sem desfiar.
             </p>
           </div>
 
           <div class="service-trio-card">
-            <span class="service-index">03</span>
-            <h3 class="service-card-title" data-i18n-pt="Confecção & Acabamento" data-i18n-en="Apparel & Finishing">Confecção & Acabamento</h3>
-            <p class="service-card-desc" data-i18n-pt="Costura industrial especializada em peças esportivas e promocionais: golas anatômicas, zíperes invisíveis e ilhoses." data-i18n-en="Industrial sewing for sportswear and promotional items: ergonomic collars, hidden zippers, and eyelets.">
-              Costura industrial especializada em peças esportivas e promocionais: golas anatômicas, zíperes invisíveis e ilhoses.
+            <span class="service-index font-intheknow">03</span>
+            <h3 class="service-card-title" data-i18n-pt="Confecção Especializada" data-i18n-en="Custom Apparel">Confecção Especializada</h3>
+            <p class="service-card-desc" data-i18n-pt="Montagem completa: abadás anatômicos, camisetas esportivas, bolsas e almofadas com costura reforçada e entrega etiquetada." data-i18n-en="Complete apparel assembly: ergonomic tops, sportswear, bags, and cushions delivered individually tagged.">
+              Montagem completa: abadás anatômicos, camisetas esportivas, bolsas e almofadas com costura reforçada e entrega etiquetada.
             </p>
           </div>
         </div>
@@ -103,25 +107,25 @@ const featuredProducts = products.slice(0, 8);
     <!-- Calculadora Oficial Integrada -->
     <Calculator />
 
-    <!-- Cases de Clientes em Destaque -->
-    <section class="boutique-section">
+    <!-- Cases de Clientes em Seção Clara -->
+    <section class="boutique-section section-white bg-geometric-pattern">
       <div class="container">
         <div class="section-title-row">
           <div>
-            <span class="eyebrow" data-i18n-pt="Cases de Sucesso" data-i18n-en="Case Studies">Cases de Sucesso</span>
-            <h2 class="section-h2" data-i18n-pt="Grandes Volumes Entregues" data-i18n-en="Enterprise Projects Delivered">Grandes Volumes Entregues</h2>
+            <span class="eyebrow-intheknow" data-i18n-pt="grandes marcas" data-i18n-en="featured clients">grandes marcas</span>
+            <h2 class="section-h2" data-i18n-pt="Projetos Entregues" data-i18n-en="Delivered Projects">Projetos Entregues</h2>
           </div>
-          <a href="/clientes" class="section-more-link" data-i18n-pt="Ver todos os cases →" data-i18n-en="View all case studies →">Ver todos os cases →</a>
+          <a href="/clientes" class="section-more-link font-intheknow" data-i18n-pt="ver todos os cases →" data-i18n-en="view all case studies →">ver todos os cases →</a>
         </div>
 
         <div class="cases-dual-grid">
           {cases.slice(0, 2).map((c) => (
-            <div class="case-boutique-card">
-              <span class="case-segment">{c.segment}</span>
-              <h3 class="case-title">{c.title}</h3>
-              <p class="case-desc">{c.description}</p>
-              <div class="case-meta-row">
-                <span class="case-vol">{c.volume}</span>
+            <div class="case-boutique-card" style="background:#FFFFFF; border: 1px solid rgba(226,232,240,0.9); box-shadow: 0 10px 25px rgba(0,0,0,0.04);">
+              <span class="case-segment font-intheknow">{c.segment}</span>
+              <h3 class="case-title" style="color:#0F1D23;">{c.title}</h3>
+              <p class="case-desc" style="color:#64748B;">{c.description}</p>
+              <div class="case-meta-row" style="border-top-color:#E2E8F0;">
+                <span class="case-vol" style="color:#142830;">{c.volume}</span>
                 <span class="case-metric-chip">{c.metric}</span>
               </div>
             </div>
@@ -137,14 +141,16 @@ const featuredProducts = products.slice(0, 8);
 </Layout>
 
 <style>
-  /* Hero Boutique */
-  .boutique-hero {
+  .boutique-hero-shader {
+    position: relative;
     padding-top: 150px;
     padding-bottom: 90px;
-    background: radial-gradient(circle at 75% 20%, rgba(39, 77, 94, 0.25) 0%, transparent 60%);
+    overflow: hidden;
   }
 
-  .hero-grid {
+  .hero-shader-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 48px;
@@ -173,7 +179,7 @@ const featuredProducts = products.slice(0, 8);
     gap: 14px;
   }
 
-  .hero-stage {
+  .hero-float-card {
     width: 100%;
     aspect-ratio: 1 / 1;
     max-width: 440px;
@@ -184,16 +190,21 @@ const featuredProducts = products.slice(0, 8);
     justify-content: center;
     padding: 36px;
     margin-left: auto;
+    animation: floatGentle 5s ease-in-out infinite;
   }
 
-  .hero-featured-img {
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-float-img {
     max-height: 90%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 16px 28px rgba(13, 25, 30, 0.16));
+    filter: drop-shadow(0 14px 24px rgba(13, 25, 30, 0.16));
   }
 
-  /* Seções Gerais */
   .boutique-section {
     padding: 90px 0;
   }
@@ -216,29 +227,20 @@ const featuredProducts = products.slice(0, 8);
   .section-h2 {
     font-size: clamp(26px, 3.2vw, 36px);
     font-weight: 700;
-    color: #FFFFFF;
   }
 
   .section-more-link {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 17px;
     color: var(--brand-pink);
     transition: opacity 0.2s;
   }
 
-  .section-more-link:hover {
-    opacity: 0.8;
-  }
-
-  /* Grid Minimalista de Produtos */
   .minimal-products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 28px;
   }
 
-  /* Grid dos 3 Serviços */
   .services-trio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -256,10 +258,8 @@ const featuredProducts = products.slice(0, 8);
   }
 
   .service-index {
-    font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 24px;
     color: var(--brand-green);
-    font-weight: 600;
   }
 
   .service-card-title {
@@ -274,7 +274,6 @@ const featuredProducts = products.slice(0, 8);
     line-height: 1.6;
   }
 
-  /* Grid de Cases */
   .cases-dual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -282,8 +281,6 @@ const featuredProducts = products.slice(0, 8);
   }
 
   .case-boutique-card {
-    background: var(--bg-dark-surface);
-    border: 1px solid var(--border-dark);
     border-radius: var(--radius-md);
     padding: 32px;
     display: flex;
@@ -292,22 +289,17 @@ const featuredProducts = products.slice(0, 8);
   }
 
   .case-segment {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    text-transform: uppercase;
+    font-size: 14px;
     color: var(--brand-pink);
-    letter-spacing: 0.05em;
   }
 
   .case-title {
     font-size: 20px;
     font-weight: 700;
-    color: #FFFFFF;
   }
 
   .case-desc {
     font-size: 14px;
-    color: var(--text-white-muted);
     line-height: 1.6;
   }
 
@@ -317,27 +309,26 @@ const featuredProducts = products.slice(0, 8);
     align-items: center;
     margin-top: 12px;
     padding-top: 14px;
-    border-top: 1px solid var(--border-dark);
+    border-top: 1px solid;
   }
 
   .case-vol {
     font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 600;
-    color: #FFFFFF;
   }
 
   .case-metric-chip {
     font-size: 12px;
-    color: var(--brand-green);
+    color: var(--brand-green-dark);
     font-weight: 600;
   }
 
   @media (max-width: 860px) {
-    .hero-grid {
+    .hero-shader-grid {
       grid-template-columns: 1fr;
     }
-    .hero-stage {
+    .hero-float-card {
       margin: 0 auto;
     }
     .cases-dual-grid {

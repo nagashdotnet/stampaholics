@@ -1,115 +1,124 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import Calculator from '../components/Calculator.astro';
+import InkThermalShader from '../components/shaders/InkThermalShader.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import fabrics from '../data/fabrics.json';
 ---
 
-<Layout title="Serviços & Guia de Tecidos — Stampaholics">
+<Layout title="Serviços & Guia Têxtil — Stampaholics">
   <Navbar currentPath="/servicos" />
 
-  <main class="page-content">
-    <div class="container">
-      <div class="page-header">
-        <span class="eyebrow" data-i18n-pt="Engenharia Têxtil" data-i18n-en="Textile Engineering">Engenharia Têxtil</span>
-        <h1 class="page-title" data-i18n-pt="Serviços & Guia de Bases Têxteis" data-i18n-en="Services & Fabric Catalog">Serviços & Guia de Bases Têxteis</h1>
-        <p class="page-desc" data-i18n-pt="Da calandragem em rolo ao corte guiado por visão computacional: conheça nossos processos industriais e as bases disponíveis para a sua produção." data-i18n-en="From rotary roll calendering to vision-guided laser cutting: discover our manufacturing processes and available fabric substrates.">
-          Da calandragem em rolo ao corte guiado por visão computacional: conheça nossos processos industriais e as bases disponíveis para a sua produção.
+  <main>
+    <!-- Hero com WebGL Ink Thermal Shader (Dispersão Térmica de Sublimação) -->
+    <section class="services-hero-shader section-petrol">
+      <InkThermalShader />
+
+      <div class="container hero-shader-content">
+        <span class="eyebrow-intheknow" data-i18n-pt="engenharia & calandragem" data-i18n-en="engineering & calendering">engenharia & calandragem</span>
+        <h1 class="page-title" data-i18n-pt="Serviços Têxteis & Acervo de Bases" data-i18n-en="Textile Services & Fabric Catalog">Serviços Têxteis & Acervo de Bases</h1>
+        <p class="page-desc" data-i18n-pt="Da calandragem industrial contínua ao corte a laser guiado por câmeras de visão computacional: tecnologia de ponta para sua coleção ou evento." data-i18n-en="From continuous rotary calendering to vision-guided laser cutting: cutting-edge technology for your collection or event.">
+          Da calandragem industrial contínua ao corte a laser guiado por câmeras de visão computacional: tecnologia de ponta para sua coleção ou evento.
         </p>
       </div>
+    </section>
 
-      <!-- Detalhamento dos 3 Serviços -->
-      <section class="services-deep-section">
-        <div class="service-block">
-          <div class="service-block-meta">
-            <span class="block-num">01</span>
-            <h2 class="block-title" data-i18n-pt="Sublimação Contínua em Rolo (Por Metro)" data-i18n-en="Continuous Roll Sublimation (Per Meter)">Sublimação Contínua em Rolo (Por Metro)</h2>
-          </div>
-          <div class="service-block-body">
-            <p data-i18n-pt="Transferência térmica de alta precisão em calandra industrial a 210°C. O corante sublimático gasoso penetra diretamente nas fibras sintéticas do poliéster, garantindo toque absolutamente zero, flexibilidade total e resistência à lavagem contínua sem desbotamento." data-i18n-en="High-precision rotary thermal transfer at 210°C. Disperse dye bonds directly with polymer fibers, achieving zero hand-feel, full drape flexibility, and permanent wash-fastness without fading.">
-              Transferência térmica de alta precisão em calandra industrial a 210°C. O corante sublimático gasoso penetra diretamente nas fibras sintéticas do poliéster, garantindo toque absolutamente zero, flexibilidade total e resistência à lavagem contínua sem desbotamento.
-            </p>
-            <ul class="block-specs">
-              <li><strong>Largura Útil:</strong> Até 1,60m sem emenda</li>
-              <li><strong>Resolução de Impressão:</strong> Até 1440 DPI em cabeçotes industriais</li>
-              <li><strong>Perfil de Cor:</strong> Espaço de cor expandido com pretos densos e cores neon</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="service-block">
-          <div class="service-block-meta">
-            <span class="block-num">02</span>
-            <h2 class="block-title" data-i18n-pt="Corte a Laser Óptico Guiado por Câmera" data-i18n-en="Vision-Guided Optical Laser Cutting">Corte a Laser Óptico Guiado por Câmera</h2>
-          </div>
-          <div class="service-block-body">
-            <p data-i18n-pt="Mesas de corte a laser equipadas com câmeras CCD de visão computacional que escaneiam marcas de registro ou os contornos da estampa em tempo real, compensando qualquer micro-distorção elástica do tecido durante o corte." data-i18n-en="Laser cutting tables equipped with CCD computer vision that scans fiducial marks and print outlines in real-time, instantly adjusting for fabric stretch and dimensional shifts.">
-              Mesas de corte a laser equipadas com câmeras CCD de visão computacional que escaneiam marcas de registro ou os contornos da estampa em tempo real, compensando qualquer micro-distorção elástica do tecido durante o corte.
-            </p>
-            <ul class="block-specs">
-              <li><strong>Selagem Térmica:</strong> O feixe a laser cauteriza as pontas dos fios, eliminando 100% do desfiamento</li>
-              <li><strong>Precisão Milimétrica:</strong> Encaixe exato de mangas, golas e frente/costas para confecção</li>
-              <li><strong>Peças Prontas:</strong> Entregamos o lote cortado peça por peça pronto para a costura</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="service-block">
-          <div class="service-block-meta">
-            <span class="block-num">03</span>
-            <h2 class="block-title" data-i18n-pt="Confecção & Acabamento Industrial" data-i18n-en="Apparel Assembly & Industrial Sewing">Confecção & Acabamento Industrial</h2>
-          </div>
-          <div class="service-block-body">
-            <p data-i18n-pt="Montagem completa das peças com linhas de costura especiais (overloque de 4 fios, pesponto galoneira, bainha italiana e zíper invisível). Desenvolvemos desde o corte até a embalagem individual etiquetada." data-i18n-en="Complete apparel assembly featuring reinforced overlock seams, flatlock stitching, fine rolled hems, and hidden zippers, delivering individually polybagged garments.">
-              Montagem completa das peças com linhas de costura especiais (overloque de 4 fios, pesponto galoneira, bainha italiana e zíper invisível). Desenvolvemos desde o corte até a embalagem individual etiquetada.
-            </p>
-            <ul class="block-specs">
-              <li><strong>Controle de Qualidade:</strong> Revisão peça a peça antes do despacho</li>
-              <li><strong>Etiquetagem:</strong> Aplicação de tags com grade de tamanho (P ao XG)</li>
-              <li><strong>Logística:</strong> Embalagem por lotes setorizados para agilizar eventos</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Guia Completo de Tecidos STAMPFY -->
-      <section class="fabrics-guide-section">
+    <!-- Cards dos 3 Serviços em Fundo Branco Puro -->
+    <section class="boutique-section section-white bg-geometric-pattern">
+      <div class="container">
         <div class="section-title-row">
           <div>
-            <span class="eyebrow" data-i18n-pt="Acervo STAMPFY" data-i18n-en="STAMPFY Swatch Library">Acervo STAMPFY</span>
-            <h2 class="section-h2" data-i18n-pt="Guia Completo de Tecidos" data-i18n-en="Complete Fabric Guide">Guia Completo de Tecidos</h2>
+            <span class="eyebrow-intheknow" data-i18n-pt="nossos pilares" data-i18n-en="our pillars">nossos pilares</span>
+            <h2 class="section-h2" data-i18n-pt="Etapas de Produção" data-i18n-en="Production Stages">Etapas de Produção</h2>
+          </div>
+        </div>
+
+        <div class="services-deep-grid">
+          <div class="service-process-card">
+            <span class="process-num font-intheknow">01</span>
+            <h3 class="process-title" data-i18n-pt="Sublimação por Metro" data-i18n-en="Roll-to-Roll Sublimation">Sublimação por Metro</h3>
+            <p class="process-p" data-i18n-pt="Transferência térmica a 210°C em calandra contínua. As moléculas de pigmento gasoso penetram diretamente no núcleo das fibras, proporcionando toque zero, elasticidade total e lavagem contínua sem desbotar." data-i18n-en="Thermal rotary transfer at 210°C. Gas pigment molecules bond directly to the polymer core, delivering zero hand-feel, full stretch, and permanent wash resistance.">
+              Transferência térmica a 210°C em calandra contínua. As moléculas de pigmento gasoso penetram diretamente no núcleo das fibras, proporcionando toque zero, elasticidade total e lavagem contínua sem desbotar.
+            </p>
+            <div class="process-highlights">
+              <span>✦ Largura útil até 1,60m</span>
+              <span>✦ 1440 DPI de resolução</span>
+              <span>✦ Preto puro e cores fluorescentes</span>
+            </div>
+          </div>
+
+          <div class="service-process-card">
+            <span class="process-num font-intheknow">02</span>
+            <h3 class="process-title" data-i18n-pt="Corte a Laser Óptico" data-i18n-en="Vision Laser Cutting">Corte a Laser Óptico</h3>
+            <p class="process-p" data-i18n-pt="Mesas de corte automático com câmeras CCD de visão computacional que escaneiam o tecido impresso em tempo real, compensando qualquer micro-distorção elástica com tolerância milimétrica." data-i18n-en="Automated cutting tables equipped with CCD cameras scanning the printed fabric in real-time, instantly compensating for fabric distortion with millimeter accuracy.">
+              Mesas de corte automático com câmeras CCD de visão computacional que escaneiam o tecido impresso em tempo real, compensando qualquer micro-distorção elástica com tolerância milimétrica.
+            </p>
+            <div class="process-highlights">
+              <span>✦ Selagem térmica sem desfiar</span>
+              <span>✦ Encaixes exatos de estampa</span>
+              <span>✦ Peças prontas para costura</span>
+            </div>
+          </div>
+
+          <div class="service-process-card">
+            <span class="process-num font-intheknow">03</span>
+            <h3 class="process-title" data-i18n-pt="Confecção & Acabamento" data-i18n-en="Garment Assembly">Confecção & Acabamento</h3>
+            <p class="process-p" data-i18n-pt="Linhas industriais especializadas em vestuário esportivo e moda: golas anatômicas, costura galoneira, overloque de 4 fios, bainha italiana, zíperes invisíveis e ilhoses metálicos." data-i18n-en="Industrial lines specialized in athletic and event apparel: ergonomic collars, flatlock seams, reinforced 4-thread overlock, and hidden zippers.">
+              Linhas industriais especializadas em vestuário esportivo e moda: golas anatômicas, costura galoneira, overloque de 4 fios, bainha italiana, zíperes invisíveis e ilhoses metálicos.
+            </p>
+            <div class="process-highlights">
+              <span>✦ Revisão de qualidade peça a peça</span>
+              <span>✦ Grade de tamanhos etiquetada</span>
+              <span>✦ Embalagem por setorização</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculadora de Orçamento Integrada aos Serviços -->
+    <Calculator />
+
+    <!-- Guia de Tecidos em Seção Verde Esmeralda Suave / Dark -->
+    <section class="boutique-section section-emerald">
+      <div class="container">
+        <div class="section-title-row">
+          <div>
+            <span class="eyebrow-intheknow" style="color:#A7F3D0;" data-i18n-pt="acervo stampfy" data-i18n-en="stampfy library">acervo stampfy</span>
+            <h2 class="section-h2" style="color:#FFFFFF;" data-i18n-pt="Guia Completo de Tecidos" data-i18n-en="Complete Fabric Guide">Guia Completo de Tecidos</h2>
           </div>
         </div>
 
         <div class="fabrics-table-grid">
           {fabrics.map((f) => (
-            <div class="fabric-item-card">
+            <div class="fabric-item-card" style="background: rgba(14, 45, 39, 0.7); border-color: rgba(31, 179, 128, 0.3);">
               <div class="fabric-top">
-                <h3 class="fabric-title">{f.name}</h3>
-                <span class="fabric-weight">{f.weight}</span>
+                <h3 class="fabric-title font-intheknow" style="font-size:22px;">{f.name}</h3>
+                <span class="fabric-weight font-mono" style="color:#6EE7B7;">{f.weight}</span>
               </div>
-              <p class="fabric-comp-txt">{f.composition}</p>
+              <p class="fabric-comp-txt" style="color:#D1FAE5;">{f.composition}</p>
 
               <div class="fabric-meta-pair">
-                <span class="meta-k" data-i18n-pt="Toque & Caimento" data-i18n-en="Hand & Drape">Toque & Caimento</span>
-                <span class="meta-v">{f.touch}</span>
-              </div>
-
-              <div class="fabric-meta-pair">
-                <span class="meta-k" data-i18n-pt="Aplicações Indicadas" data-i18n-en="Best Applications">Aplicações Indicadas</span>
-                <span class="meta-v highlight">{f.applications}</span>
+                <span class="meta-k" style="color:#F472B6;">Toque & Caimento</span>
+                <span class="meta-v" style="color:#FFFFFF;">{f.touch}</span>
               </div>
 
               <div class="fabric-meta-pair">
-                <span class="meta-k" data-i18n-pt="Diferencial" data-i18n-en="Feature">Diferencial</span>
-                <span class="meta-v">{f.features}</span>
+                <span class="meta-k" style="color:#F472B6;">Aplicações Indicadas</span>
+                <span class="meta-v highlight" style="color:#FFFFFF;">{f.applications}</span>
+              </div>
+
+              <div class="fabric-meta-pair">
+                <span class="meta-k" style="color:#F472B6;">Diferencial</span>
+                <span class="meta-v" style="color:#FFFFFF;">{f.features}</span>
               </div>
             </div>
           ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
   <WhatsAppButton />
@@ -117,106 +126,96 @@ import fabrics from '../data/fabrics.json';
 </Layout>
 
 <style>
-  .page-content {
-    padding-top: 140px;
-    padding-bottom: 90px;
+  .services-hero-shader {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 70px;
+    overflow: hidden;
   }
 
-  .page-header {
-    max-width: 680px;
-    margin-bottom: 56px;
+  .hero-shader-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
   }
 
   .page-title {
-    font-size: clamp(32px, 4vw, 44px);
+    font-size: clamp(32px, 4vw, 46px);
     font-weight: 700;
     color: #FFFFFF;
     margin-bottom: 12px;
   }
 
   .page-desc {
-    font-size: 15.5px;
+    font-size: 16px;
     color: var(--text-white-muted);
     line-height: 1.6;
   }
 
-  /* Serviços em Profundidade */
-  .services-deep-section {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    margin-bottom: 80px;
-  }
-
-  .service-block {
-    background: var(--bg-dark-surface);
-    border: 1px solid var(--border-dark);
-    border-radius: var(--radius-md);
-    padding: 36px;
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 32px;
-  }
-
-  .service-block-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .block-num {
-    font-family: var(--font-mono);
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--brand-pink);
-  }
-
-  .block-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1.25;
-  }
-
-  .service-block-body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    font-size: 14.5px;
-    color: var(--text-white-muted);
-    line-height: 1.65;
-  }
-
-  .block-specs {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 16px;
-    border-radius: var(--radius-sm);
-    font-size: 13.5px;
-    color: #E2E8F0;
-  }
-
-  .block-specs strong {
-    color: var(--brand-green);
-    margin-right: 6px;
-  }
-
-  /* Guia de Tecidos */
-  .fabrics-guide-section {
-    padding-top: 40px;
+  .boutique-section {
+    padding: 90px 0;
   }
 
   .section-title-row {
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
 
   .section-h2 {
-    font-size: 28px;
+    font-size: clamp(26px, 3.2vw, 36px);
     font-weight: 700;
-    color: #FFFFFF;
+  }
+
+  .services-deep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+  }
+
+  .service-process-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-md);
+    padding: 36px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-process-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .process-num {
+    font-size: 28px;
+    color: var(--brand-pink);
+    line-height: 1;
+  }
+
+  .process-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-petrol-dark);
+  }
+
+  .process-p {
+    font-size: 14.5px;
+    color: #475569;
+    line-height: 1.65;
+  }
+
+  .process-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid #F1F5F9;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-green-dark);
   }
 
   .fabrics-table-grid {
@@ -226,9 +225,8 @@ import fabrics from '../data/fabrics.json';
   }
 
   .fabric-item-card {
-    background: var(--bg-dark-surface);
-    border: 1px solid var(--border-dark);
     border-radius: var(--radius-md);
+    border: 1px solid;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -242,20 +240,15 @@ import fabrics from '../data/fabrics.json';
   }
 
   .fabric-title {
-    font-size: 18px;
-    font-weight: 700;
     color: #FFFFFF;
   }
 
   .fabric-weight {
-    font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--brand-green);
   }
 
   .fabric-comp-txt {
-    font-size: 12.5px;
-    color: var(--text-white-muted);
+    font-size: 13px;
   }
 
   .fabric-meta-pair {
@@ -268,25 +261,15 @@ import fabrics from '../data/fabrics.json';
     font-family: var(--font-mono);
     font-size: 11px;
     text-transform: uppercase;
-    color: var(--brand-pink);
     letter-spacing: 0.04em;
   }
 
   .meta-v {
-    font-size: 13px;
-    color: #CBD5E1;
+    font-size: 13.5px;
   }
 
-  .meta-v.highlight {
-    color: #FFFFFF;
-    font-weight: 500;
-  }
-
-  @media (max-width: 800px) {
-    .service-block {
-      grid-template-columns: 1fr;
-      padding: 24px;
-    }
+  @media (max-width: 768px) {
+    .services-deep-grid,
     .fabrics-table-grid {
       grid-template-columns: 1fr;
     }

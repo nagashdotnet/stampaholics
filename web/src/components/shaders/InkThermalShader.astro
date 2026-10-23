@@ -1,0 +1,113 @@
+---
+---
+
+<div class="thermal-shader-container" id="thermal-shader-wrap">
+  <canvas id="thermal-shader-canvas" class="thermal-canvas"></canvas>
+  <div class="thermal-overlay"></div>
+</div>
+
+<style>
+  .thermal-shader-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .thermal-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    opacity: 0.6;
+  }
+
+  .thermal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 40% 50%, transparent 20%, rgba(15, 29, 35, 0.9) 100%);
+  }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  const canvas = document.getElementById('thermal-shader-canvas') as HTMLCanvasElement | null;
+  const wrap = document.getElementById('thermal-shader-wrap');
+
+  if (canvas && wrap) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+    const vertexShader = `
+      varying vec2 vUv;
+      void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+    `;
+
+    const fragmentShader = `
+      uniform float uTime;
+      uniform vec2 uMouse;
+      varying vec2 vUv;
+
+      void main() {
+        vec2 uv = vUv;
+        vec2 p = uv * 2.0 - 1.0;
+        
+        // Simulação de turbulência térmica de gás de sublimação (210°C)
+        float t = uTime * 0.4;
+        for(int i = 1; i < 4; i++) {
+          float fi = float(i);
+          p.x += 0.3 / fi * sin(fi * 3.0 * p.y + t + uMouse.x * 2.0);
+          p.y += 0.3 / fi * cos(fi * 3.0 * p.x + t + uMouse.y * 2.0);
+        }
+
+        float vapor = 0.5 + 0.5 * sin(p.x * 2.0 + p.y * 2.0);
+
+        vec3 cBase    = vec3(0.06, 0.11, 0.14);
+        vec3 cEmerald = vec3(0.12, 0.70, 0.50);
+        vec3 cPink    = vec3(0.92, 0.17, 0.40);
+
+        vec3 col = mix(cBase, cEmerald, vapor * 0.5);
+        col = mix(col, cPink, pow(vapor, 3.0) * 0.6);
+
+        gl_FragColor = vec4(col, 0.85);
+      }
+    `;
+
+    const uniforms = {
+      uTime: { value: 0 },
+      uMouse: { value: new THREE.Vector2(0.5, 0.5) }
+    };
+
+    const mat = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    window.addEventListener('mousemove', (e) => {
+      uniforms.uMouse.value.x = e.clientX / window.innerWidth;
+      uniforms.uMouse.value.y = 1.0 - (e.clientY / window.innerHeight);
+    });
+
+    window.addEventListener('resize', () => {
+      if (!wrap) return;
+      renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+    });
+
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      uniforms.uTime.value = clock.getElapsedTime();
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+</script>

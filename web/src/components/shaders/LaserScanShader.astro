@@ -1,0 +1,117 @@
+---
+---
+
+<div class="laser-shader-container" id="laser-shader-wrap">
+  <canvas id="laser-shader-canvas" class="laser-canvas"></canvas>
+  <div class="laser-overlay"></div>
+</div>
+
+<style>
+  .laser-shader-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .laser-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    opacity: 0.55;
+  }
+
+  .laser-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 60% 40%, transparent 30%, rgba(15, 29, 35, 0.9) 100%);
+  }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  const canvas = document.getElementById('laser-shader-canvas') as HTMLCanvasElement | null;
+  const wrap = document.getElementById('laser-shader-wrap');
+
+  if (canvas && wrap) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+    const vertexShader = `
+      varying vec2 vUv;
+      void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+    `;
+
+    const fragmentShader = `
+      uniform float uTime;
+      uniform vec2 uMouse;
+      varying vec2 vUv;
+
+      void main() {
+        vec2 uv = vUv;
+        
+        // Grade milimétrica de corte óptico a laser
+        vec2 grid = fract(uv * 24.0);
+        float line = step(0.96, grid.x) + step(0.96, grid.y);
+
+        // Feixe horizontal de varredura laser contínuo
+        float scanY = fract(uTime * 0.18);
+        float distToScan = abs(uv.y - scanY);
+        float scanBeam = smoothstep(0.06, 0.0, distToScan);
+
+        // Feixe que persegue o cursor do mouse
+        float mouseDist = length(uv - uMouse);
+        float cursorGlow = smoothstep(0.25, 0.0, mouseDist);
+
+        vec3 bg = vec3(0.06, 0.11, 0.14);
+        vec3 laserPink = vec3(0.92, 0.17, 0.40);
+        vec3 greenGrid = vec3(0.12, 0.70, 0.50);
+
+        vec3 col = bg;
+        col += line * greenGrid * 0.15;
+        col += scanBeam * laserPink * 0.85;
+        col += cursorGlow * laserPink * 0.35;
+
+        gl_FragColor = vec4(col, 0.8);
+      }
+    `;
+
+    const uniforms = {
+      uTime: { value: 0 },
+      uMouse: { value: new THREE.Vector2(0.5, 0.5) }
+    };
+
+    const mat = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+    window.addEventListener('mousemove', (e) => {
+      uniforms.uMouse.value.x = e.clientX / window.innerWidth;
+      uniforms.uMouse.value.y = 1.0 - (e.clientY / window.innerHeight);
+    });
+
+    window.addEventListener('resize', () => {
+      if (!wrap) return;
+      renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+    });
+
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      uniforms.uTime.value = clock.getElapsedTime();
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+</script>

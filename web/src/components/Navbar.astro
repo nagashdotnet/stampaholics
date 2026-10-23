@@ -8,18 +8,18 @@ const { currentPath = '/' } = Astro.props;
 
 <header class="boutique-navbar">
   <div class="container nav-inner">
-    <!-- Logo: Coração Rosa Original + Assinatura -->
+    <!-- Logo: Coração Rosa Original + Assinatura com In The Know -->
     <a href="/" class="nav-brand" aria-label="Stampaholics Home">
       <img src="/brand/stampaholics_icon.png" alt="Stampaholics Icon" class="heart-logo" />
-      <span class="brand-text">stampaholics</span>
+      <span class="brand-text font-intheknow">stampaholics</span>
     </a>
 
     <!-- Menu Enxuto e Sóbrio -->
     <nav class="nav-links" aria-label="Navegação">
-      <a href="/sobre" class={`nav-link ${currentPath === '/sobre' ? 'active' : ''}`} data-i18n-pt="Stampaholics" data-i18n-en="About Us">Stampaholics</a>
-      <a href="/produtos" class={`nav-link ${currentPath === '/produtos' ? 'active' : ''}`} data-i18n-pt="Produtos" data-i18n-en="Products">Produtos</a>
-      <a href="/servicos" class={`nav-link ${currentPath === '/servicos' ? 'active' : ''}`} data-i18n-pt="Serviços" data-i18n-en="Services">Serviços</a>
-      <a href="/clientes" class={`nav-link ${currentPath === '/clientes' ? 'active' : ''}`} data-i18n-pt="Clientes" data-i18n-en="Clients">Clientes</a>
+      <a href="/sobre" class={`nav-link font-intheknow ${currentPath === '/sobre' ? 'active' : ''}`} data-i18n-pt="Stampaholics" data-i18n-en="About Us">Stampaholics</a>
+      <a href="/produtos" class={`nav-link font-intheknow ${currentPath === '/produtos' ? 'active' : ''}`} data-i18n-pt="Produtos" data-i18n-en="Products">Produtos</a>
+      <a href="/servicos" class={`nav-link font-intheknow ${currentPath === '/servicos' ? 'active' : ''}`} data-i18n-pt="Serviços" data-i18n-en="Services">Serviços</a>
+      <a href="/clientes" class={`nav-link font-intheknow ${currentPath === '/clientes' ? 'active' : ''}`} data-i18n-pt="Clientes" data-i18n-en="Clients">Clientes</a>
     </nav>
 
     <!-- Idioma e Ações -->
@@ -90,11 +90,10 @@ const { currentPath = '/' } = Astro.props;
   }
 
   .brand-text {
-    font-family: var(--font-heading);
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-size: 26px;
+    letter-spacing: 0.05em;
     color: #FFFFFF;
+    line-height: 1;
   }
 
   .nav-links {
@@ -104,11 +103,10 @@ const { currentPath = '/' } = Astro.props;
   }
 
   .nav-link {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: normal;
     color: var(--text-white-muted);
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
     transition: color 0.2s ease;
     position: relative;
     padding: 6px 0;

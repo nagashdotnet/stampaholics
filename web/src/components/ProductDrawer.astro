@@ -30,9 +30,29 @@
             <span class="spec-k" data-i18n-pt="Acabamento & Corte" data-i18n-en="Finishing & Cut">Acabamento & Corte</span>
             <span class="spec-v" id="drawer-finish"></span>
           </div>
-          <div class="spec-item">
-            <span class="spec-k" data-i18n-pt="Tamanhos Disponíveis" data-i18n-en="Available Sizes">Tamanhos Disponíveis</span>
-            <span class="spec-v" id="drawer-sizes"></span>
+        </div>
+
+        <!-- Calculadora de Orçamento no Drawer -->
+        <div class="drawer-calc-box">
+          <h4 class="calc-box-title font-intheknow" data-i18n-pt="simular quantidade & variante" data-i18n-en="simulate quantity & size">simular quantidade & variante</h4>
+          
+          <div class="drawer-calc-fields">
+            <div class="drawer-calc-group">
+              <label for="drawer-variant-select" data-i18n-pt="Tamanho / Variante:" data-i18n-en="Size / Variant:">Tamanho / Variante:</label>
+              <select id="drawer-variant-select" class="drawer-calc-select"></select>
+            </div>
+
+            <div class="drawer-calc-group">
+              <label for="drawer-qty-input" data-i18n-pt="Quantidade de Peças:" data-i18n-en="Quantity (pieces):">Quantidade de Peças:</label>
+              <input type="number" id="drawer-qty-input" class="drawer-calc-input" min="20" step="10" value="50" />
+            </div>
+          </div>
+
+          <div class="drawer-calc-result">
+            <div class="drawer-subtotal-line">
+              <span data-i18n-pt="Faixa Estimada:" data-i18n-en="Estimated Tier:">Faixa Estimada:</span>
+              <strong id="drawer-calc-price">Consulte sob volume</strong>
+            </div>
           </div>
         </div>
 
@@ -42,7 +62,7 @@
         <!-- Ação Direta de Orçamento -->
         <div class="drawer-action-box">
           <a href="#" target="_blank" rel="noopener noreferrer" class="btn-boutique-primary drawer-wa-btn" id="drawer-wa-link">
-            <span data-i18n-pt="Cotar Este Produto no WhatsApp" data-i18n-en="Request Quote on WhatsApp">Cotar Este Produto no WhatsApp</span>
+            <span data-i18n-pt="Solicitar Orçamento no WhatsApp" data-i18n-en="Request Quote on WhatsApp">Solicitar Orçamento no WhatsApp</span>
           </a>
         </div>
       </div>
@@ -57,7 +77,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(11, 23, 28, 0.7);
+    background: rgba(11, 23, 28, 0.75);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 1000;
@@ -77,10 +97,10 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    max-width: 480px;
+    max-width: 500px;
     background: var(--bg-dark-surface);
     border-left: 1px solid var(--border-dark);
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.4);
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.45);
     transform: translateX(100%);
     transition: transform 0.35s var(--ease-boutique);
     display: flex;
@@ -167,12 +187,11 @@
   .drawer-spec-table {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-dark);
     border-radius: var(--radius-sm);
-    padding: 18px;
-    margin-top: 8px;
+    padding: 16px;
   }
 
   .spec-item {
@@ -195,6 +214,76 @@
     font-weight: 500;
   }
 
+  /* Calculadora Embutida no Drawer */
+  .drawer-calc-box {
+    background: var(--bg-dark-card);
+    border: 1px solid rgba(235, 44, 101, 0.3);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
+  }
+
+  .calc-box-title {
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 0.04em;
+  }
+
+  .drawer-calc-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .drawer-calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .drawer-calc-group label {
+    font-size: 12px;
+    color: var(--text-white-muted);
+  }
+
+  .drawer-calc-select,
+  .drawer-calc-input {
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-family: var(--font-body);
+    outline: none;
+  }
+
+  .drawer-calc-select:focus,
+  .drawer-calc-input:focus {
+    border-color: var(--brand-pink);
+  }
+
+  .drawer-calc-result {
+    padding-top: 8px;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .drawer-subtotal-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13.5px;
+  }
+
+  .drawer-subtotal-line strong {
+    font-family: var(--font-mono);
+    color: var(--brand-green);
+    font-size: 15px;
+  }
+
   .drawer-chips {
     display: flex;
     flex-wrap: wrap;
@@ -205,14 +294,14 @@
   .boutique-chip {
     font-size: 11px;
     font-family: var(--font-mono);
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--text-white-muted);
     padding: 4px 10px;
     border-radius: 4px;
   }
 
   .drawer-action-box {
-    margin-top: 12px;
+    margin-top: 8px;
     padding-top: 16px;
     border-top: 1px solid var(--border-dark);
   }
@@ -237,14 +326,34 @@
   const drawerFabric = document.getElementById('drawer-fabric');
   const drawerMin = document.getElementById('drawer-min');
   const drawerFinish = document.getElementById('drawer-finish');
-  const drawerSizes = document.getElementById('drawer-sizes');
   const drawerChips = document.getElementById('drawer-chips');
+
+  const variantSelect = document.getElementById('drawer-variant-select') as HTMLSelectElement | null;
+  const qtyInput = document.getElementById('drawer-qty-input') as HTMLInputElement | null;
+  const calcPriceTxt = document.getElementById('drawer-calc-price');
   const drawerWaLink = document.getElementById('drawer-wa-link') as HTMLAnchorElement | null;
+
+  let currentProduct: any = null;
+
+  function updateDrawerQuote() {
+    if (!currentProduct || !drawerWaLink) return;
+
+    const variant = variantSelect ? variantSelect.value : 'Padrão';
+    const qty = qtyInput ? qtyInput.value : '50';
+
+    if (calcPriceTxt) {
+      calcPriceTxt.textContent = `${qty} peças · ${variant}`;
+    }
+
+    const msg = encodeURIComponent(`Olá, Stampaholics! Gostaria de um orçamento para:\n• Produto: ${currentProduct.name}\n• Variante/Tamanho: ${variant}\n• Quantidade Estimada: ${qty} peças\n• Tecido: ${currentProduct.fabric}`);
+    drawerWaLink.href = `https://wa.me/5511999999999?text=${msg}`;
+  }
 
   function openDrawer(productId: string) {
     const product = products.find((p) => p.id === productId);
     if (!product || !overlay) return;
 
+    currentProduct = product;
     const lang = localStorage.getItem('stampaholics_lang') || 'pt';
     const isEn = lang === 'en';
 
@@ -259,7 +368,23 @@
     if (drawerFabric) drawerFabric.textContent = product.fabric;
     if (drawerMin) drawerMin.textContent = product.minOrder;
     if (drawerFinish) drawerFinish.textContent = product.finish;
-    if (drawerSizes) drawerSizes.textContent = product.sizes;
+
+    // Popula variantes/tamanhos
+    if (variantSelect) {
+      variantSelect.innerHTML = '';
+      const sizeItems = product.sizes.split(',').map((s) => s.trim());
+      sizeItems.forEach((sz) => {
+        const opt = document.createElement('option');
+        opt.value = sz;
+        opt.textContent = sz;
+        variantSelect.appendChild(opt);
+      });
+    }
+
+    if (qtyInput) {
+      const match = product.minOrder.match(/\d+/);
+      qtyInput.value = match ? match[0] : '50';
+    }
 
     if (drawerChips) {
       drawerChips.innerHTML = '';
@@ -271,11 +396,7 @@
       });
     }
 
-    if (drawerWaLink) {
-      const msg = encodeURIComponent(`Olá, Stampaholics! Gostaria de um orçamento detalhado para: ${product.name} (${product.minOrder}).`);
-      drawerWaLink.href = `https://wa.me/5511999999999?text=${msg}`;
-    }
-
+    updateDrawerQuote();
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -293,7 +414,9 @@
     });
   }
 
-  // Event listener global para abrir detalhes de qualquer produto
+  if (variantSelect) variantSelect.addEventListener('change', updateDrawerQuote);
+  if (qtyInput) qtyInput.addEventListener('input', updateDrawerQuote);
+
   window.addEventListener('stampaholics:open-drawer', ((e: CustomEvent<{ id: string }>) => {
     openDrawer(e.detail.id);
   }) as EventListener);

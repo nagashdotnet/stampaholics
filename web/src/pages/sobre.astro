@@ -5,55 +5,99 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Sobre a Stampaholics — Estúdio Têxtil Industrial">
+<Layout title="Sobre Nós & Parque Industrial — Stampaholics">
   <Navbar currentPath="/sobre" />
 
-  <main class="page-content">
-    <div class="container">
-      <div class="page-header">
-        <span class="eyebrow" data-i18n-pt="Manifesto & Fábrica" data-i18n-en="Manifesto & Studio">Manifesto & Fábrica</span>
-        <h1 class="page-title" data-i18n-pt="A Stampaholics" data-i18n-en="About Stampaholics">A Stampaholics</h1>
-        <p class="page-desc" data-i18n-pt="Nascemos da paixão por cores puras, texturas nobres e precisão milimétrica. Um estúdio industrial que une alta tecnologia gráfica à confecção têxtil de grande escala." data-i18n-en="Born from a passion for pure color fidelity, premium textures, and millimeter precision. An industrial studio bridging digital print tech with large-scale textile apparel.">
-          Nascemos da paixão por cores puras, texturas nobres e precisão milimétrica. Um estúdio industrial que une alta tecnologia gráfica à confecção têxtil de grande escala.
+  <main>
+    <!-- Header Sobre -->
+    <section class="about-hero-section section-petrol">
+      <div class="container">
+        <span class="eyebrow-intheknow" data-i18n-pt="12 anos de experiência" data-i18n-en="12 years of craftsmanship">12 anos de experiência</span>
+        <h1 class="page-title" data-i18n-pt="Paixão por Cor, Precisão e Tecido" data-i18n-en="Passion for Color, Precision & Fabric">Paixão por Cor, Precisão e Tecido</h1>
+        <p class="page-lead" data-i18n-pt="A Stampaholics nasceu para transformar ideias visuais em produtos têxteis exclusivos com tecnologia industrial de ponta. Mais de 500 clientes atendidos em todo o Brasil." data-i18n-en="Stampaholics was born to transform visual ideas into custom textile apparel using state-of-the-art industrial tech. Over 500 enterprise clients served nationwide.">
+          A Stampaholics nasceu para transformar ideias visuais em produtos têxteis exclusivos com tecnologia industrial de ponta. Mais de 500 clientes atendidos em todo o Brasil.
         </p>
       </div>
+    </section>
 
-      <div class="about-grid">
-        <div class="about-col">
-          <h2 class="about-h2" data-i18n-pt="Engenharia de Cor & Parque Fabril" data-i18n-en="Color Science & Production Plant">Engenharia de Cor & Parque Fabril</h2>
-          <p data-i18n-pt="Operamos impressoras industriais de grande formato com cabeçotes de última geração e perfis ICC desenvolvidos internamente para cada base têxtil. Nosso preto é verdadeiramente denso, sem tons acinzentados ou avermelhados, e nossas cores atingem gamuts estendidos perfeitos para marcas exigentes." data-i18n-en="We operate industrial wide-format printers equipped with state-of-the-art printheads and custom ICC profiles calibrated for every single fabric substrate. Our blacks are genuinely deep and dense, delivering extended color gamuts tailored for demanding brands.">
-            Operamos impressoras industriais de grande formato com cabeçotes de última geração e perfis ICC desenvolvidos internamente para cada base têxtil. Nosso preto é verdadeiramente denso, sem tons acinzentados ou avermelhados, e nossas cores atingem gamuts estendidos perfeitos para marcas exigentes.
-          </p>
+    <!-- Galeria de Fotos Reais da Fábrica (Espaço Fotográfico Solicitado) -->
+    <section class="boutique-section section-white bg-geometric-pattern">
+      <div class="container">
+        <div class="section-title-row">
+          <div>
+            <span class="eyebrow-intheknow" data-i18n-pt="parque industrial" data-i18n-en="production plant">parque industrial</span>
+            <h2 class="section-h2" data-i18n-pt="Nossa Estrutura & Calandras" data-i18n-en="Our Plant & Calenders">Nossa Estrutura & Calandras</h2>
+          </div>
         </div>
 
-        <div class="about-col">
-          <h2 class="about-h2" data-i18n-pt="Sustentabilidade & Processo a Seco" data-i18n-en="Dry Process & Eco-Responsibility">Sustentabilidade & Processo a Seco</h2>
-          <p data-i18n-pt="A sublimação digital é um dos processos mais ecológicos da indústria têxtil: não utiliza água no tingimento, não gera efluentes químicos residuais e utiliza tintas com base aquosa certificadas, livres de metais pesados ou compostos voláteis nocivos (VOCs)." data-i18n-en="Digital sublimation is inherently one of the cleanest textile printing methods: zero water consumed during transfer, zero toxic liquid effluent, and certified water-based disperse inks free from heavy metals and harmful VOCs.">
-            A sublimação digital é um dos processos mais ecológicos da indústria têxtil: não utiliza água no tingimento, não gera efluentes químicos residuais e utiliza tintas com base aquosa certificadas, livres de metais pesados ou compostos voláteis nocivos (VOCs).
-          </p>
+        <div class="factory-gallery-grid">
+          <div class="factory-photo-card">
+            <img src="/photos/factory-1.jpg" alt="Calandragem industrial contínua" class="factory-img" />
+            <div class="photo-caption">
+              <strong>Calandragem a 210°C</strong>
+              <small>Transferência contínua com toque zero</small>
+            </div>
+          </div>
+
+          <div class="factory-photo-card">
+            <img src="/photos/factory-2.jpg" alt="Impressão digital de alta resolução" class="factory-img" />
+            <div class="photo-caption">
+              <strong>Impressão 1440 DPI</strong>
+              <small>Perfis de cores ICC calibrados</small>
+            </div>
+          </div>
+
+          <div class="factory-photo-card">
+            <img src="/photos/factory-3.jpg" alt="Rolos de tecidos nobres" class="factory-img" />
+            <div class="photo-caption">
+              <strong>Bases Sintéticas Premium</strong>
+              <small>Dry-Fit, Crepe, Cetim e Microfibra</small>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Métricas da Fábrica -->
-      <div class="about-stats-grid">
-        <div class="stat-card">
-          <span class="stat-num">+15.000m²</span>
-          <span class="stat-txt" data-i18n-pt="Capacidade Mensal de Estamparia" data-i18n-en="Monthly Sublimation Capacity">Capacidade Mensal de Estamparia</span>
+    <!-- Manifesto & Sustentabilidade Têxtil (Resgatado de _old/v2) -->
+    <section class="boutique-section-dark section-petrol">
+      <div class="container">
+        <div class="about-two-cols">
+          <div class="about-card-deep">
+            <h3 class="about-card-h3 font-intheknow" data-i18n-pt="nossa missão" data-i18n-en="our mission">nossa missão</h3>
+            <p data-i18n-pt="Entregar estamparia digital que impressiona à primeira vista e resiste ao teste do tempo. Do pequeno lote exclusivo para marcas autorais a dezenas de milhares de abadás para grandes festivais, cada metro é tratado com rigor milimétrico." data-i18n-en="Delivering digital textile printing that stuns at first sight and endures continuous wear. From limited capsule drops to tens of thousands of event tops, every linear meter meets strict standards.">
+              Entregar estamparia digital que impressiona à primeira vista e resiste ao teste do tempo. Do pequeno lote exclusivo para marcas autorais a dezenas de milhares de abadás para grandes festivais, cada metro é tratado com rigor milimétrico.
+            </p>
+          </div>
+
+          <div class="about-card-deep">
+            <h3 class="about-card-h3 font-intheknow" data-i18n-pt="processo a seco sustentável" data-i18n-en="sustainable dry process">processo a seco sustentável</h3>
+            <p data-i18n-pt="A sublimação é um processo limpo: zero consumo de água no tingimento, tintas aquosas ecológicas livres de metais pesados e corte a laser que sela as bordas sem desperdício de fios ou descartes nocivos." data-i18n-en="Sublimation is intrinsically eco-responsible: zero water used in dyeing, certified water-based disperse inks free from heavy metals, and laser cutting that seals edges with minimal waste.">
+              A sublimação é um processo limpo: zero consumo de água no tingimento, tintas aquosas ecológicas livres de metais pesados e corte a laser que sela as bordas sem desperdício de fios ou descartes nocivos.
+            </p>
+          </div>
         </div>
-        <div class="stat-card">
-          <span class="stat-num">1440 DPI</span>
-          <span class="stat-txt" data-i18n-pt="Resolução Máxima de Impressão" data-i18n-en="Maximum Print Resolution">Resolução Máxima de Impressão</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">100% Laser</span>
-          <span class="stat-txt" data-i18n-pt="Corte Óptico Cauterizado" data-i18n-en="Thermally Sealed Laser Cut">Corte Óptico Cauterizado</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">Brasil</span>
-          <span class="stat-txt" data-i18n-pt="Atendimento Nacional B2B" data-i18n-en="Nationwide Enterprise Logistics">Atendimento Nacional B2B</span>
+
+        <!-- Estatísticas da Marca -->
+        <div class="about-metrics-row">
+          <div class="stat-unit">
+            <span class="stat-big font-intheknow">+500</span>
+            <span class="stat-desc" data-i18n-pt="Clientes Atendidos" data-i18n-en="Clients Served">Clientes Atendidos</span>
+          </div>
+          <div class="stat-unit">
+            <span class="stat-big font-intheknow">+50.000m²</span>
+            <span class="stat-desc" data-i18n-pt="Tecido Calandrado / Ano" data-i18n-en="Fabric Printed / Year">Tecido Calandrado / Ano</span>
+          </div>
+          <div class="stat-unit">
+            <span class="stat-big font-intheknow">12 Anos</span>
+            <span class="stat-desc" data-i18n-pt="Experiência Fabril" data-i18n-en="Manufacturing Experience">Experiência Fabril</span>
+          </div>
+          <div class="stat-unit">
+            <span class="stat-big font-intheknow">100% Laser</span>
+            <span class="stat-desc" data-i18n-pt="Corte Óptico Cauterizado" data-i18n-en="Thermally Sealed Cut">Corte Óptico Cauterizado</span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <WhatsAppButton />
@@ -61,90 +105,143 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .page-content {
-    padding-top: 140px;
-    padding-bottom: 90px;
-  }
-
-  .page-header {
-    max-width: 680px;
-    margin-bottom: 56px;
+  .about-hero-section {
+    padding-top: 150px;
+    padding-bottom: 70px;
   }
 
   .page-title {
-    font-size: clamp(32px, 4vw, 44px);
+    font-size: clamp(34px, 4.2vw, 48px);
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
-  .page-desc {
-    font-size: 15.5px;
+  .page-lead {
+    font-size: 16.5px;
     color: var(--text-white-muted);
     line-height: 1.6;
+    max-width: 680px;
   }
 
-  .about-grid {
+  .boutique-section {
+    padding: 80px 0;
+  }
+
+  .boutique-section-dark {
+    padding: 80px 0 100px;
+    background: var(--bg-dark-surface);
+  }
+
+  .section-h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--brand-petrol-dark);
+  }
+
+  /* Galeria Fotográfica */
+  .factory-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .factory-photo-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .factory-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .factory-photo-card:hover .factory-img {
+    transform: scale(1.04);
+  }
+
+  .photo-caption {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #FFFFFF;
+  }
+
+  .photo-caption strong {
+    font-size: 15px;
+    color: var(--brand-petrol-dark);
+  }
+
+  .photo-caption small {
+    font-size: 13px;
+    color: #64748B;
+  }
+
+  /* Dois Cards do Manifesto */
+  .about-two-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 64px;
+    gap: 32px;
+    margin-bottom: 60px;
   }
 
-  .about-col {
-    background: var(--bg-dark-surface);
+  .about-card-deep {
+    background: var(--bg-dark-card);
     border: 1px solid var(--border-dark);
     border-radius: var(--radius-md);
     padding: 36px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
 
-  .about-h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #FFFFFF;
+  .about-card-h3 {
+    font-size: 26px;
+    color: var(--brand-pink);
   }
 
-  .about-col p {
+  .about-card-deep p {
     font-size: 14.5px;
     color: var(--text-white-muted);
     line-height: 1.65;
   }
 
-  .about-stats-grid {
+  .about-metrics-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-dark);
   }
 
-  .stat-card {
-    background: var(--bg-dark-surface);
-    border: 1px solid var(--border-dark);
-    border-radius: var(--radius-sm);
-    padding: 28px;
+  .stat-unit {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
 
-  .stat-num {
-    font-family: var(--font-heading);
-    font-size: 28px;
-    font-weight: 800;
+  .stat-big {
+    font-size: 34px;
     color: var(--brand-green);
+    line-height: 1;
   }
 
-  .stat-txt {
+  .stat-desc {
     font-size: 13px;
     color: var(--text-white-muted);
   }
 
-  @media (max-width: 800px) {
-    .about-grid {
+  @media (max-width: 768px) {
+    .about-two-cols {
       grid-template-columns: 1fr;
-      gap: 24px;
     }
   }
 </style>

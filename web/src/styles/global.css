@@ -1,30 +1,43 @@
 /* ==========================================================================
-   STAMPAHOLICS BOUTIQUE DESIGN SYSTEM — TOKENS & ELEVATED AESTHETICS
+   STAMPAHOLICS DESIGN SYSTEM — WITH IN THE KNOW & DIVERSE SECTIONS
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600&display=swap');
 
+@font-face {
+  font-family: 'In The Know';
+  src: url('/brand/In The Know.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Marca e Assinatura */
+  /* Marca Canônica Stampaholics */
   --brand-pink: #EB2C65;
   --brand-pink-dark: #C41F52;
-  --brand-pink-glow: rgba(235, 44, 101, 0.22);
+  --brand-pink-glow: rgba(235, 44, 101, 0.25);
 
   --brand-green: #1FB380;
   --brand-green-dark: #189468;
-  --brand-green-glow: rgba(31, 179, 128, 0.2);
+  --brand-green-glow: rgba(31, 179, 128, 0.22);
 
   --brand-petrol: #274D5E;
   --brand-petrol-dark: #142830;
   --brand-petrol-deep: #0B171C;
+  --brand-petrol-light: #376378;
 
-  /* Superfícies de Estúdio Boutique */
-  --bg-dark: #0D191E;
-  --bg-dark-surface: #14242A;
-  --bg-dark-card: #182A31;
-  --bg-light: #F8F9FA;
-  --bg-light-card: #FFFFFF;
-  --bg-light-subtle: #F1F4F6;
+  /* Superfícies Variadas */
+  --bg-dark: #0F1D23;
+  --bg-dark-surface: #142830;
+  --bg-dark-card: #1B333D;
+
+  --bg-white: #FFFFFF;
+  --bg-white-subtle: #F8FAFC;
+  --bg-white-card: #FFFFFF;
+
+  --bg-emerald-section: #123C34;
+  --bg-pink-section: #3D101E;
 
   /* Textos */
   --text-dark: #0F172A;
@@ -33,18 +46,19 @@
   --text-white-muted: #94A3B8;
 
   /* Linhas e Divisórias */
-  --border-light: rgba(226, 232, 240, 0.85);
-  --border-dark: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(226, 232, 240, 0.9);
+  --border-dark: rgba(255, 255, 255, 0.1);
 
   /* Tipografia */
   --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
+  --font-intheknow: 'In The Know', cursive, 'Montserrat', sans-serif;
 
   /* Sombras & Transições */
   --ease-boutique: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-product: 0 16px 32px rgba(13, 25, 30, 0.09);
-  --shadow-hover: 0 24px 48px rgba(13, 25, 30, 0.16);
+  --shadow-contact: 0 16px 32px rgba(15, 29, 35, 0.12);
+  --shadow-hover: 0 24px 48px rgba(15, 29, 35, 0.2);
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -98,12 +112,26 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1220px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* Botões Boutique */
+/* Utilitários de Tipografia In The Know */
+.font-intheknow {
+  font-family: var(--font-intheknow);
+  letter-spacing: 0.04em;
+}
+
+.eyebrow-intheknow {
+  font-family: var(--font-intheknow);
+  font-size: 17px;
+  color: var(--brand-pink);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* Botões */
 .btn-boutique-primary {
   display: inline-flex;
   align-items: center;
@@ -116,7 +144,6 @@ img {
   font-size: 14px;
   padding: 12px 28px;
   border-radius: 9999px;
-  letter-spacing: 0.02em;
   transition: all 0.28s var(--ease-boutique);
   box-shadow: 0 4px 20px var(--brand-pink-glow);
 }
@@ -161,35 +188,43 @@ img {
   left: 20%;
   right: 20%;
   height: 14px;
-  background: radial-gradient(ellipse at center, rgba(13, 25, 30, 0.28) 0%, rgba(13, 25, 30, 0) 70%);
+  background: radial-gradient(ellipse at center, rgba(13, 25, 30, 0.25) 0%, rgba(13, 25, 30, 0) 70%);
   filter: blur(4px);
   z-index: 1;
   pointer-events: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.boutique-card:hover .product-contact-shadow::after {
-  transform: scale(0.92) translateY(3px);
-  opacity: 0.6;
+/* Seções Diversificadas */
+.section-white {
+  background-color: var(--bg-white);
+  color: var(--text-dark);
 }
 
-/* Badge Discreto */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--brand-green);
-  margin-bottom: 14px;
+.section-white h1, .section-white h2, .section-white h3 {
+  color: var(--brand-petrol-dark);
 }
 
-.eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--brand-green);
+.section-petrol {
+  background-color: var(--bg-dark);
+  color: #FFFFFF;
+}
+
+.section-emerald {
+  background-color: var(--bg-emerald-section);
+  color: #FFFFFF;
+}
+
+.section-pink {
+  background-color: var(--bg-pink-section);
+  color: #FFFFFF;
+}
+
+/* Grafismo Têxtil Geometric Pattern */
+.bg-geometric-pattern {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(31, 179, 128, 0.08) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(235, 44, 101, 0.08) 0%, transparent 25%),
+    linear-gradient(45deg, rgba(39, 77, 94, 0.04) 25%, transparent 25%, transparent 75%, rgba(39, 77, 94, 0.04) 75%);
+  background-size: 100% 100%, 100% 100%, 60px 60px;
 }

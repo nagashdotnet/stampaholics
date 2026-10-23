@@ -1,149 +1,177 @@
 ---
+import HeartLogo3D from './HeartLogo3D.astro';
 ---
 
 <footer class="boutique-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand-pane">
-      <div class="footer-brand-logo">
-        <img src="/brand/stampaholics_icon.png" alt="Stampaholics" class="footer-heart" width="28" height="28" />
-        <span class="footer-brand-title">stampaholics</span>
-      </div>
-      <p class="footer-tagline" data-i18n-pt="Estúdio de impressão digital têxtil por sublimação e corte a laser para eventos, moda e grandes marcas." data-i18n-en="Digital textile sublimation studio and laser cutting for events, fashion, and enterprise brands.">
-        Estúdio de impressão digital têxtil por sublimação e corte a laser para eventos, moda e grandes marcas.
+  <div class="container footer-central-layout">
+    <!-- Coluna Esquerda: Marca & Copyright -->
+    <div class="footer-side left-side">
+      <span class="footer-title font-intheknow">stampaholics</span>
+      <p class="footer-desc" data-i18n-pt="Estúdio de impressão digital têxtil por sublimação contínua e corte óptico a laser para eventos, moda e grandes marcas." data-i18n-en="Continuous sublimation textile printing studio and optical laser cutting for events, fashion, and brands.">
+        Estúdio de impressão digital têxtil por sublimação contínua e corte óptico a laser para eventos, moda e grandes marcas.
       </p>
+      <div class="footer-legal">
+        <p>© {new Date().getFullYear()} Stampaholics Têxtil Ltda.</p>
+        <span>São Paulo - SP · Brasil</span>
+      </div>
     </div>
 
-    <div class="footer-nav-col">
-      <h4 class="footer-col-title" data-i18n-pt="Navegação" data-i18n-en="Navigation">Navegação</h4>
-      <ul class="footer-list">
-        <li><a href="/sobre" data-i18n-pt="A Stampaholics" data-i18n-en="About Us">A Stampaholics</a></li>
-        <li><a href="/produtos" data-i18n-pt="Catálogo Completo" data-i18n-en="Product Catalog">Catálogo Completo</a></li>
-        <li><a href="/servicos" data-i18n-pt="Serviços & Tecidos" data-i18n-en="Services & Fabrics">Serviços & Tecidos</a></li>
-        <li><a href="/clientes" data-i18n-pt="Clientes & Cases" data-i18n-en="Clients & Cases">Clientes & Cases</a></li>
-      </ul>
+    <!-- Centro: Coração 3D Geométrico Oficial com Movimento do Mouse -->
+    <div class="footer-center-3d">
+      <HeartLogo3D size={180} />
+      <span class="footer-3d-caption font-intheknow">pure textile passion</span>
     </div>
 
-    <div class="footer-nav-col">
-      <h4 class="footer-col-title" data-i18n-pt="Suporte & Dúvidas" data-i18n-en="Support & FAQ">Suporte & Dúvidas</h4>
-      <ul class="footer-list">
-        <li><a href="/faq" data-i18n-pt="Dúvidas Frequentes (FAQ)" data-i18n-en="Frequently Asked Questions">Dúvidas Frequentes (FAQ)</a></li>
-        <li><a href="/contato" data-i18n-pt="Formulário de Contato" data-i18n-en="Contact Form">Formulário de Contato</a></li>
+    <!-- Coluna Direita: Suporte, FAQ, Contato & Redes -->
+    <div class="footer-side right-side">
+      <h4 class="footer-side-title font-intheknow" data-i18n-pt="canais & suporte" data-i18n-en="support & channels">canais & suporte</h4>
+      <ul class="footer-links-clean">
+        <li><a href="/faq" data-i18n-pt="Dúvidas Frequentes (FAQ)" data-i18n-en="Frequently Asked Questions (FAQ)">Dúvidas Frequentes (FAQ)</a></li>
+        <li><a href="/contato" data-i18n-pt="Formulário de Contato" data-i18n-en="Direct Contact Form">Formulário de Contato</a></li>
         <li><a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">WhatsApp Comercial</a></li>
+        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram @stampaholics</a></li>
       </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom-line">
-    <div class="container footer-bottom-content">
-      <p>© {new Date().getFullYear()} Stampaholics Têxtil. São Paulo - SP.</p>
-      <span class="footer-badge-mono">Sublimação Digital & Laser Cut</span>
+      <div class="footer-seal">
+        <span class="seal-dot"></span>
+        <span class="seal-text">Sublimação 100% Digital & Laser Cut</span>
+      </div>
     </div>
   </div>
 </footer>
 
 <style>
   .boutique-footer {
-    background: var(--bg-dark);
+    background: #0B161B;
     border-top: 1px solid var(--border-dark);
-    padding-top: 64px;
+    padding: 70px 0 50px;
     color: var(--text-white-muted);
+    position: relative;
+    overflow: hidden;
   }
 
-  .footer-grid {
+  .footer-central-layout {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-columns: 1fr 220px 1fr;
     gap: 48px;
-    padding-bottom: 48px;
-  }
-
-  .footer-brand-logo {
-    display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
   }
 
-  .footer-heart {
-    width: 28px !important;
-    max-width: 28px !important;
-    height: 28px !important;
-    object-fit: contain;
-    display: inline-block;
+  .footer-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  .footer-brand-title {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 700;
+  .left-side {
+    text-align: left;
+  }
+
+  .right-side {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .footer-title {
+    font-size: 32px;
     color: #FFFFFF;
+    line-height: 1;
+    letter-spacing: 0.04em;
   }
 
-  .footer-tagline {
-    font-size: 14px;
+  .footer-desc {
+    font-size: 13.5px;
     line-height: 1.6;
-    max-width: 380px;
+    max-width: 360px;
     color: var(--text-white-muted);
   }
 
-  .footer-col-title {
-    font-size: 13px;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #FFFFFF;
-    margin-bottom: 18px;
+  .footer-legal {
+    font-size: 12px;
+    color: #64748B;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 6px;
   }
 
-  .footer-list {
+  /* Centro 3D */
+  .footer-center-3d {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .footer-3d-caption {
+    font-size: 16px;
+    color: var(--brand-pink);
+    letter-spacing: 0.06em;
+    margin-top: -6px;
+    opacity: 0.85;
+  }
+
+  .footer-side-title {
+    font-size: 20px;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .footer-links-clean {
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
-  .footer-list li {
+  .footer-links-clean li {
     list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
   }
 
-  .footer-list a {
-    font-size: 14px;
-    color: var(--text-white-muted);
+  .footer-links-clean a {
+    font-size: 13.5px;
+    color: #94A3B8;
     transition: color 0.2s;
   }
 
-  .footer-list a:hover {
+  .footer-links-clean a:hover {
     color: var(--brand-pink);
   }
 
-  .footer-bottom-line {
-    border-top: 1px solid var(--border-dark);
-    padding: 24px 0;
-    font-size: 12.5px;
-    color: #64748B;
-  }
-
-  .footer-bottom-content {
-    display: flex;
-    justify-content: space-between;
+  .footer-seal {
+    display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .footer-badge-mono {
+    gap: 6px;
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--brand-green);
+    margin-top: 10px;
   }
 
-  @media (max-width: 768px) {
-    .footer-grid {
+  .seal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-green);
+  }
+
+  @media (max-width: 900px) {
+    .footer-central-layout {
       grid-template-columns: 1fr;
-      gap: 32px;
+      text-align: center;
+      gap: 36px;
+    }
+
+    .left-side, .right-side {
+      text-align: center;
+      align-items: center;
+    }
+
+    .footer-desc {
+      margin: 0 auto;
     }
   }
 </style>
