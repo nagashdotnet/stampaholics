@@ -1,0 +1,167 @@
+---
+import fabrics from '../data/fabrics.json';
+---
+
+<section class="fabrics-section" id="tecidos">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-green">Acervo Têxtil STAMPFY</div>
+      <h2 class="section-title">Guia de Tecidos & Especificações</h2>
+      <p class="section-subtitle">
+        Conheça a composição, peso e o caimento de cada base têxtil para acertar na escolha do seu produto ou coleção.
+      </p>
+    </div>
+
+    <div class="fabrics-grid">
+      {fabrics.map((fabric) => (
+        <div class="fabric-card">
+          <div class="fabric-header">
+            <div>
+              <h3 class="fabric-name">{fabric.name}</h3>
+              <span class="fabric-comp">{fabric.composition}</span>
+            </div>
+            <span class="fabric-weight-badge">{fabric.weight}</span>
+          </div>
+
+          <div class="fabric-body">
+            <div class="fabric-prop">
+              <span class="prop-label">Sensação & Toque:</span>
+              <p class="prop-val">{fabric.touch}</p>
+            </div>
+
+            <div class="fabric-prop">
+              <span class="prop-label">Aplicações Recomendadas:</span>
+              <p class="prop-val text-brand">{fabric.applications}</p>
+            </div>
+
+            <div class="fabric-prop">
+              <span class="prop-label">Diferencial Técnico:</span>
+              <p class="prop-val">{fabric.features}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fabrics-section {
+    padding: 80px 0;
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 38px);
+    font-weight: 800;
+    color: var(--brand-petrol-dark);
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+
+  .fabrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .fabric-card {
+    background: var(--bg-page);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fabric-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(31, 179, 128, 0.5);
+    box-shadow: var(--shadow-md);
+    background: #FFFFFF;
+  }
+
+  .fabric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 16px;
+  }
+
+  .fabric-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand-petrol-dark);
+    margin-bottom: 4px;
+  }
+
+  .fabric-comp {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .fabric-weight-badge {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-green-dark);
+    background: rgba(31, 179, 128, 0.12);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .fabric-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-grow: 1;
+  }
+
+  .fabric-prop {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .prop-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--brand-petrol);
+  }
+
+  .prop-val {
+    font-size: 13.5px;
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+
+  .text-brand {
+    color: var(--brand-petrol-dark);
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .fabrics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

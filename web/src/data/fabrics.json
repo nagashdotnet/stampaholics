@@ -1,0 +1,92 @@
+[
+  {
+    "id": "dry-fit",
+    "name": "Dry Fit Performance",
+    "weight": "130g/m²",
+    "composition": "100% Poliéster com tecnologia capilar",
+    "touch": "Toque gelado, ultraleve e respirável",
+    "applications": "Camisetas esportivas, kits de corrida, abadás de carnaval e manguitos",
+    "features": "Absorção imediata de suor, secagem rápida e proteção UV opcional"
+  },
+  {
+    "id": "crepe-bubble",
+    "name": "Crepe Bubble Acetinado",
+    "weight": "125g/m²",
+    "composition": "100% Poliéster com textura granulada",
+    "touch": "Fluido, com caimento elegante e leve elasticidade",
+    "applications": "Moda feminina, cangas de praia, vestidos e blusas fluidas",
+    "features": "Não amassa facilmente e entrega cores vivas com saturação rica"
+  },
+  {
+    "id": "silk-satin",
+    "name": "Silk Satin (Toque de Seda)",
+    "weight": "85g/m²",
+    "composition": "100% Poliéster de microfibra de alta densidade",
+    "touch": "Extremamente liso, brilho acetinado nobre e caimento líquido",
+    "applications": "Echarpes de luxo, lenços, tirantes premium e peças de alta moda",
+    "features": "Passagem uniforme de tinta e brilho que valoriza tons dourados e pretos"
+  },
+  {
+    "id": "oxford",
+    "name": "Oxford & Oxfordine",
+    "weight": "150g/m²",
+    "composition": "100% Poliéster encorpado",
+    "touch": "Firme, textura clássica de alfaiataria e trama fechada",
+    "applications": "Almofadas decorativas, fundos fotográficos, banners e capas de gradil",
+    "features": "Altíssima resistência mecânica, lavável e não distorce o desenho"
+  },
+  {
+    "id": "microfibra",
+    "name": "Microfibra Fosca Anti-Reflexo",
+    "weight": "120g/m²",
+    "composition": "100% Microfibra de Poliéster",
+    "touch": "Pele de pêssego, sem brilho reflexivo",
+    "applications": "Fundos para estúdio fotográfico, backdrops para TV e bonés",
+    "features": "Absorve luz de estúdio e flashes, garantindo fotos perfeitas sem reflexo"
+  },
+  {
+    "id": "chiffon",
+    "name": "Chiffon Voil",
+    "weight": "65g/m²",
+    "composition": "100% Poliéster ultrafino",
+    "touch": "Semi-transparente, etéreo e esvoaçante",
+    "applications": "Echarpes, cortinas de cenografia aérea e sobreposições de moda",
+    "features": "Transparência delicada com passagem de estampa visível em ambos os lados"
+  },
+  {
+    "id": "neoprene",
+    "name": "Neoprene Térmico",
+    "weight": "280g/m² (espessura 3mm)",
+    "composition": "Borracha sintética expandida revestida com tecido poliéster",
+    "touch": "Emborrachado, macio e com memória elástica",
+    "applications": "Necessaires estruturadas, porta-latas térmicos, porta-garrafas e mousepads",
+    "features": "Isolamento térmico, proteção contra impactos e formato estruturado"
+  },
+  {
+    "id": "tactel",
+    "name": "Tactel Resinado",
+    "weight": "110g/m²",
+    "composition": "100% Poliamida/Poliéster",
+    "touch": "Seco, suave e resistente à água superficial",
+    "applications": "Shorts de banho, bermudas de corrida, sacochilas e jaquetas corta-vento",
+    "features": "Alta resistência a rasgos e secagem instantânea pós-lavagem"
+  },
+  {
+    "id": "veludo-suede",
+    "name": "Veludo Suede Nobre",
+    "weight": "240g/m²",
+    "composition": "100% Poliéster aveludado",
+    "touch": "Super macio, felpudo aconchegante e toque aveludado",
+    "applications": "Almofadas de alto luxo, poltronas decorativas e brindes executivos",
+    "features": "Profundidade visual rica e sensação de acolhimento tátil"
+  },
+  {
+    "id": "suplex",
+    "name": "Suplex com Elastano",
+    "weight": "250g/m²",
+    "composition": "90% Poliéster + 10% Spandex/Elastano",
+    "touch": "Firme com alta compressão anatômica",
+    "applications": "Manguitos esportivos, tops de ginástica, bermudas ciclista e faixas",
+    "features": "Elasticidade quadridimensional: estica sem esbranquiçar a estampa"
+  }
+]

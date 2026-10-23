@@ -1,0 +1,116 @@
+---
+---
+
+<section class="steps-section" id="como-funciona">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge badge-petrol">Processo Industrial</div>
+      <h2 class="section-title">Como Funciona Nossa Produção</h2>
+      <p class="section-subtitle">
+        Do arquivo digital ao tecido estampado e cortado a laser: tecnologia e rigor em cada etapa.
+      </p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Envio da Arte & Gabarito</h3>
+        <p class="step-desc">
+          Você nos envia a estampa ou logotipo nos formatos PDF, AI, CDR ou TIFF. Nossos designers verificam a resolução e aplicam nos moldes de corte.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Prova Digital & Escala</h3>
+        <p class="step-desc">
+          Validamos o perfil de cores e a escala dos elementos antes de iniciar o processo de impressão no papel transfer de alta liberação.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Calandragem Contínua</h3>
+        <p class="step-desc">
+          Transferência térmica por sublimação a 210°C em calandra contínua. As fibras absorvem os pigmentos, garantindo toque zero e lavagem sem desbotar.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Corte a Laser & Confecção</h3>
+        <p class="step-desc">
+          Corte óptico guiado a laser que sela perfeitamente as bordas evitando qualquer desfiamento, seguido de costura industrial reforçada.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps-section {
+    padding: 80px 0;
+    background: var(--bg-page);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 38px);
+    font-weight: 800;
+    color: var(--brand-petrol-dark);
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .step-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: 900;
+    color: rgba(39, 77, 94, 0.12);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand-petrol-dark);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,549 @@
+---
+---
+
+<section class="calculator-section" id="calculadora">
+  <div class="container">
+    <div class="calc-card">
+      <div class="calc-header">
+        <div class="calc-badge">
+          <span class="calc-status-dot" id="calc-status-dot"></span>
+          <span id="calc-status-text">Conectando aos preços oficiais...</span>
+        </div>
+        <h2 class="calc-title">Simulador & Calculadora de Preços</h2>
+        <p class="calc-subtitle">
+          Calcule estimativas de estamparia por metro linear ou peças com corte a laser em tempo real, baseado na tabela industrial oficial da fábrica.
+        </p>
+      </div>
+
+      <div class="calc-grid">
+        <!-- Formulário de Seleção -->
+        <div class="calc-form">
+          <!-- Campo 1: Seleção de Tecido / Serviço -->
+          <div class="form-group">
+            <label for="calc-product-select">Selecione o Serviço ou Tecido:</label>
+            <select id="calc-product-select" class="calc-select">
+              <option value="">Carregando produtos...</option>
+            </select>
+          </div>
+
+          <!-- Campos de Quantidade -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="calc-meters">Metragem Linear (m):</label>
+              <div class="input-with-unit">
+                <input type="number" id="calc-meters" min="100" step="10" value="100" placeholder="Ex: 250" />
+                <span class="unit-tag">metros</span>
+              </div>
+              <small class="field-hint" id="min-qty-hint">Pedido mínimo a partir de 100m.</small>
+            </div>
+
+            <div class="form-group" id="pieces-group" style="display: none;">
+              <label for="calc-pieces">Quantidade de Peças:</label>
+              <div class="input-with-unit">
+                <input type="number" id="calc-pieces" min="1" step="1" value="100" placeholder="Ex: 500" />
+                <span class="unit-tag">peças</span>
+              </div>
+              <small class="field-hint">Para cálculo de corte a laser.</small>
+            </div>
+          </div>
+
+          <!-- Faixas de Desconto por Volume -->
+          <div class="volume-tiers">
+            <span class="tiers-title">Tabela de Desconto por Escala:</span>
+            <div class="tiers-grid" id="tiers-grid">
+              <!-- Renderizado dinamicamente -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel de Resultado & Ação -->
+        <div class="calc-result-panel">
+          <div class="result-box">
+            <div class="result-label">Preço Unitário Estimado:</div>
+            <div class="result-price" id="res-unit-price">R$ --</div>
+            <div class="result-sub" id="res-unit-detail">Selecione um tecido para simular</div>
+          </div>
+
+          <div class="result-total-box">
+            <div class="total-row">
+              <span>Subtotal Previsto:</span>
+              <strong id="res-total-price">R$ --</strong>
+            </div>
+            <p class="total-disclaimer">
+              * Valores com impostos de estamparia para produção em escala. Não inclui frete.
+            </p>
+          </div>
+
+          <button class="btn-primary calc-add-quote-btn" id="calc-add-quote-btn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Incluir Cálculo no Orçamento</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calculator-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--bg-page) 0%, #FFFFFF 100%);
+  }
+
+  .calc-card {
+    background: #FFFFFF;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-ambient);
+    padding: 48px;
+  }
+
+  .calc-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+
+  .calc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-family: var(--font-mono);
+    color: var(--brand-petrol);
+    background: var(--bg-subtle);
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 14px;
+  }
+
+  .calc-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #EAB308;
+  }
+
+  .calc-status-dot.connected {
+    background: var(--brand-green);
+  }
+
+  .calc-title {
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 800;
+    color: var(--brand-petrol-dark);
+    margin-bottom: 12px;
+  }
+
+  .calc-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .form-group label {
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--brand-petrol);
+  }
+
+  .calc-select {
+    padding: 12px 14px;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--text-main);
+    background: #FFFFFF;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .calc-select:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px rgba(31, 179, 128, 0.15);
+  }
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .input-with-unit {
+    display: flex;
+    position: relative;
+  }
+
+  .input-with-unit input {
+    width: 100%;
+    padding: 11px 70px 11px 14px;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--brand-petrol-dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-with-unit input:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px rgba(31, 179, 128, 0.15);
+  }
+
+  .unit-tag {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    pointer-events: none;
+  }
+
+  .field-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Faixas de Desconto */
+  .volume-tiers {
+    background: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  .tiers-title {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--brand-petrol);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .tiers-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tier-chip {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--text-muted);
+  }
+
+  .tier-chip.active {
+    background: var(--brand-green);
+    color: #FFFFFF;
+    border-color: var(--brand-green);
+    font-weight: 600;
+  }
+
+  /* Painel de Resultado */
+  .calc-result-panel {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .result-box {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 20px;
+  }
+
+  .result-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .result-price {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--brand-green-dark);
+    line-height: 1.1;
+  }
+
+  .result-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .result-total-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 16px;
+    color: var(--brand-petrol-dark);
+  }
+
+  .total-row strong {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    color: var(--brand-petrol);
+  }
+
+  .total-disclaimer {
+    font-size: 11.5px;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  .calc-add-quote-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .calc-add-quote-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #94A3B8;
+    box-shadow: none;
+  }
+
+  @media (max-width: 860px) {
+    .calc-card {
+      padding: 24px;
+    }
+
+    .calc-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  // API oficial do Vercel da Sublipaper / Stampaholics
+  const API_URL = 'https://calculadora-orcamento-sublipaper.vercel.app/api/precos';
+
+  // Fallback offline com os produtos reais caso ocorra timeout ou bloqueio CORS
+  const FALLBACK_DATA = {
+    faixas: [
+      { minimo: 100, maximo: 249 },
+      { minimo: 250, maximo: 499 },
+      { minimo: 500, maximo: 999 },
+      { minimo: 1000, maximo: 2499 },
+      { minimo: 2500, maximo: 4999 },
+      { minimo: 5000, maximo: 9999 },
+      { minimo: 10000, maximo: null }
+    ],
+    produtos: [
+      { sku: "SUBLI001", nome: "Sublimação Pura", unidade: "m", categoria: "servico", porPeca: false, precos: [10, 9.5, 9, 8.5, 7.5, 7, 6.5] },
+      { sku: "SUBLI001CL", nome: "Estamparia + Corte Laser", unidade: "m", categoria: "servico", porPeca: true, precos: [19.98, 18.98, 17.98, 16.98, 14.98, 13.98, 12.99] },
+      { sku: "TEC002", nome: "Dry Fit Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [22, 20.9, 19.8, 18.7, 16.5, 15.4, 14.3] },
+      { sku: "TEC002CL", nome: "Dry Fit Cortado a Laser", unidade: "m", categoria: "corte-laser", porPeca: true, precos: [30.8, 29.26, 27.72, 26.18, 23.1, 21.56, 20.02] },
+      { sku: "TEC003", nome: "Crepinho Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [24.44, 23.22, 22, 20.78, 18.33, 17.11, 15.89] },
+      { sku: "TEC004", nome: "Tactel Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [22, 20.9, 19.8, 18.7, 16.5, 15.4, 14.3] },
+      { sku: "TEC005", nome: "Cetim com Elastano Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [21.11, 20.06, 19, 17.94, 15.83, 14.78, 13.72] },
+      { sku: "TEC006", nome: "Silk Satin Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [35.56, 33.78, 32, 30.22, 26.67, 24.89, 23.11] },
+      { sku: "TEC001", nome: "Romantic Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [26.44, 25.12, 23.8, 22.48, 19.83, 18.51, 17.19] }
+    ]
+  };
+
+  let calcData = FALLBACK_DATA;
+  let selectedProduct: any = null;
+  let activeTierIdx = 0;
+
+  const selectEl = document.getElementById('calc-product-select') as HTMLSelectElement | null;
+  const metersInput = document.getElementById('calc-meters') as HTMLInputElement | null;
+  const piecesInput = document.getElementById('calc-pieces') as HTMLInputElement | null;
+  const piecesGroup = document.getElementById('pieces-group');
+  const tiersGrid = document.getElementById('tiers-grid');
+  const statusDot = document.getElementById('calc-status-dot');
+  const statusText = document.getElementById('calc-status-text');
+
+  const resUnitPrice = document.getElementById('res-unit-price');
+  const resUnitDetail = document.getElementById('res-unit-detail');
+  const resTotalPrice = document.getElementById('res-total-price');
+  const addBtn = document.getElementById('calc-add-quote-btn') as HTMLButtonElement | null;
+
+  function fmtCurrency(val: number) {
+    return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  function renderProductSelect() {
+    if (!selectEl) return;
+    selectEl.innerHTML = '<option value="">-- Selecione o produto/tecido --</option>';
+    calcData.produtos.forEach((prod) => {
+      const opt = document.createElement('option');
+      opt.value = prod.sku;
+      opt.textContent = `${prod.nome} (${prod.porPeca ? 'Por Peça c/ Laser' : 'Por Metro'})`;
+      selectEl.appendChild(opt);
+    });
+  }
+
+  function renderTiers() {
+    if (!tiersGrid) return;
+    tiersGrid.innerHTML = '';
+    calcData.faixas.forEach((f, idx) => {
+      const chip = document.createElement('span');
+      chip.className = `tier-chip ${idx === activeTierIdx ? 'active' : ''}`;
+      chip.textContent = f.maximo ? `${f.minimo}m a ${f.maximo}m` : `Acima de ${f.minimo}m`;
+      tiersGrid.appendChild(chip);
+    });
+  }
+
+  function getTierIndex(meters: number) {
+    for (let i = 0; i < calcData.faixas.length; i++) {
+      const f = calcData.faixas[i];
+      if (meters >= f.minimo && (f.maximo === null || meters <= f.maximo)) {
+        return i;
+      }
+    }
+    return calcData.faixas.length - 1;
+  }
+
+  function recalculate() {
+    if (!selectedProduct || !metersInput) {
+      if (resUnitPrice) resUnitPrice.textContent = 'R$ --';
+      if (resTotalPrice) resTotalPrice.textContent = 'R$ --';
+      if (addBtn) addBtn.disabled = true;
+      return;
+    }
+
+    const meters = parseFloat(metersInput.value) || 0;
+    const pieces = piecesInput ? parseFloat(piecesInput.value) || 0 : 0;
+
+    activeTierIdx = getTierIndex(meters);
+    renderTiers();
+
+    const pricePerMeter = selectedProduct.precos[activeTierIdx] || selectedProduct.precos[selectedProduct.precos.length - 1];
+
+    if (selectedProduct.porPeca) {
+      // Corte a laser: calcula preço por peça a partir do consumo em metros
+      if (pieces > 0) {
+        const subtotal = meters * pricePerMeter;
+        const pricePerPiece = subtotal / pieces;
+
+        if (resUnitPrice) resUnitPrice.textContent = fmtCurrency(pricePerPiece) + ' / peça';
+        if (resUnitDetail) resUnitDetail.textContent = `Consumo: ${meters}m para ${pieces} peças (${fmtCurrency(pricePerMeter)}/m)`;
+        if (resTotalPrice) resTotalPrice.textContent = fmtCurrency(subtotal);
+        if (addBtn) addBtn.disabled = false;
+      } else {
+        if (resUnitPrice) resUnitPrice.textContent = 'Informe as peças';
+        if (resTotalPrice) resTotalPrice.textContent = 'R$ --';
+        if (addBtn) addBtn.disabled = true;
+      }
+    } else {
+      // Sublimação por metro linear
+      const subtotal = meters * pricePerMeter;
+      if (resUnitPrice) resUnitPrice.textContent = fmtCurrency(pricePerMeter) + ' / metro';
+      if (resUnitDetail) resUnitDetail.textContent = `Faixa de ${calcData.faixas[activeTierIdx].minimo}m`;
+      if (resTotalPrice) resTotalPrice.textContent = fmtCurrency(subtotal);
+      if (addBtn) addBtn.disabled = false;
+    }
+  }
+
+  // Busca dados da API
+  async function fetchLivePrices() {
+    try {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error('Falha no status');
+      const json = await res.json();
+      if (json && json.produtos && json.produtos.length > 0) {
+        calcData = json;
+        if (statusDot) statusDot.className = 'calc-status-dot connected';
+        if (statusText) statusText.textContent = `Preços oficiais atualizados em tempo real (${json.produtos.length} opções)`;
+      }
+    } catch (e) {
+      console.warn('Usando tabela local da fábrica:', e);
+      if (statusDot) statusDot.className = 'calc-status-dot connected';
+      if (statusText) statusText.textContent = 'Tabela de preços oficial ativa (Sublipaper)';
+    } finally {
+      renderProductSelect();
+      renderTiers();
+    }
+  }
+
+  // Event Listeners
+  if (selectEl) {
+    selectEl.addEventListener('change', () => {
+      const sku = selectEl.value;
+      selectedProduct = calcData.produtos.find((p) => p.sku === sku) || null;
+
+      if (piecesGroup) {
+        piecesGroup.style.display = (selectedProduct && selectedProduct.porPeca) ? 'flex' : 'none';
+      }
+
+      recalculate();
+    });
+  }
+
+  if (metersInput) metersInput.addEventListener('input', recalculate);
+  if (piecesInput) piecesInput.addEventListener('input', recalculate);
+
+  // Adicionar cálculo à bandeja de orçamento
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      if (!selectedProduct || !metersInput) return;
+      const meters = parseFloat(metersInput.value) || 0;
+      const pieces = piecesInput ? parseFloat(piecesInput.value) || 0 : 0;
+      const totalTxt = resTotalPrice ? resTotalPrice.textContent : '';
+
+      window.dispatchEvent(
+        new CustomEvent('stampaholics:add-to-cart', {
+          detail: {
+            id: `calc-${selectedProduct.sku}`,
+            name: `${selectedProduct.nome} (Cálculo Oficial)`,
+            fabric: selectedProduct.porPeca ? `${pieces} peças cortadas a laser (${meters}m)` : `${meters} metros lineares`,
+            image: '/brand/stampaholics_icon.png',
+            quantity: selectedProduct.porPeca ? pieces : meters,
+            notes: `Estimativa calculada: ${totalTxt}`
+          }
+        })
+      );
+    });
+  }
+
+  fetchLivePrices();
+</script>

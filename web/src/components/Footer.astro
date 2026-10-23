@@ -1,0 +1,175 @@
+---
+---
+
+<footer class="main-footer" id="contato">
+  <div class="container footer-container">
+    <div class="footer-col brand-col">
+      <img src="/brand/stampaholics.png" alt="Stampaholics" class="footer-logo" />
+      <p class="footer-bio">
+        Especialistas em impressão digital têxtil por sublimação e corte a laser. 
+        Atendemos agências, produtores de eventos, circuitos de corrida e marcas autorais em todo o Brasil.
+      </p>
+      <div class="footer-pills">
+        <span class="footer-pill">Sublimação 100% Digital</span>
+        <span class="footer-pill">Corte a Laser</span>
+        <span class="footer-pill">B2B & Eventos</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-heading">Navegação</h4>
+      <ul class="footer-links">
+        <li><a href="#catalogo">Catálogo de Produtos</a></li>
+        <li><a href="#calculadora">Calculadora Oficial</a></li>
+        <li><a href="#tecidos">Guia de Tecidos STAMPFY</a></li>
+        <li><a href="#como-funciona">Processo Industrial</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-heading">Categorias</h4>
+      <ul class="footer-links">
+        <li><a href="#catalogo">Esportes & Corrida</a></li>
+        <li><a href="#catalogo">Eventos & Carnaval</a></li>
+        <li><a href="#catalogo">Corporativo & Brindes</a></li>
+        <li><a href="#catalogo">Decoração & Cenografia</a></li>
+        <li><a href="#catalogo">Moda & Praia</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col contact-col">
+      <h4 class="footer-heading">Atendimento Comercial</h4>
+      <p class="contact-desc">
+        Tire dúvidas com nossa equipe de produção e envie seus arquivos para análise prévia:
+      </p>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Stampaholics" target="_blank" rel="noopener noreferrer" class="btn-green footer-wa-btn">
+        <span>Chamar no WhatsApp</span>
+      </a>
+      <span class="contact-hours">Segunda a Sexta · 08h às 18h</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© {new Date().getFullYear()} Stampaholics — Todos os direitos reservados. Sublimação e Confecção Têxtil.</p>
+      <div class="footer-legal">
+        <span>CNPJ / São Paulo - SP</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .main-footer {
+    background: var(--brand-petrol-deep);
+    color: #94A3B8;
+    padding-top: 70px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 1.2fr;
+    gap: 40px;
+    padding-bottom: 50px;
+  }
+
+  .footer-logo {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    margin-bottom: 16px;
+  }
+
+  .footer-bio {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color: #CBD5E1;
+  }
+
+  .footer-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .footer-pill {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand-green);
+    background: rgba(31, 179, 128, 0.12);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .footer-heading {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13.5px;
+    color: #94A3B8;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--brand-green);
+  }
+
+  .contact-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: #CBD5E1;
+  }
+
+  .footer-wa-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .contact-hours {
+    font-size: 12px;
+    color: #64748B;
+    display: block;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 24px 0;
+    font-size: 13px;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 900px) {
+    .footer-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

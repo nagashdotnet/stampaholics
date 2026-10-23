@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import ProductCatalog from '../components/ProductCatalog.astro';
+import ProductDrawer from '../components/ProductDrawer.astro';
+import Calculator from '../components/Calculator.astro';
+import FabricShowcase from '../components/FabricShowcase.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import QuotationCart from '../components/QuotationCart.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <!-- Barra de Navegação Superior -->
+  <Navbar />
+
+  <main>
+    <!-- Seção Hero com Destaque de Produtos e Métricas -->
+    <Hero />
+
+    <!-- Catálogo Completo com Filtros, Busca e Mockups Limpos -->
+    <ProductCatalog />
+
+    <!-- Calculadora Oficial Integrada (API Sublipaper) -->
+    <Calculator />
+
+    <!-- Mostruário de Tecidos Nobres STAMPFY -->
+    <FabricShowcase />
+
+    <!-- Processo de Produção Industrial -->
+    <HowItWorks />
+  </main>
+
+  <!-- Gaveta Lateral de Detalhes Técnicos do Produto -->
+  <ProductDrawer />
+
+  <!-- Gaveta Flutuante / Carrinho de Orçamento para WhatsApp -->
+  <QuotationCart />
+
+  <!-- Rodapé Institucional -->
+  <Footer />
+</Layout>

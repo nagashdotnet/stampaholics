@@ -1,0 +1,425 @@
+---
+import products from '../data/products.json';
+---
+
+<!-- Gaveta Lateral de Ficha Técnica do Produto -->
+<div class="drawer-overlay" id="product-drawer-overlay">
+  <div class="drawer-panel" id="product-drawer-panel">
+    <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Fechar detalhes">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="drawer-scrollable">
+      <!-- Imagem de Destaque -->
+      <div class="drawer-img-wrap product-contact-shadow">
+        <img src="" alt="" id="drawer-img" class="drawer-product-img" />
+      </div>
+
+      <!-- Cabeçalho do Produto -->
+      <div class="drawer-header">
+        <div class="drawer-tags">
+          <span class="badge badge-green" id="drawer-cat"></span>
+          <span class="badge badge-petrol" id="drawer-min"></span>
+        </div>
+        <h2 class="drawer-title" id="drawer-title"></h2>
+        <p class="drawer-desc" id="drawer-desc"></p>
+      </div>
+
+      <!-- Ficha Técnica -->
+      <div class="drawer-specs">
+        <h3 class="specs-heading">Especificações Técnicas</h3>
+        
+        <div class="spec-row">
+          <span class="spec-label">Tecido Base:</span>
+          <span class="spec-val" id="drawer-fabric"></span>
+        </div>
+
+        <div class="spec-row">
+          <span class="spec-label">Acabamento & Corte:</span>
+          <span class="spec-val" id="drawer-finish"></span>
+        </div>
+
+        <div class="spec-row">
+          <span class="spec-label">Tamanhos / Medidas:</span>
+          <span class="spec-val" id="drawer-sizes"></span>
+        </div>
+      </div>
+
+      <!-- Destaques -->
+      <div class="drawer-highlights">
+        <h4 class="highlights-title">Diferenciais de Produção</h4>
+        <div class="highlights-grid" id="drawer-highlights-grid"></div>
+      </div>
+
+      <!-- Seletor de Cotação Rápida -->
+      <div class="drawer-quote-box">
+        <h4 class="quote-box-title">Adicionar a este Orçamento</h4>
+        <div class="quote-inputs">
+          <div class="input-field">
+            <label for="drawer-qty">Quantidade Estimada:</label>
+            <input type="number" id="drawer-qty" min="1" value="50" />
+          </div>
+          <div class="input-field">
+            <label for="drawer-notes">Observações (opcional):</label>
+            <input type="text" id="drawer-notes" placeholder="Ex: tamanhos variados, logo no peito" />
+          </div>
+        </div>
+
+        <button class="btn-primary drawer-add-btn" id="drawer-confirm-add">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Incluir no Orçamento</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 29, 35, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .drawer-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .drawer-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 520px;
+    background: #FFFFFF;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease-spring);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drawer-overlay.active .drawer-panel {
+    transform: translateX(0%);
+  }
+
+  .drawer-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    color: var(--brand-petrol-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s;
+  }
+
+  .drawer-close-btn:hover {
+    background: #E2E8F0;
+    transform: rotate(90deg);
+  }
+
+  .drawer-scrollable {
+    overflow-y: auto;
+    padding: 32px 28px;
+    flex-grow: 1;
+  }
+
+  .drawer-img-wrap {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-subtle);
+    border-radius: var(--radius-lg);
+    margin-bottom: 24px;
+    padding: 20px;
+  }
+
+  .drawer-product-img {
+    max-height: 220px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 24px rgba(13, 29, 35, 0.16));
+  }
+
+  .drawer-header {
+    margin-bottom: 24px;
+  }
+
+  .drawer-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .drawer-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--brand-petrol-dark);
+    margin-bottom: 8px;
+  }
+
+  .drawer-desc {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .drawer-specs {
+    background: var(--bg-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .specs-heading {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand-petrol);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .spec-row {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .spec-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .spec-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .spec-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brand-petrol-dark);
+  }
+
+  .drawer-highlights {
+    margin-bottom: 28px;
+  }
+
+  .highlights-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-petrol);
+    margin-bottom: 10px;
+  }
+
+  .highlights-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .drawer-chip {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-green-dark);
+    background: rgba(31, 179, 128, 0.1);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .drawer-quote-box {
+    background: #FFFFFF;
+    border: 1.5px solid var(--brand-pink);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(235, 44, 101, 0.1);
+  }
+
+  .quote-box-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand-pink-dark);
+    margin-bottom: 14px;
+  }
+
+  .quote-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .input-field label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .input-field input {
+    padding: 10px 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+  }
+
+  .input-field input:focus {
+    border-color: var(--brand-pink);
+    box-shadow: 0 0 0 2px var(--brand-pink-glow);
+  }
+
+  .drawer-add-btn {
+    width: 100%;
+  }
+
+  @media (max-width: 580px) {
+    .drawer-panel {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import rawProducts from '../data/products.json';
+
+  const overlay = document.getElementById('product-drawer-overlay');
+  const closeBtn = document.getElementById('drawer-close-btn');
+
+  const drawerImg = document.getElementById('drawer-img') as HTMLImageElement | null;
+  const drawerTitle = document.getElementById('drawer-title');
+  const drawerDesc = document.getElementById('drawer-desc');
+  const drawerCat = document.getElementById('drawer-cat');
+  const drawerMin = document.getElementById('drawer-min');
+  const drawerFabric = document.getElementById('drawer-fabric');
+  const drawerFinish = document.getElementById('drawer-finish');
+  const drawerSizes = document.getElementById('drawer-sizes');
+  const highlightsGrid = document.getElementById('drawer-highlights-grid');
+
+  const qtyInput = document.getElementById('drawer-qty') as HTMLInputElement | null;
+  const notesInput = document.getElementById('drawer-notes') as HTMLInputElement | null;
+  const confirmBtn = document.getElementById('drawer-confirm-add');
+
+  let activeProduct: any = null;
+
+  function openDrawer(productId: string) {
+    const product = rawProducts.find((p) => p.id === productId);
+    if (!product || !overlay) return;
+
+    activeProduct = product;
+
+    if (drawerImg) {
+      drawerImg.src = product.image;
+      drawerImg.alt = product.name;
+    }
+    if (drawerTitle) drawerTitle.textContent = product.name;
+    if (drawerDesc) drawerDesc.textContent = product.description;
+    if (drawerCat) drawerCat.textContent = product.categoryName;
+    if (drawerMin) drawerMin.textContent = `Pedido Mínimo: ${product.minOrder}`;
+    if (drawerFabric) drawerFabric.textContent = product.fabric;
+    if (drawerFinish) drawerFinish.textContent = product.finish;
+    if (drawerSizes) drawerSizes.textContent = product.sizes;
+
+    if (highlightsGrid) {
+      highlightsGrid.innerHTML = '';
+      product.highlights.forEach((hl) => {
+        const span = document.createElement('span');
+        span.className = 'drawer-chip';
+        span.textContent = hl;
+        highlightsGrid.appendChild(span);
+      });
+    }
+
+    if (qtyInput) {
+      // Tenta extrair o número inicial do pedido mínimo
+      const match = product.minOrder.match(/\d+/);
+      qtyInput.value = match ? match[0] : '50';
+    }
+
+    if (notesInput) notesInput.value = '';
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeDrawer();
+    });
+  }
+
+  // Escuta cliques em todos os botões que abrem detalhes
+  document.querySelectorAll('.open-details-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = (e.currentTarget as HTMLElement);
+      const prodId = target.getAttribute('data-id');
+      if (prodId) openDrawer(prodId);
+    });
+  });
+
+  // Confirmação de adicionar ao carrinho
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      if (!activeProduct) return;
+      const qty = qtyInput ? parseInt(qtyInput.value, 10) || 50 : 50;
+      const notes = notesInput ? notesInput.value.trim() : '';
+
+      window.dispatchEvent(
+        new CustomEvent('stampaholics:add-to-cart', {
+          detail: {
+            id: activeProduct.id,
+            name: activeProduct.name,
+            fabric: activeProduct.fabric,
+            image: activeProduct.image,
+            quantity: qty,
+            notes: notes
+          }
+        })
+      );
+
+      closeDrawer();
+    });
+  }
+</script>
