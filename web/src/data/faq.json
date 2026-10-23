@@ -1,0 +1,32 @@
+[
+  {
+    "q": "Quais formatos de arquivo vocês aceitam para estamparia?",
+    "q_en": "Which file formats do you accept for digital printing?",
+    "a": "Trabalhamos com arquivos em vetor (PDF, AI, CDR) ou imagens em alta resolução (TIFF, PSD) em escala real 1:1 com resolução mínima de 150 a 300 DPI. Fornecemos gabaritos para cada modelagem.",
+    "a_en": "We accept vector files (PDF, AI, CDR) or high-res raster files (TIFF, PSD) at 1:1 true scale with 150 to 300 DPI. We provide downloadable templates for all cut patterns."
+  },
+  {
+    "q": "Qual é a diferença entre sublimação por metro e corte a laser?",
+    "q_en": "What is the difference between roll-to-roll printing and laser cutting?",
+    "a": "A sublimação por metro entrega o tecido impresso em rolos contínuos para você cortar e confeccionar. No serviço com corte a laser, nós já entregamos cada parte da peça cortada com precisão milimétrica e bordas seladas termicamente sem desfiar.",
+    "a_en": "Roll-to-roll sublimation delivers continuous printed rolls ready for your own cutting. Laser cut service delivers individual garment pattern pieces pre-cut with thermally sealed, anti-fraying edges."
+  },
+  {
+    "q": "Qual é o pedido mínimo por produto ou serviço?",
+    "q_en": "What is the minimum order quantity (MOQ)?",
+    "a": "Para tecidos por metro, o pedido mínimo na tabela oficial é de 100 metros lineares. Para produtos prontos confeccionados (abadás, kits corrida, sacochilas), o lote mínimo padrão é de 30 a 50 unidades dependendo da complexidade.",
+    "a_en": "For roll fabric printing, the minimum order is 100 linear meters. For finished sewn apparel (abadás, running kits, bags), MOQ ranges from 30 to 50 pieces."
+  },
+  {
+    "q": "Como funciona a prova de cor antes de rodar grandes tiragens?",
+    "q_en": "How does pre-production color proofing work?",
+    "a": "Para grandes volumes, realizamos a prova de cor digital e calandramos uma amostra real de 1 metro no tecido escolhido para validação do cliente antes de liberar a produção completa.",
+    "a_en": "For large runs, we print and calender a 1-meter strike-off on the exact selected fabric for client sign-off before commencing full production."
+  },
+  {
+    "q": "Vocês despacham para outros estados e capitais?",
+    "q_en": "Do you ship nationwide across Brazil and internationally?",
+    "a": "Sim. Enviamos para todo o Brasil via transportadoras parceiras (rodoviário e aéreo) ou correios, com embalagens individuais identificadas por grade de tamanhos.",
+    "a_en": "Yes. We ship across Brazil and internationally via verified freight carriers, with individually bagged and size-tagged garments."
+  }
+]

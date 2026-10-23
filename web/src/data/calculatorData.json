@@ -1,0 +1,58 @@
+{
+  "faixas": [
+    { "minimo": 100, "maximo": 249, "label": "100 a 249" },
+    { "minimo": 250, "maximo": 499, "label": "250 a 499" },
+    { "minimo": 500, "maximo": 999, "label": "500 a 999" },
+    { "minimo": 1000, "maximo": 2499, "label": "1.000 a 2.499" },
+    { "minimo": 2500, "maximo": 4999, "label": "2.500 a 4.999" },
+    { "minimo": 5000, "maximo": 9999, "label": "5.000 a 9.999" },
+    { "minimo": 10000, "maximo": null, "label": "10.000+" }
+  ],
+  "categorias": [
+    { "id": "tecido", "nome": "Tecido por Metro (Rolo)", "nome_en": "Fabric by the Meter (Roll)" },
+    { "id": "corte-laser", "nome": "Corte a Laser (Peça)", "nome_en": "Laser Cutting (Per Piece)" },
+    { "id": "produto", "nome": "Produto Pronto", "nome_en": "Finished Product" }
+  ],
+  "produtos": [
+    { "sku": "SUBLI001", "nome": "Sublimação em Tecido do Cliente", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [10.0, 9.5, 9.0, 8.5, 7.5, 7.0, 6.5] },
+    { "sku": "TEC002", "nome": "Dry Fit Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [22.0, 20.9, 19.8, 18.7, 16.5, 15.4, 14.3] },
+    { "sku": "TEC003", "nome": "Crepinho Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [24.44, 23.22, 22.0, 20.78, 18.33, 17.11, 15.89] },
+    { "sku": "TEC004", "nome": "Tactel Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [22.0, 20.9, 19.8, 18.7, 16.5, 15.4, 14.3] },
+    { "sku": "TEC005", "nome": "Cetim com Elastano Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [21.11, 20.06, 19.0, 17.94, 15.83, 14.78, 13.72] },
+    { "sku": "TEC006", "nome": "Silk Satin Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [35.56, 33.78, 32.0, 30.22, 26.67, 24.89, 23.11] },
+    { "sku": "TEC001", "nome": "Romantic Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [26.44, 25.12, 23.8, 22.48, 19.83, 18.51, 17.19] },
+    { "sku": "TEC007", "nome": "Sephora Sublimado", "categoria": "tecido", "unidade": "m", "porPeca": false, "precos": [26.44, 25.12, 23.8, 22.48, 19.83, 18.51, 17.19] },
+
+    { "sku": "SUBLI001CL", "nome": "Estamparia + Corte Laser Geral", "categoria": "corte-laser", "unidade": "m", "porPeca": true, "precos": [19.98, 18.98, 17.98, 16.98, 14.98, 13.98, 12.99] },
+    { "sku": "TEC002CL", "nome": "Dry Fit Cortado a Laser", "categoria": "corte-laser", "unidade": "m", "porPeca": true, "precos": [35.33, 33.57, 31.8, 30.03, 26.5, 24.73, 22.97] },
+    { "sku": "TEC006CL", "nome": "Silk Satin Cortado a Laser", "categoria": "corte-laser", "unidade": "m", "porPeca": true, "precos": [44.22, 42.01, 39.8, 37.59, 33.17, 30.96, 28.74] },
+    { "sku": "TEC005CL", "nome": "Cetim c/ Elastano Cortado a Laser", "categoria": "corte-laser", "unidade": "m", "porPeca": true, "precos": [34.44, 32.72, 31.0, 29.28, 25.83, 24.11, 22.39] },
+    { "sku": "TEC007CL", "nome": "Sephora Cortado a Laser", "categoria": "corte-laser", "unidade": "m", "porPeca": true, "precos": [35.33, 33.57, 31.8, 30.03, 26.5, 24.73, 22.97] },
+    { "sku": "TEC004CL", "nome": "Microfibra Cortada a Laser", "categoria": "corte-laser", "unidade": "m", "porPeca": true, "precos": [35.33, 33.57, 31.8, 30.03, 26.5, 24.73, 22.97] },
+
+    { "sku": "TSFULLP001", "nome": "Camiseta Pronta Dry Fit (Full Print)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [39.9, 34.9, 29.9, 26.9, 26.9, 26.9, 26.9] },
+    { "sku": "TSFISH001", "nome": "Camiseta Pesca Romantic UV50+", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [59.9, 49.9, 45.9, 42.9, 39.9, 35.9, 35.9] },
+    { "sku": "PIL001", "nome": "Almofada 45x45cm (com enchimento)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [28.67, 27.23, 25.8, 24.37, 21.5, 20.07, 18.63] },
+    { "sku": "PIL002", "nome": "Capa de Almofada 45x45cm (Oxford)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [17.78, 16.89, 16.0, 15.11, 13.33, 12.44, 11.56] },
+    { "sku": "PIL003", "nome": "Capa de Almofada 45x45cm (Veludo Suede)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [22.22, 21.11, 20.0, 18.89, 16.67, 15.56, 14.44] },
+    { "sku": "LNC45X001", "nome": "Lenço Sublimado 45x45cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [19.9, 14.9, 9.9, 7.9, 7.9, 5.9, 5.9] },
+    { "sku": "LNC48X001", "nome": "Lenço Sublimado 48x48cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [19.9, 14.9, 9.9, 7.9, 7.9, 5.9, 5.9] },
+    { "sku": "LNC60X001", "nome": "Lenço Sublimado 60x60cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [39.9, 29.9, 19.9, 14.9, 12.9, 9.9, 7.9] },
+    { "sku": "LNC70X001", "nome": "Lenço Sublimado 70x70cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [39.9, 29.9, 19.9, 15.9, 13.9, 10.9, 8.9] },
+    { "sku": "LNC90X001", "nome": "Lenço Sublimado 90x90cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [49.9, 39.9, 29.9, 22.9, 19.9, 18.9, 18.9] },
+    { "sku": "CANGCREP001", "nome": "Canga Sublimada (Crepinho)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [30.0, 28.5, 27.0, 25.5, 22.5, 21.0, 19.5] },
+    { "sku": "CANGSEPH001", "nome": "Canga Sublimada (Sephora)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [30.0, 28.5, 27.0, 25.5, 22.5, 21.0, 19.5] },
+    { "sku": "LUGP001", "nome": "Capa de Mala Sublimada - Tamanho P", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [54.9, 49.9, 39.9, 29.9, 29.9, 29.9, 29.9] },
+    { "sku": "LUGM001", "nome": "Capa de Mala Sublimada - Tamanho M", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [59.9, 54.9, 49.9, 39.9, 34.9, 34.9, 34.9] },
+    { "sku": "LUGG001", "nome": "Capa de Mala Sublimada - Tamanho G", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [59.9, 54.9, 49.9, 39.9, 34.9, 34.9, 34.9] },
+    { "sku": "WIND140SP", "nome": "WindBanner 140x65cm (Somente Tecido)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [49.9, 49.9, 39.9, 39.9, 36.9, 34.9, 32.9] },
+    { "sku": "WIND180SP", "nome": "WindBanner 180x65cm (Somente Tecido)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [59.9, 59.9, 39.9, 39.9, 36.9, 34.9, 32.9] },
+    { "sku": "WIND200SP", "nome": "WindBanner 200x65cm (Somente Tecido)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [59.9, 59.9, 39.9, 39.9, 36.9, 34.9, 32.9] },
+    { "sku": "WIND140FULL", "nome": "WindBanner 140x65cm (Completo c/ Haste e Base)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [119.9, 119.9, 109.9, 109.9, 99.9, 99.9, 89.9] },
+    { "sku": "WIND180FULL", "nome": "WindBanner 180x65cm (Completo c/ Haste e Base)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [119.9, 119.9, 109.9, 109.9, 99.9, 99.9, 89.9] },
+    { "sku": "WIND200FULL", "nome": "WindBanner 200x65cm (Completo c/ Haste e Base)", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [119.9, 119.9, 109.9, 109.9, 99.9, 99.9, 89.9] },
+    { "sku": "GRAD200", "nome": "Capa de Gradil 200x100cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [119.9, 99.9, 89.9, 89.9, 89.9, 89.9, 89.9] },
+    { "sku": "CHAV001", "nome": "Tirante Chaveiro Cetim 40cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [29.9, 24.9, 19.9, 14.9, 12.9, 9.9, 9.9] },
+    { "sku": "BAND140", "nome": "Bandeira de Tecido 140x100cm", "categoria": "produto", "unidade": "un", "porPeca": false, "precos": [19.9, 19.9, 19.9, 18.9, 17.9, 17.9, 16.9] }
+  ]
+}

@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Sobre a Stampaholics — Estúdio Têxtil Industrial">
+  <Navbar currentPath="/sobre" />
+
+  <main class="page-content">
+    <div class="container">
+      <div class="page-header">
+        <span class="eyebrow" data-i18n-pt="Manifesto & Fábrica" data-i18n-en="Manifesto & Studio">Manifesto & Fábrica</span>
+        <h1 class="page-title" data-i18n-pt="A Stampaholics" data-i18n-en="About Stampaholics">A Stampaholics</h1>
+        <p class="page-desc" data-i18n-pt="Nascemos da paixão por cores puras, texturas nobres e precisão milimétrica. Um estúdio industrial que une alta tecnologia gráfica à confecção têxtil de grande escala." data-i18n-en="Born from a passion for pure color fidelity, premium textures, and millimeter precision. An industrial studio bridging digital print tech with large-scale textile apparel.">
+          Nascemos da paixão por cores puras, texturas nobres e precisão milimétrica. Um estúdio industrial que une alta tecnologia gráfica à confecção têxtil de grande escala.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-col">
+          <h2 class="about-h2" data-i18n-pt="Engenharia de Cor & Parque Fabril" data-i18n-en="Color Science & Production Plant">Engenharia de Cor & Parque Fabril</h2>
+          <p data-i18n-pt="Operamos impressoras industriais de grande formato com cabeçotes de última geração e perfis ICC desenvolvidos internamente para cada base têxtil. Nosso preto é verdadeiramente denso, sem tons acinzentados ou avermelhados, e nossas cores atingem gamuts estendidos perfeitos para marcas exigentes." data-i18n-en="We operate industrial wide-format printers equipped with state-of-the-art printheads and custom ICC profiles calibrated for every single fabric substrate. Our blacks are genuinely deep and dense, delivering extended color gamuts tailored for demanding brands.">
+            Operamos impressoras industriais de grande formato com cabeçotes de última geração e perfis ICC desenvolvidos internamente para cada base têxtil. Nosso preto é verdadeiramente denso, sem tons acinzentados ou avermelhados, e nossas cores atingem gamuts estendidos perfeitos para marcas exigentes.
+          </p>
+        </div>
+
+        <div class="about-col">
+          <h2 class="about-h2" data-i18n-pt="Sustentabilidade & Processo a Seco" data-i18n-en="Dry Process & Eco-Responsibility">Sustentabilidade & Processo a Seco</h2>
+          <p data-i18n-pt="A sublimação digital é um dos processos mais ecológicos da indústria têxtil: não utiliza água no tingimento, não gera efluentes químicos residuais e utiliza tintas com base aquosa certificadas, livres de metais pesados ou compostos voláteis nocivos (VOCs)." data-i18n-en="Digital sublimation is inherently one of the cleanest textile printing methods: zero water consumed during transfer, zero toxic liquid effluent, and certified water-based disperse inks free from heavy metals and harmful VOCs.">
+            A sublimação digital é um dos processos mais ecológicos da indústria têxtil: não utiliza água no tingimento, não gera efluentes químicos residuais e utiliza tintas com base aquosa certificadas, livres de metais pesados ou compostos voláteis nocivos (VOCs).
+          </p>
+        </div>
+      </div>
+
+      <!-- Métricas da Fábrica -->
+      <div class="about-stats-grid">
+        <div class="stat-card">
+          <span class="stat-num">+15.000m²</span>
+          <span class="stat-txt" data-i18n-pt="Capacidade Mensal de Estamparia" data-i18n-en="Monthly Sublimation Capacity">Capacidade Mensal de Estamparia</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">1440 DPI</span>
+          <span class="stat-txt" data-i18n-pt="Resolução Máxima de Impressão" data-i18n-en="Maximum Print Resolution">Resolução Máxima de Impressão</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">100% Laser</span>
+          <span class="stat-txt" data-i18n-pt="Corte Óptico Cauterizado" data-i18n-en="Thermally Sealed Laser Cut">Corte Óptico Cauterizado</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">Brasil</span>
+          <span class="stat-txt" data-i18n-pt="Atendimento Nacional B2B" data-i18n-en="Nationwide Enterprise Logistics">Atendimento Nacional B2B</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <WhatsAppButton />
+  <Footer />
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 140px;
+    padding-bottom: 90px;
+  }
+
+  .page-header {
+    max-width: 680px;
+    margin-bottom: 56px;
+  }
+
+  .page-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: 15.5px;
+    color: var(--text-white-muted);
+    line-height: 1.6;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+
+  .about-col {
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .about-h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .about-col p {
+    font-size: 14.5px;
+    color: var(--text-white-muted);
+    line-height: 1.65;
+  }
+
+  .about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .stat-card {
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stat-num {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--brand-green);
+  }
+
+  .stat-txt {
+    font-size: 13px;
+    color: var(--text-white-muted);
+  }
+
+  @media (max-width: 800px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

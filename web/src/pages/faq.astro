@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
+import faqs from '../data/faq.json';
+---
+
+<Layout title="Dúvidas Frequentes (FAQ) — Stampaholics">
+  <Navbar currentPath="/faq" />
+
+  <main class="page-content">
+    <div class="container">
+      <div class="page-header">
+        <span class="eyebrow" data-i18n-pt="Suporte Técnico" data-i18n-en="Technical Support">Suporte Técnico</span>
+        <h1 class="page-title" data-i18n-pt="Dúvidas Frequentes" data-i18n-en="Frequently Asked Questions">Dúvidas Frequentes</h1>
+        <p class="page-desc" data-i18n-pt="Respostas diretas sobre arquivos, perfis de cor, prazos de produção e entrega para agilizar seu pedido B2B." data-i18n-en="Direct answers regarding artwork preparation, color management, turnarounds, and shipping.">
+          Respostas diretas sobre arquivos, perfis de cor, prazos de produção e entrega para agilizar seu pedido B2B.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        {faqs.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-q">
+              <span class="faq-q-text" data-i18n-pt={f.q} data-i18n-en={f.q_en}>{f.q}</span>
+              <span class="faq-icon">+</span>
+            </summary>
+            <div class="faq-a">
+              <p data-i18n-pt={f.a} data-i18n-en={f.a_en}>{f.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <WhatsAppButton />
+  <Footer />
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 140px;
+    padding-bottom: 90px;
+  }
+
+  .page-header {
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+
+  .page-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: 15.5px;
+    color: var(--text-white-muted);
+    line-height: 1.6;
+  }
+
+  .faq-list {
+    max-width: 820px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(235, 44, 101, 0.4);
+  }
+
+  .faq-q {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  .faq-icon {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    color: var(--brand-pink);
+    transition: transform 0.2s;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-dark);
+    font-size: 14.5px;
+    color: var(--text-white-muted);
+    line-height: 1.65;
+  }
+</style>

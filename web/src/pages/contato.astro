@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contato & Orçamentos — Stampaholics">
+  <Navbar currentPath="/contato" />
+
+  <main class="page-content">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text-pane">
+          <span class="eyebrow" data-i18n-pt="Canais Comerciais" data-i18n-en="Direct Channels">Canais Comerciais</span>
+          <h1 class="page-title" data-i18n-pt="Inicie seu Projeto Têxtil" data-i18n-en="Start Your Textile Project">Inicie seu Projeto Têxtil</h1>
+          <p class="page-desc" data-i18n-pt="Envie seu briefing, especificações de tiragem ou solicite uma pasta física de mostruário com as 16 bases de tecido da Stampaholics." data-i18n-en="Send your artwork briefing, order volumes, or request a physical swatch kit featuring our 16 fabric substrates.">
+            Envie seu briefing, especificações de tiragem ou solicite uma pasta física de mostruário com as 16 bases de tecido da Stampaholics.
+          </p>
+
+          <div class="contact-info-blocks">
+            <div class="info-block">
+              <span class="info-k" data-i18n-pt="Atendimento Imediato" data-i18n-en="Direct Messaging">Atendimento Imediato</span>
+              <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="info-link">
+                WhatsApp: (11) 99999-9999
+              </a>
+            </div>
+
+            <div class="info-block">
+              <span class="info-k" data-i18n-pt="E-mail Comercial & Projetos" data-i18n-en="Commercial Email">E-mail Comercial & Projetos</span>
+              <span class="info-v">contato@stampaholics.com.br</span>
+            </div>
+
+            <div class="info-block">
+              <span class="info-k" data-i18n-pt="Parque Gráfico & Confecção" data-i18n-en="Production Facility">Parque Gráfico & Confecção</span>
+              <span class="info-v">São Paulo - SP · Brasil</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário Sóbrio -->
+        <div class="contact-form-pane">
+          <form class="boutique-form" id="contact-form">
+            <div class="form-field">
+              <label for="name" data-i18n-pt="Nome Completo" data-i18n-en="Full Name">Nome Completo</label>
+              <input type="text" id="name" required placeholder="Ex: Roberto Lima" />
+            </div>
+
+            <div class="form-field">
+              <label for="company" data-i18n-pt="Empresa / Evento" data-i18n-en="Company / Event">Empresa / Evento</label>
+              <input type="text" id="company" placeholder="Ex: Agência Pulse / Maratona SP" />
+            </div>
+
+            <div class="form-field">
+              <label for="email" data-i18n-pt="E-mail Corporativo" data-i18n-en="Corporate Email">E-mail Corporativo</label>
+              <input type="email" id="email" required placeholder="roberto@empresa.com.br" />
+            </div>
+
+            <div class="form-field">
+              <label for="service-interest" data-i18n-pt="Interesse Principal" data-i18n-en="Primary Interest">Interesse Principal</label>
+              <select id="service-interest" class="form-select">
+                <option value="camisetas">Abadás e Camisetas para Eventos</option>
+                <option value="corrida">Kit Corrida e Esportes</option>
+                <option value="metro">Sublimação Contínua por Metro</option>
+                <option value="laser">Corte a Laser Óptico de Peças</option>
+                <option value="decoracao">Banners, Backdrops e Almofadas</option>
+                <option value="outro">Outro Projeto Têxtil</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="msg" data-i18n-pt="Mensagem ou Estimativa de Volume" data-i18n-en="Message / Volume Estimates">Mensagem ou Estimativa de Volume</label>
+              <textarea id="msg" rows="4" placeholder="Descreva brevemente a data do evento e a quantidade estimada..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-boutique-primary form-submit-btn">
+              <span data-i18n-pt="Enviar Mensagem" data-i18n-en="Send Message">Enviar Mensagem</span>
+            </button>
+            <div id="form-feedback" class="form-feedback" style="display: none;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <WhatsAppButton />
+  <Footer />
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 140px;
+    padding-bottom: 90px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .page-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: 15.5px;
+    color: var(--text-white-muted);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .contact-info-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--brand-green);
+    letter-spacing: 0.05em;
+  }
+
+  .info-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    transition: color 0.2s;
+  }
+
+  .info-link:hover {
+    color: var(--brand-pink);
+  }
+
+  .info-v {
+    font-size: 15px;
+    color: #CBD5E1;
+  }
+
+  /* Painel do Formulário */
+  .contact-form-pane {
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+  }
+
+  .boutique-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-field label {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #E2E8F0;
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-select {
+    padding: 11px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-dark-card);
+    border: 1px solid var(--border-dark);
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-select:focus {
+    border-color: var(--brand-pink);
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .form-feedback {
+    font-size: 13.5px;
+    color: var(--brand-green);
+    text-align: center;
+    padding: 10px;
+    background: rgba(31, 179, 128, 0.1);
+    border-radius: 6px;
+  }
+
+  @media (max-width: 820px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const feedback = document.getElementById('form-feedback');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const company = (document.getElementById('company') as HTMLInputElement).value;
+      const service = (document.getElementById('service-interest') as HTMLSelectElement).value;
+      const msg = (document.getElementById('msg') as HTMLTextAreaElement).value;
+
+      const waText = encodeURIComponent(`Olá, Stampaholics!\nMeu nome é ${name} (${company}).\nTenho interesse em: ${service}.\nDetalhes: ${msg}`);
+      window.open(`https://wa.me/5511999999999?text=${waText}`, '_blank');
+
+      if (feedback) {
+        feedback.style.display = 'block';
+        feedback.textContent = 'Mensagem pronta! Abrindo atendimento no WhatsApp...';
+      }
+    });
+  }
+</script>

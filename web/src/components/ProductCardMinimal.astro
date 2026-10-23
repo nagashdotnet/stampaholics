@@ -1,0 +1,96 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  name_en?: string;
+  image: string;
+}
+
+const { id, name, name_en, image } = Astro.props;
+---
+
+<div class="boutique-product-card" data-id={id} role="button" tabindex="0">
+  <div class="product-white-box product-contact-shadow">
+    <img src={image} alt={name} class="product-pure-img" loading="lazy" />
+  </div>
+  <div class="product-caption">
+    <h3 class="product-clean-name" data-i18n-pt={name} data-i18n-en={name_en || name}>{name}</h3>
+  </div>
+</div>
+
+<style>
+  .boutique-product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .product-white-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    transition: transform 0.3s var(--ease-boutique), box-shadow 0.3s var(--ease-boutique);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-pure-img {
+    max-height: 82%;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.35s var(--ease-boutique);
+    filter: drop-shadow(0 10px 18px rgba(13, 25, 30, 0.12));
+  }
+
+  .boutique-product-card:hover .product-white-box {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+  }
+
+  .boutique-product-card:hover .product-pure-img {
+    transform: scale(1.05);
+  }
+
+  .product-caption {
+    padding: 0 4px;
+  }
+
+  .product-clean-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+
+  .boutique-product-card:hover .product-clean-name {
+    color: var(--brand-pink);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.boutique-product-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      if (id) {
+        window.dispatchEvent(new CustomEvent('stampaholics:open-drawer', { detail: { id } }));
+      }
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Enter') {
+        const id = card.getAttribute('data-id');
+        if (id) {
+          window.dispatchEvent(new CustomEvent('stampaholics:open-drawer', { detail: { id } }));
+        }
+      }
+    });
+  });
+</script>

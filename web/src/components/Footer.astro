@@ -1,159 +1,122 @@
 ---
 ---
 
-<footer class="main-footer" id="contato">
-  <div class="container footer-container">
-    <div class="footer-col brand-col">
-      <img src="/brand/stampaholics.png" alt="Stampaholics" class="footer-logo" />
-      <p class="footer-bio">
-        Especialistas em impressão digital têxtil por sublimação e corte a laser. 
-        Atendemos agências, produtores de eventos, circuitos de corrida e marcas autorais em todo o Brasil.
-      </p>
-      <div class="footer-pills">
-        <span class="footer-pill">Sublimação 100% Digital</span>
-        <span class="footer-pill">Corte a Laser</span>
-        <span class="footer-pill">B2B & Eventos</span>
+<footer class="boutique-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand-pane">
+      <div class="footer-brand-logo">
+        <img src="/brand/stampaholics_icon.png" alt="Stampaholics" class="footer-heart" />
+        <span class="footer-brand-title">stampaholics</span>
       </div>
-    </div>
-
-    <div class="footer-col">
-      <h4 class="footer-heading">Navegação</h4>
-      <ul class="footer-links">
-        <li><a href="#catalogo">Catálogo de Produtos</a></li>
-        <li><a href="#calculadora">Calculadora Oficial</a></li>
-        <li><a href="#tecidos">Guia de Tecidos STAMPFY</a></li>
-        <li><a href="#como-funciona">Processo Industrial</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4 class="footer-heading">Categorias</h4>
-      <ul class="footer-links">
-        <li><a href="#catalogo">Esportes & Corrida</a></li>
-        <li><a href="#catalogo">Eventos & Carnaval</a></li>
-        <li><a href="#catalogo">Corporativo & Brindes</a></li>
-        <li><a href="#catalogo">Decoração & Cenografia</a></li>
-        <li><a href="#catalogo">Moda & Praia</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col contact-col">
-      <h4 class="footer-heading">Atendimento Comercial</h4>
-      <p class="contact-desc">
-        Tire dúvidas com nossa equipe de produção e envie seus arquivos para análise prévia:
+      <p class="footer-tagline" data-i18n-pt="Estúdio de impressão digital têxtil por sublimação e corte a laser para eventos, moda e grandes marcas." data-i18n-en="Digital textile sublimation studio and laser cutting for events, fashion, and enterprise brands.">
+        Estúdio de impressão digital têxtil por sublimação e corte a laser para eventos, moda e grandes marcas.
       </p>
-      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Stampaholics" target="_blank" rel="noopener noreferrer" class="btn-green footer-wa-btn">
-        <span>Chamar no WhatsApp</span>
-      </a>
-      <span class="contact-hours">Segunda a Sexta · 08h às 18h</span>
+    </div>
+
+    <div class="footer-nav-col">
+      <h4 class="footer-col-title" data-i18n-pt="Navegação" data-i18n-en="Navigation">Navegação</h4>
+      <ul class="footer-list">
+        <li><a href="/sobre" data-i18n-pt="A Stampaholics" data-i18n-en="About Us">A Stampaholics</a></li>
+        <li><a href="/produtos" data-i18n-pt="Catálogo Completo" data-i18n-en="Product Catalog">Catálogo Completo</a></li>
+        <li><a href="/servicos" data-i18n-pt="Serviços & Tecidos" data-i18n-en="Services & Fabrics">Serviços & Tecidos</a></li>
+        <li><a href="/clientes" data-i18n-pt="Clientes & Cases" data-i18n-en="Clients & Cases">Clientes & Cases</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-nav-col">
+      <h4 class="footer-col-title" data-i18n-pt="Suporte & Dúvidas" data-i18n-en="Support & FAQ">Suporte & Dúvidas</h4>
+      <ul class="footer-list">
+        <li><a href="/faq" data-i18n-pt="Dúvidas Frequentes (FAQ)" data-i18n-en="Frequently Asked Questions">Dúvidas Frequentes (FAQ)</a></li>
+        <li><a href="/contato" data-i18n-pt="Formulário de Contato" data-i18n-en="Contact Form">Formulário de Contato</a></li>
+        <li><a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">WhatsApp Comercial</a></li>
+      </ul>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <p>© {new Date().getFullYear()} Stampaholics — Todos os direitos reservados. Sublimação e Confecção Têxtil.</p>
-      <div class="footer-legal">
-        <span>CNPJ / São Paulo - SP</span>
-      </div>
+  <div class="footer-bottom-line">
+    <div class="container footer-bottom-content">
+      <p>© {new Date().getFullYear()} Stampaholics Têxtil. São Paulo - SP.</p>
+      <span class="footer-badge-mono">Sublimação Digital & Laser Cut</span>
     </div>
   </div>
 </footer>
 
 <style>
-  .main-footer {
-    background: var(--brand-petrol-deep);
-    color: #94A3B8;
-    padding-top: 70px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  .boutique-footer {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-dark);
+    padding-top: 64px;
+    color: var(--text-white-muted);
   }
 
-  .footer-container {
+  .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 0.8fr 0.8fr 1.2fr;
-    gap: 40px;
-    padding-bottom: 50px;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
   }
 
-  .footer-logo {
-    height: 42px;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-    margin-bottom: 16px;
-  }
-
-  .footer-bio {
-    font-size: 13.5px;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    color: #CBD5E1;
-  }
-
-  .footer-pills {
+  .footer-brand-logo {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
   }
 
-  .footer-pill {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--brand-green);
-    background: rgba(31, 179, 128, 0.12);
-    padding: 3px 8px;
-    border-radius: 4px;
+  .footer-heart {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
   }
 
-  .footer-heading {
-    font-size: 15px;
+  .footer-brand-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 18px;
-    letter-spacing: 0.02em;
   }
 
-  .footer-links {
+  .footer-tagline {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 380px;
+    color: var(--text-white-muted);
+  }
+
+  .footer-col-title {
+    font-size: 13px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #FFFFFF;
+    margin-bottom: 18px;
+  }
+
+  .footer-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .footer-links a {
-    font-size: 13.5px;
-    color: #94A3B8;
+  .footer-list a {
+    font-size: 14px;
+    color: var(--text-white-muted);
     transition: color 0.2s;
   }
 
-  .footer-links a:hover {
-    color: var(--brand-green);
+  .footer-list a:hover {
+    color: var(--brand-pink);
   }
 
-  .contact-desc {
-    font-size: 13.5px;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    color: #CBD5E1;
-  }
-
-  .footer-wa-btn {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .contact-hours {
-    font-size: 12px;
-    color: #64748B;
-    display: block;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  .footer-bottom-line {
+    border-top: 1px solid var(--border-dark);
     padding: 24px 0;
-    font-size: 13px;
+    font-size: 12.5px;
+    color: #64748B;
   }
 
-  .footer-bottom-inner {
+  .footer-bottom-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -161,15 +124,16 @@
     gap: 12px;
   }
 
-  @media (max-width: 900px) {
-    .footer-container {
-      grid-template-columns: 1fr 1fr;
-    }
+  .footer-badge-mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--brand-green);
   }
 
-  @media (max-width: 600px) {
-    .footer-container {
+  @media (max-width: 768px) {
+    .footer-grid {
       grid-template-columns: 1fr;
+      gap: 32px;
     }
   }
 </style>

@@ -1,3 +1,6 @@
+# Legacy Backup
+_old/
+
 # Dependencies
 node_modules/
 .pnpm-store/

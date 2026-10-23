@@ -1,377 +1,280 @@
 ---
-import products from '../data/products.json';
 ---
 
-<!-- Gaveta Lateral de Ficha Técnica do Produto -->
-<div class="drawer-overlay" id="product-drawer-overlay">
-  <div class="drawer-panel" id="product-drawer-panel">
-    <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Fechar detalhes">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
+<div class="boutique-drawer-overlay" id="product-drawer-overlay">
+  <div class="boutique-drawer-panel" id="product-drawer-panel">
+    <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Fechar">✕</button>
 
-    <div class="drawer-scrollable">
-      <!-- Imagem de Destaque -->
-      <div class="drawer-img-wrap product-contact-shadow">
-        <img src="" alt="" id="drawer-img" class="drawer-product-img" />
+    <div class="drawer-scroll">
+      <!-- Imagem do Produto Flutuante em Fundo Neutro Limpo -->
+      <div class="drawer-stage product-contact-shadow">
+        <img src="" alt="" id="drawer-img" class="drawer-img" />
       </div>
 
-      <!-- Cabeçalho do Produto -->
-      <div class="drawer-header">
-        <div class="drawer-tags">
-          <span class="badge badge-green" id="drawer-cat"></span>
-          <span class="badge badge-petrol" id="drawer-min"></span>
-        </div>
-        <h2 class="drawer-title" id="drawer-title"></h2>
+      <div class="drawer-content">
+        <div class="drawer-meta-tag" id="drawer-cat"></div>
+        <h2 class="drawer-name" id="drawer-name"></h2>
         <p class="drawer-desc" id="drawer-desc"></p>
-      </div>
 
-      <!-- Ficha Técnica -->
-      <div class="drawer-specs">
-        <h3 class="specs-heading">Especificações Técnicas</h3>
-        
-        <div class="spec-row">
-          <span class="spec-label">Tecido Base:</span>
-          <span class="spec-val" id="drawer-fabric"></span>
-        </div>
-
-        <div class="spec-row">
-          <span class="spec-label">Acabamento & Corte:</span>
-          <span class="spec-val" id="drawer-finish"></span>
-        </div>
-
-        <div class="spec-row">
-          <span class="spec-label">Tamanhos / Medidas:</span>
-          <span class="spec-val" id="drawer-sizes"></span>
-        </div>
-      </div>
-
-      <!-- Destaques -->
-      <div class="drawer-highlights">
-        <h4 class="highlights-title">Diferenciais de Produção</h4>
-        <div class="highlights-grid" id="drawer-highlights-grid"></div>
-      </div>
-
-      <!-- Seletor de Cotação Rápida -->
-      <div class="drawer-quote-box">
-        <h4 class="quote-box-title">Adicionar a este Orçamento</h4>
-        <div class="quote-inputs">
-          <div class="input-field">
-            <label for="drawer-qty">Quantidade Estimada:</label>
-            <input type="number" id="drawer-qty" min="1" value="50" />
+        <!-- Especificações -->
+        <div class="drawer-spec-table">
+          <div class="spec-item">
+            <span class="spec-k" data-i18n-pt="Tecido Base" data-i18n-en="Base Fabric">Tecido Base</span>
+            <span class="spec-v" id="drawer-fabric"></span>
           </div>
-          <div class="input-field">
-            <label for="drawer-notes">Observações (opcional):</label>
-            <input type="text" id="drawer-notes" placeholder="Ex: tamanhos variados, logo no peito" />
+          <div class="spec-item">
+            <span class="spec-k" data-i18n-pt="Pedido Mínimo" data-i18n-en="Minimum Order">Pedido Mínimo</span>
+            <span class="spec-v" id="drawer-min"></span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-k" data-i18n-pt="Acabamento & Corte" data-i18n-en="Finishing & Cut">Acabamento & Corte</span>
+            <span class="spec-v" id="drawer-finish"></span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-k" data-i18n-pt="Tamanhos Disponíveis" data-i18n-en="Available Sizes">Tamanhos Disponíveis</span>
+            <span class="spec-v" id="drawer-sizes"></span>
           </div>
         </div>
 
-        <button class="btn-primary drawer-add-btn" id="drawer-confirm-add">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          <span>Incluir no Orçamento</span>
-        </button>
+        <!-- Diferenciais -->
+        <div class="drawer-chips" id="drawer-chips"></div>
+
+        <!-- Ação Direta de Orçamento -->
+        <div class="drawer-action-box">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-boutique-primary drawer-wa-btn" id="drawer-wa-link">
+            <span data-i18n-pt="Cotar Este Produto no WhatsApp" data-i18n-en="Request Quote on WhatsApp">Cotar Este Produto no WhatsApp</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  .drawer-overlay {
+  .boutique-drawer-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(13, 29, 35, 0.55);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(11, 23, 28, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 1000;
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  .drawer-overlay.active {
+  .boutique-drawer-overlay.active {
     display: block;
     opacity: 1;
   }
 
-  .drawer-panel {
+  .boutique-drawer-panel {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     width: 100%;
-    max-width: 520px;
-    background: #FFFFFF;
-    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.2);
+    max-width: 480px;
+    background: var(--bg-dark-surface);
+    border-left: 1px solid var(--border-dark);
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.4);
     transform: translateX(100%);
-    transition: transform 0.35s var(--ease-spring);
+    transition: transform 0.35s var(--ease-boutique);
     display: flex;
     flex-direction: column;
   }
 
-  .drawer-overlay.active .drawer-panel {
+  .boutique-drawer-overlay.active .boutique-drawer-panel {
     transform: translateX(0%);
   }
 
   .drawer-close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: var(--bg-subtle);
-    color: var(--brand-petrol-dark);
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
-    transition: all 0.2s;
+    transition: background 0.2s;
   }
 
   .drawer-close-btn:hover {
-    background: #E2E8F0;
-    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.16);
   }
 
-  .drawer-scrollable {
+  .drawer-scroll {
     overflow-y: auto;
     padding: 32px 28px;
     flex-grow: 1;
   }
 
-  .drawer-img-wrap {
+  .drawer-stage {
     width: 100%;
-    height: 260px;
+    height: 240px;
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-subtle);
-    border-radius: var(--radius-lg);
+    padding: 24px;
     margin-bottom: 24px;
-    padding: 20px;
   }
 
-  .drawer-product-img {
-    max-height: 220px;
+  .drawer-img {
+    max-height: 200px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 14px 24px rgba(13, 29, 35, 0.16));
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.15));
   }
 
-  .drawer-header {
-    margin-bottom: 24px;
-  }
-
-  .drawer-tags {
+  .drawer-content {
     display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .drawer-title {
+  .drawer-meta-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand-pink);
+  }
+
+  .drawer-name {
     font-size: 24px;
-    font-weight: 800;
-    color: var(--brand-petrol-dark);
-    margin-bottom: 8px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.15;
   }
 
   .drawer-desc {
-    font-size: 14.5px;
-    color: var(--text-muted);
+    font-size: 14px;
+    color: var(--text-white-muted);
     line-height: 1.6;
   }
 
-  .drawer-specs {
-    background: var(--bg-subtle);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    margin-bottom: 24px;
-  }
-
-  .specs-heading {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--brand-petrol);
-    margin-bottom: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .spec-row {
-    display: flex;
-    flex-direction: column;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .spec-row:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .spec-label {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-bottom: 2px;
-  }
-
-  .spec-val {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--brand-petrol-dark);
-  }
-
-  .drawer-highlights {
-    margin-bottom: 28px;
-  }
-
-  .highlights-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--brand-petrol);
-    margin-bottom: 10px;
-  }
-
-  .highlights-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .drawer-chip {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--brand-green-dark);
-    background: rgba(31, 179, 128, 0.1);
-    padding: 6px 12px;
-    border-radius: var(--radius-full);
-  }
-
-  .drawer-quote-box {
-    background: #FFFFFF;
-    border: 1.5px solid var(--brand-pink);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    box-shadow: 0 6px 20px rgba(235, 44, 101, 0.1);
-  }
-
-  .quote-box-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--brand-pink-dark);
-    margin-bottom: 14px;
-  }
-
-  .quote-inputs {
+  .drawer-spec-table {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    margin-top: 8px;
   }
 
-  .input-field {
+  .spec-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
-  .input-field label {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--text-main);
+  .spec-k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-green);
   }
 
-  .input-field input {
-    padding: 10px 12px;
-    border: 1px solid var(--border-subtle);
-    border-radius: 6px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    outline: none;
+  .spec-v {
+    font-size: 13.5px;
+    color: #E2E8F0;
+    font-weight: 500;
   }
 
-  .input-field input:focus {
-    border-color: var(--brand-pink);
-    box-shadow: 0 0 0 2px var(--brand-pink-glow);
+  .drawer-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
   }
 
-  .drawer-add-btn {
+  .boutique-chip {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-white-muted);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .drawer-action-box {
+    margin-top: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .drawer-wa-btn {
     width: 100%;
-  }
-
-  @media (max-width: 580px) {
-    .drawer-panel {
-      max-width: 100%;
-    }
+    padding: 13px;
+    font-size: 14px;
   }
 </style>
 
 <script>
-  import rawProducts from '../data/products.json';
+  import products from '../data/products.json';
 
   const overlay = document.getElementById('product-drawer-overlay');
   const closeBtn = document.getElementById('drawer-close-btn');
 
   const drawerImg = document.getElementById('drawer-img') as HTMLImageElement | null;
-  const drawerTitle = document.getElementById('drawer-title');
+  const drawerName = document.getElementById('drawer-name');
   const drawerDesc = document.getElementById('drawer-desc');
   const drawerCat = document.getElementById('drawer-cat');
-  const drawerMin = document.getElementById('drawer-min');
   const drawerFabric = document.getElementById('drawer-fabric');
+  const drawerMin = document.getElementById('drawer-min');
   const drawerFinish = document.getElementById('drawer-finish');
   const drawerSizes = document.getElementById('drawer-sizes');
-  const highlightsGrid = document.getElementById('drawer-highlights-grid');
-
-  const qtyInput = document.getElementById('drawer-qty') as HTMLInputElement | null;
-  const notesInput = document.getElementById('drawer-notes') as HTMLInputElement | null;
-  const confirmBtn = document.getElementById('drawer-confirm-add');
-
-  let activeProduct: any = null;
+  const drawerChips = document.getElementById('drawer-chips');
+  const drawerWaLink = document.getElementById('drawer-wa-link') as HTMLAnchorElement | null;
 
   function openDrawer(productId: string) {
-    const product = rawProducts.find((p) => p.id === productId);
+    const product = products.find((p) => p.id === productId);
     if (!product || !overlay) return;
 
-    activeProduct = product;
+    const lang = localStorage.getItem('stampaholics_lang') || 'pt';
+    const isEn = lang === 'en';
 
     if (drawerImg) {
       drawerImg.src = product.image;
       drawerImg.alt = product.name;
     }
-    if (drawerTitle) drawerTitle.textContent = product.name;
-    if (drawerDesc) drawerDesc.textContent = product.description;
-    if (drawerCat) drawerCat.textContent = product.categoryName;
-    if (drawerMin) drawerMin.textContent = `Pedido Mínimo: ${product.minOrder}`;
+
+    if (drawerName) drawerName.textContent = isEn && product.name_en ? product.name_en : product.name;
+    if (drawerDesc) drawerDesc.textContent = isEn && product.description_en ? product.description_en : product.description;
+    if (drawerCat) drawerCat.textContent = product.category;
     if (drawerFabric) drawerFabric.textContent = product.fabric;
+    if (drawerMin) drawerMin.textContent = product.minOrder;
     if (drawerFinish) drawerFinish.textContent = product.finish;
     if (drawerSizes) drawerSizes.textContent = product.sizes;
 
-    if (highlightsGrid) {
-      highlightsGrid.innerHTML = '';
+    if (drawerChips) {
+      drawerChips.innerHTML = '';
       product.highlights.forEach((hl) => {
         const span = document.createElement('span');
-        span.className = 'drawer-chip';
+        span.className = 'boutique-chip';
         span.textContent = hl;
-        highlightsGrid.appendChild(span);
+        drawerChips.appendChild(span);
       });
     }
 
-    if (qtyInput) {
-      // Tenta extrair o número inicial do pedido mínimo
-      const match = product.minOrder.match(/\d+/);
-      qtyInput.value = match ? match[0] : '50';
+    if (drawerWaLink) {
+      const msg = encodeURIComponent(`Olá, Stampaholics! Gostaria de um orçamento detalhado para: ${product.name} (${product.minOrder}).`);
+      drawerWaLink.href = `https://wa.me/5511999999999?text=${msg}`;
     }
-
-    if (notesInput) notesInput.value = '';
 
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -390,36 +293,8 @@ import products from '../data/products.json';
     });
   }
 
-  // Escuta cliques em todos os botões que abrem detalhes
-  document.querySelectorAll('.open-details-btn').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const target = (e.currentTarget as HTMLElement);
-      const prodId = target.getAttribute('data-id');
-      if (prodId) openDrawer(prodId);
-    });
-  });
-
-  // Confirmação de adicionar ao carrinho
-  if (confirmBtn) {
-    confirmBtn.addEventListener('click', () => {
-      if (!activeProduct) return;
-      const qty = qtyInput ? parseInt(qtyInput.value, 10) || 50 : 50;
-      const notes = notesInput ? notesInput.value.trim() : '';
-
-      window.dispatchEvent(
-        new CustomEvent('stampaholics:add-to-cart', {
-          detail: {
-            id: activeProduct.id,
-            name: activeProduct.name,
-            fabric: activeProduct.fabric,
-            image: activeProduct.image,
-            quantity: qty,
-            notes: notes
-          }
-        })
-      );
-
-      closeDrawer();
-    });
-  }
+  // Event listener global para abrir detalhes de qualquer produto
+  window.addEventListener('stampaholics:open-drawer', ((e: CustomEvent<{ id: string }>) => {
+    openDrawer(e.detail.id);
+  }) as EventListener);
 </script>

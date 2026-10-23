@@ -1,86 +1,77 @@
 ---
 ---
 
-<section class="calculator-section" id="calculadora">
+<section class="boutique-calc-section" id="calculadora">
   <div class="container">
-    <div class="calc-card">
-      <div class="calc-header">
-        <div class="calc-badge">
-          <span class="calc-status-dot" id="calc-status-dot"></span>
-          <span id="calc-status-text">Conectando aos preços oficiais...</span>
-        </div>
-        <h2 class="calc-title">Simulador & Calculadora de Preços</h2>
-        <p class="calc-subtitle">
-          Calcule estimativas de estamparia por metro linear ou peças com corte a laser em tempo real, baseado na tabela industrial oficial da fábrica.
+    <div class="calc-box">
+      <div class="calc-header-clean">
+        <span class="eyebrow" data-i18n-pt="Calculadora Oficial" data-i18n-en="Official Price Simulator">Calculadora Oficial</span>
+        <h2 class="calc-headline" data-i18n-pt="Simulador de Preços & Escala" data-i18n-en="Price & Scale Simulator">Simulador de Preços & Escala</h2>
+        <p class="calc-sub" data-i18n-pt="Consulte estimativas em tempo real conectadas diretamente à tabela industrial da fábrica." data-i18n-en="Real-time estimates directly connected to official factory price sheets.">
+          Consulte estimativas em tempo real conectadas diretamente à tabela industrial da fábrica.
         </p>
       </div>
 
-      <div class="calc-grid">
-        <!-- Formulário de Seleção -->
-        <div class="calc-form">
-          <!-- Campo 1: Seleção de Tecido / Serviço -->
-          <div class="form-group">
-            <label for="calc-product-select">Selecione o Serviço ou Tecido:</label>
-            <select id="calc-product-select" class="calc-select">
-              <option value="">Carregando produtos...</option>
-            </select>
+      <!-- 3 Abas Sóbrias de Serviços -->
+      <div class="calc-tabs">
+        <button class="tab-btn active" data-tab="tecido" data-i18n-pt="Tecido por Metro" data-i18n-en="Fabric by Meter">Tecido por Metro</button>
+        <button class="tab-btn" data-tab="corte-laser" data-i18n-pt="Corte a Laser" data-i18n-en="Laser Cutting">Corte a Laser</button>
+        <button class="tab-btn" data-tab="produto" data-i18n-pt="Produtos Prontos" data-i18n-en="Finished Products">Produtos Prontos</button>
+      </div>
+
+      <div class="calc-body-grid">
+        <!-- Controles de Entrada -->
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label id="item-select-label" data-i18n-pt="Selecione a Base ou Produto:" data-i18n-en="Select Base or Product:">Selecione a Base ou Produto:</label>
+            <select id="calc-item-select" class="clean-select"></select>
           </div>
 
-          <!-- Campos de Quantidade -->
-          <div class="form-row">
-            <div class="form-group">
-              <label for="calc-meters">Metragem Linear (m):</label>
-              <div class="input-with-unit">
-                <input type="number" id="calc-meters" min="100" step="10" value="100" placeholder="Ex: 250" />
-                <span class="unit-tag">metros</span>
-              </div>
-              <small class="field-hint" id="min-qty-hint">Pedido mínimo a partir de 100m.</small>
+          <!-- Metragem ou Peças -->
+          <div class="calc-field" id="meters-field">
+            <label id="qty-label" data-i18n-pt="Metragem Linear (metros):" data-i18n-en="Linear Meters:">Metragem Linear (metros):</label>
+            <div class="input-unit-wrap">
+              <input type="number" id="calc-qty-input" min="100" step="10" value="100" />
+              <span class="unit-symbol" id="unit-symbol">m</span>
             </div>
-
-            <div class="form-group" id="pieces-group" style="display: none;">
-              <label for="calc-pieces">Quantidade de Peças:</label>
-              <div class="input-with-unit">
-                <input type="number" id="calc-pieces" min="1" step="1" value="100" placeholder="Ex: 500" />
-                <span class="unit-tag">peças</span>
-              </div>
-              <small class="field-hint">Para cálculo de corte a laser.</small>
-            </div>
+            <small class="calc-hint" id="min-hint" data-i18n-pt="Pedido mínimo na tabela: 100m." data-i18n-en="Minimum order on price table: 100m.">Pedido mínimo na tabela: 100m.</small>
           </div>
 
-          <!-- Faixas de Desconto por Volume -->
-          <div class="volume-tiers">
-            <span class="tiers-title">Tabela de Desconto por Escala:</span>
-            <div class="tiers-grid" id="tiers-grid">
-              <!-- Renderizado dinamicamente -->
+          <!-- Peças adicionais (apenas para corte laser) -->
+          <div class="calc-field" id="laser-pieces-field" style="display: none;">
+            <label data-i18n-pt="Quantidade de Peças a Cortar:" data-i18n-en="Number of Pieces to Cut:">Quantidade de Peças a Cortar:</label>
+            <div class="input-unit-wrap">
+              <input type="number" id="calc-laser-pieces" min="1" step="1" value="100" />
+              <span class="unit-symbol">peças</span>
             </div>
+            <small class="calc-hint" data-i18n-pt="Para apuração do custo unitário por peça cortada." data-i18n-en="To calculate the unit cost per cut piece.">Para apuração do custo unitário por peça cortada.</small>
+          </div>
+
+          <!-- Faixas de Volume Ativas -->
+          <div class="calc-tier-indicator">
+            <span class="tier-label" data-i18n-pt="Faixas de Escala Industrial:" data-i18n-en="Industrial Volume Tiers:">Faixas de Escala Industrial:</span>
+            <div class="tier-pills" id="tier-pills-wrap"></div>
           </div>
         </div>
 
-        <!-- Painel de Resultado & Ação -->
-        <div class="calc-result-panel">
-          <div class="result-box">
-            <div class="result-label">Preço Unitário Estimado:</div>
-            <div class="result-price" id="res-unit-price">R$ --</div>
-            <div class="result-sub" id="res-unit-detail">Selecione um tecido para simular</div>
+        <!-- Painel de Valor & Orçamento -->
+        <div class="calc-display-panel">
+          <div class="display-metric">
+            <span class="metric-title" data-i18n-pt="Valor Unitário Estimado" data-i18n-en="Estimated Unit Price">Valor Unitário Estimado</span>
+            <div class="metric-number" id="display-unit-val">R$ --</div>
+            <div class="metric-detail" id="display-unit-sub"></div>
           </div>
 
-          <div class="result-total-box">
-            <div class="total-row">
-              <span>Subtotal Previsto:</span>
-              <strong id="res-total-price">R$ --</strong>
+          <div class="display-subtotal">
+            <div class="subtotal-row">
+              <span data-i18n-pt="Subtotal Estimado:" data-i18n-en="Estimated Subtotal:">Subtotal Estimado:</span>
+              <strong id="display-total-val">R$ --</strong>
             </div>
-            <p class="total-disclaimer">
-              * Valores com impostos de estamparia para produção em escala. Não inclui frete.
-            </p>
           </div>
 
-          <button class="btn-primary calc-add-quote-btn" id="calc-add-quote-btn" disabled>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-            <span>Incluir Cálculo no Orçamento</span>
-          </button>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-boutique-primary calc-cta" id="calc-wa-btn">
+            <span data-i18n-pt="Solicitar Este Orçamento no WhatsApp" data-i18n-en="Request This Quote on WhatsApp">Solicitar Este Orçamento no WhatsApp</span>
+          </a>
         </div>
       </div>
     </div>
@@ -88,462 +79,414 @@
 </section>
 
 <style>
-  .calculator-section {
+  .boutique-calc-section {
     padding: 80px 0;
-    background: linear-gradient(180deg, var(--bg-page) 0%, #FFFFFF 100%);
+    background: var(--bg-dark-surface);
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
   }
 
-  .calc-card {
-    background: #FFFFFF;
-    border: 1.5px solid var(--border-subtle);
+  .calc-box {
+    background: var(--bg-dark-card);
+    border: 1px solid var(--border-dark);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-ambient);
-    padding: 48px;
+    padding: 44px;
   }
 
-  .calc-header {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 36px;
+  .calc-header-clean {
+    max-width: 600px;
+    margin-bottom: 32px;
   }
 
-  .calc-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12.5px;
-    font-family: var(--font-mono);
-    color: var(--brand-petrol);
-    background: var(--bg-subtle);
-    padding: 5px 14px;
-    border-radius: var(--radius-full);
-    margin-bottom: 14px;
-  }
-
-  .calc-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #EAB308;
-  }
-
-  .calc-status-dot.connected {
-    background: var(--brand-green);
-  }
-
-  .calc-title {
+  .calc-headline {
     font-size: clamp(26px, 3.2vw, 36px);
-    font-weight: 800;
-    color: var(--brand-petrol-dark);
-    margin-bottom: 12px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
   }
 
-  .calc-subtitle {
+  .calc-sub {
     font-size: 15px;
-    color: var(--text-muted);
+    color: var(--text-white-muted);
   }
 
-  .calc-grid {
+  .calc-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border-dark);
+    padding-bottom: 16px;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-white-muted);
+    padding: 8px 18px;
+    border-radius: 9999px;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .tab-btn.active {
+    background: var(--brand-pink);
+    color: #FFFFFF;
+    box-shadow: 0 2px 14px var(--brand-pink-glow);
+  }
+
+  .calc-body-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 40px;
     align-items: start;
   }
 
-  .calc-form {
+  .calc-inputs {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .form-group {
+  .calc-field {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex: 1;
   }
 
-  .form-group label {
+  .calc-field label {
     font-family: var(--font-heading);
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--brand-petrol);
-  }
-
-  .calc-select {
-    padding: 12px 14px;
-    border: 1.5px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--text-main);
-    background: #FFFFFF;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .calc-select:focus {
-    border-color: var(--brand-green);
-    box-shadow: 0 0 0 3px rgba(31, 179, 128, 0.15);
-  }
-
-  .form-row {
-    display: flex;
-    gap: 16px;
-  }
-
-  .input-with-unit {
-    display: flex;
-    position: relative;
-  }
-
-  .input-with-unit input {
-    width: 100%;
-    padding: 11px 70px 11px 14px;
-    border: 1.5px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--brand-petrol-dark);
+    color: #E2E8F0;
+  }
+
+  .clean-select {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-size: 14.5px;
     outline: none;
     transition: border-color 0.2s;
   }
 
-  .input-with-unit input:focus {
-    border-color: var(--brand-green);
-    box-shadow: 0 0 0 3px rgba(31, 179, 128, 0.15);
+  .clean-select:focus {
+    border-color: var(--brand-pink);
   }
 
-  .unit-tag {
+  .input-unit-wrap {
+    position: relative;
+    display: flex;
+  }
+
+  .input-unit-wrap input {
+    width: 100%;
+    padding: 11px 64px 11px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-unit-wrap input:focus {
+    border-color: var(--brand-pink);
+  }
+
+  .unit-symbol {
     position: absolute;
-    right: 12px;
+    right: 14px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 13px;
-    color: var(--text-muted);
     font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-white-muted);
     pointer-events: none;
   }
 
-  .field-hint {
-    font-size: 12px;
-    color: var(--text-muted);
+  .calc-hint {
+    font-size: 11.5px;
+    color: var(--text-white-muted);
   }
 
-  /* Faixas de Desconto */
-  .volume-tiers {
-    background: var(--bg-subtle);
+  .calc-tier-indicator {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-dark);
     border-radius: var(--radius-sm);
-    padding: 16px;
-    margin-top: 8px;
+    padding: 14px;
+    margin-top: 6px;
   }
 
-  .tiers-title {
+  .tier-label {
     display: block;
-    font-size: 12px;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 11px;
     text-transform: uppercase;
-    color: var(--brand-petrol);
+    color: var(--brand-green);
+    letter-spacing: 0.05em;
     margin-bottom: 8px;
-    letter-spacing: 0.04em;
   }
 
-  .tiers-grid {
+  .tier-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
   }
 
-  .tier-chip {
-    font-size: 11px;
+  .tier-pill {
     font-family: var(--font-mono);
-    background: #FFFFFF;
-    border: 1px solid var(--border-subtle);
-    padding: 4px 8px;
+    font-size: 11px;
+    padding: 3px 8px;
     border-radius: 4px;
-    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-white-muted);
+    border: 1px solid transparent;
   }
 
-  .tier-chip.active {
+  .tier-pill.active {
     background: var(--brand-green);
-    color: #FFFFFF;
-    border-color: var(--brand-green);
-    font-weight: 600;
+    color: #0D191E;
+    font-weight: 700;
   }
 
-  /* Painel de Resultado */
-  .calc-result-panel {
-    background: var(--bg-subtle);
-    border: 1px solid var(--border-subtle);
+  /* Display Panel */
+  .calc-display-panel {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-dark);
     border-radius: var(--radius-md);
-    padding: 28px;
+    padding: 32px 28px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
   }
 
-  .result-box {
-    border-bottom: 1px solid var(--border-subtle);
+  .display-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: 1px solid var(--border-dark);
     padding-bottom: 20px;
   }
 
-  .result-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 4px;
+  .metric-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-white-muted);
+    letter-spacing: 0.04em;
   }
 
-  .result-price {
+  .metric-number {
     font-family: var(--font-mono);
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 700;
-    color: var(--brand-green-dark);
+    color: var(--brand-green);
     line-height: 1.1;
   }
 
-  .result-sub {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 4px;
+  .metric-detail {
+    font-size: 12.5px;
+    color: var(--text-white-muted);
   }
 
-  .result-total-box {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .total-row {
+  .subtotal-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 16px;
-    color: var(--brand-petrol-dark);
+    font-size: 15px;
   }
 
-  .total-row strong {
+  .subtotal-row strong {
     font-family: var(--font-mono);
     font-size: 24px;
-    color: var(--brand-petrol);
+    color: #FFFFFF;
   }
 
-  .total-disclaimer {
-    font-size: 11.5px;
-    color: var(--text-light);
-    line-height: 1.4;
-  }
-
-  .calc-add-quote-btn {
+  .calc-cta {
     width: 100%;
     margin-top: 8px;
   }
 
-  .calc-add-quote-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background: #94A3B8;
-    box-shadow: none;
-  }
-
   @media (max-width: 860px) {
-    .calc-card {
+    .calc-box {
       padding: 24px;
     }
-
-    .calc-grid {
+    .calc-body-grid {
       grid-template-columns: 1fr;
-    }
-
-    .form-row {
-      flex-direction: column;
     }
   }
 </style>
 
 <script>
-  // API oficial do Vercel da Sublipaper / Stampaholics
-  const API_URL = 'https://calculadora-orcamento-sublipaper.vercel.app/api/precos';
+  import calcData from '../data/calculatorData.json';
 
-  // Fallback offline com os produtos reais caso ocorra timeout ou bloqueio CORS
-  const FALLBACK_DATA = {
-    faixas: [
-      { minimo: 100, maximo: 249 },
-      { minimo: 250, maximo: 499 },
-      { minimo: 500, maximo: 999 },
-      { minimo: 1000, maximo: 2499 },
-      { minimo: 2500, maximo: 4999 },
-      { minimo: 5000, maximo: 9999 },
-      { minimo: 10000, maximo: null }
-    ],
-    produtos: [
-      { sku: "SUBLI001", nome: "Sublimação Pura", unidade: "m", categoria: "servico", porPeca: false, precos: [10, 9.5, 9, 8.5, 7.5, 7, 6.5] },
-      { sku: "SUBLI001CL", nome: "Estamparia + Corte Laser", unidade: "m", categoria: "servico", porPeca: true, precos: [19.98, 18.98, 17.98, 16.98, 14.98, 13.98, 12.99] },
-      { sku: "TEC002", nome: "Dry Fit Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [22, 20.9, 19.8, 18.7, 16.5, 15.4, 14.3] },
-      { sku: "TEC002CL", nome: "Dry Fit Cortado a Laser", unidade: "m", categoria: "corte-laser", porPeca: true, precos: [30.8, 29.26, 27.72, 26.18, 23.1, 21.56, 20.02] },
-      { sku: "TEC003", nome: "Crepinho Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [24.44, 23.22, 22, 20.78, 18.33, 17.11, 15.89] },
-      { sku: "TEC004", nome: "Tactel Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [22, 20.9, 19.8, 18.7, 16.5, 15.4, 14.3] },
-      { sku: "TEC005", nome: "Cetim com Elastano Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [21.11, 20.06, 19, 17.94, 15.83, 14.78, 13.72] },
-      { sku: "TEC006", nome: "Silk Satin Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [35.56, 33.78, 32, 30.22, 26.67, 24.89, 23.11] },
-      { sku: "TEC001", nome: "Romantic Sublimado", unidade: "m", categoria: "tecido", porPeca: false, precos: [26.44, 25.12, 23.8, 22.48, 19.83, 18.51, 17.19] }
-    ]
-  };
-
-  let calcData = FALLBACK_DATA;
-  let selectedProduct: any = null;
+  let currentCategory = 'tecido';
   let activeTierIdx = 0;
+  let selectedItem: any = null;
 
-  const selectEl = document.getElementById('calc-product-select') as HTMLSelectElement | null;
-  const metersInput = document.getElementById('calc-meters') as HTMLInputElement | null;
-  const piecesInput = document.getElementById('calc-pieces') as HTMLInputElement | null;
-  const piecesGroup = document.getElementById('pieces-group');
-  const tiersGrid = document.getElementById('tiers-grid');
-  const statusDot = document.getElementById('calc-status-dot');
-  const statusText = document.getElementById('calc-status-text');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const selectEl = document.getElementById('calc-item-select') as HTMLSelectElement | null;
+  const qtyInput = document.getElementById('calc-qty-input') as HTMLInputElement | null;
+  const laserPiecesInput = document.getElementById('calc-laser-pieces') as HTMLInputElement | null;
+  const laserPiecesField = document.getElementById('laser-pieces-field');
+  const unitSymbol = document.getElementById('unit-symbol');
+  const qtyLabel = document.getElementById('qty-label');
+  const minHint = document.getElementById('min-hint');
+  const tierPillsWrap = document.getElementById('tier-pills-wrap');
 
-  const resUnitPrice = document.getElementById('res-unit-price');
-  const resUnitDetail = document.getElementById('res-unit-detail');
-  const resTotalPrice = document.getElementById('res-total-price');
-  const addBtn = document.getElementById('calc-add-quote-btn') as HTMLButtonElement | null;
+  const displayUnitVal = document.getElementById('display-unit-val');
+  const displayUnitSub = document.getElementById('display-unit-sub');
+  const displayTotalVal = document.getElementById('display-total-val');
+  const waBtn = document.getElementById('calc-wa-btn') as HTMLAnchorElement | null;
 
-  function fmtCurrency(val: number) {
+  function fmtBRL(val: number) {
     return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
-  function renderProductSelect() {
-    if (!selectEl) return;
-    selectEl.innerHTML = '<option value="">-- Selecione o produto/tecido --</option>';
-    calcData.produtos.forEach((prod) => {
-      const opt = document.createElement('option');
-      opt.value = prod.sku;
-      opt.textContent = `${prod.nome} (${prod.porPeca ? 'Por Peça c/ Laser' : 'Por Metro'})`;
-      selectEl.appendChild(opt);
-    });
-  }
-
-  function renderTiers() {
-    if (!tiersGrid) return;
-    tiersGrid.innerHTML = '';
+  function renderTierPills() {
+    if (!tierPillsWrap) return;
+    tierPillsWrap.innerHTML = '';
     calcData.faixas.forEach((f, idx) => {
-      const chip = document.createElement('span');
-      chip.className = `tier-chip ${idx === activeTierIdx ? 'active' : ''}`;
-      chip.textContent = f.maximo ? `${f.minimo}m a ${f.maximo}m` : `Acima de ${f.minimo}m`;
-      tiersGrid.appendChild(chip);
+      const p = document.createElement('span');
+      p.className = `tier-pill ${idx === activeTierIdx ? 'active' : ''}`;
+      p.textContent = f.label;
+      tierPillsWrap.appendChild(p);
     });
   }
 
-  function getTierIndex(meters: number) {
+  function getTierIndex(qty: number) {
     for (let i = 0; i < calcData.faixas.length; i++) {
       const f = calcData.faixas[i];
-      if (meters >= f.minimo && (f.maximo === null || meters <= f.maximo)) {
-        return i;
-      }
+      if (qty >= f.minimo && (f.maximo === null || qty <= f.maximo)) return i;
     }
     return calcData.faixas.length - 1;
   }
 
-  function recalculate() {
-    if (!selectedProduct || !metersInput) {
-      if (resUnitPrice) resUnitPrice.textContent = 'R$ --';
-      if (resTotalPrice) resTotalPrice.textContent = 'R$ --';
-      if (addBtn) addBtn.disabled = true;
-      return;
+  function populateSelect() {
+    if (!selectEl) return;
+    selectEl.innerHTML = '';
+
+    const items = calcData.produtos.filter((p) => p.categoria === currentCategory);
+
+    items.forEach((it) => {
+      const opt = document.createElement('option');
+      opt.value = it.sku;
+      opt.textContent = it.nome;
+      selectEl.appendChild(opt);
+    });
+
+    selectedItem = items[0] || null;
+    updateCategoryControls();
+    recalc();
+  }
+
+  function updateCategoryControls() {
+    if (!qtyLabel || !unitSymbol || !minHint || !laserPiecesField) return;
+
+    if (currentCategory === 'tecido') {
+      qtyLabel.textContent = 'Metragem Linear (metros):';
+      unitSymbol.textContent = 'metros';
+      minHint.textContent = 'Pedido mínimo na tabela: 100m.';
+      laserPiecesField.style.display = 'none';
+      if (qtyInput) qtyInput.value = '100';
+    } else if (currentCategory === 'corte-laser') {
+      qtyLabel.textContent = 'Metragem Total Consumida (m):';
+      unitSymbol.textContent = 'metros';
+      minHint.textContent = 'Cálculo por consumo em metros para corte a laser.';
+      laserPiecesField.style.display = 'flex';
+      if (qtyInput) qtyInput.value = '100';
+    } else {
+      // Produto Pronto
+      qtyLabel.textContent = 'Quantidade de Peças:';
+      unitSymbol.textContent = 'unidades';
+      minHint.textContent = 'Tabela de preços por escala de tiragem.';
+      laserPiecesField.style.display = 'none';
+      if (qtyInput) qtyInput.value = '50';
     }
+  }
 
-    const meters = parseFloat(metersInput.value) || 0;
-    const pieces = piecesInput ? parseFloat(piecesInput.value) || 0 : 0;
+  function recalc() {
+    if (!selectedItem || !qtyInput) return;
 
-    activeTierIdx = getTierIndex(meters);
-    renderTiers();
+    const qty = parseFloat(qtyInput.value) || 0;
+    activeTierIdx = getTierIndex(qty);
+    renderTierPills();
 
-    const pricePerMeter = selectedProduct.precos[activeTierIdx] || selectedProduct.precos[selectedProduct.precos.length - 1];
+    const prices = selectedItem.precos;
+    const price = prices[activeTierIdx] || prices[prices.length - 1];
 
-    if (selectedProduct.porPeca) {
-      // Corte a laser: calcula preço por peça a partir do consumo em metros
-      if (pieces > 0) {
-        const subtotal = meters * pricePerMeter;
-        const pricePerPiece = subtotal / pieces;
+    if (currentCategory === 'corte-laser') {
+      const pieces = laserPiecesInput ? parseFloat(laserPiecesInput.value) || 1 : 1;
+      const subtotal = qty * price;
+      const piecePrice = subtotal / pieces;
 
-        if (resUnitPrice) resUnitPrice.textContent = fmtCurrency(pricePerPiece) + ' / peça';
-        if (resUnitDetail) resUnitDetail.textContent = `Consumo: ${meters}m para ${pieces} peças (${fmtCurrency(pricePerMeter)}/m)`;
-        if (resTotalPrice) resTotalPrice.textContent = fmtCurrency(subtotal);
-        if (addBtn) addBtn.disabled = false;
-      } else {
-        if (resUnitPrice) resUnitPrice.textContent = 'Informe as peças';
-        if (resTotalPrice) resTotalPrice.textContent = 'R$ --';
-        if (addBtn) addBtn.disabled = true;
+      if (displayUnitVal) displayUnitVal.textContent = fmtBRL(piecePrice) + ' / peça';
+      if (displayUnitSub) displayUnitSub.textContent = `Consumo: ${qty}m (${fmtBRL(price)}/m) para ${pieces} peças`;
+      if (displayTotalVal) displayTotalVal.textContent = fmtBRL(subtotal);
+
+      if (waBtn) {
+        const text = encodeURIComponent(`Olá, Stampaholics! Gostaria de um orçamento para: ${selectedItem.nome}\n• Metragem: ${qty}m\n• Peças: ${pieces}\n• Estimativa calculada: ${fmtBRL(subtotal)}`);
+        waBtn.href = `https://wa.me/5511999999999?text=${text}`;
+      }
+    } else if (currentCategory === 'tecido') {
+      const subtotal = qty * price;
+      if (displayUnitVal) displayUnitVal.textContent = fmtBRL(price) + ' / metro';
+      if (displayUnitSub) displayUnitSub.textContent = `Faixa de escala: ${calcData.faixas[activeTierIdx].label}m`;
+      if (displayTotalVal) displayTotalVal.textContent = fmtBRL(subtotal);
+
+      if (waBtn) {
+        const text = encodeURIComponent(`Olá, Stampaholics! Gostaria de um orçamento para: ${selectedItem.nome}\n• Quantidade: ${qty} metros\n• Estimativa: ${fmtBRL(subtotal)}`);
+        waBtn.href = `https://wa.me/5511999999999?text=${text}`;
       }
     } else {
-      // Sublimação por metro linear
-      const subtotal = meters * pricePerMeter;
-      if (resUnitPrice) resUnitPrice.textContent = fmtCurrency(pricePerMeter) + ' / metro';
-      if (resUnitDetail) resUnitDetail.textContent = `Faixa de ${calcData.faixas[activeTierIdx].minimo}m`;
-      if (resTotalPrice) resTotalPrice.textContent = fmtCurrency(subtotal);
-      if (addBtn) addBtn.disabled = false;
-    }
-  }
+      // Produto Pronto
+      const subtotal = qty * price;
+      if (displayUnitVal) displayUnitVal.textContent = fmtBRL(price) + ' / un.';
+      if (displayUnitSub) displayUnitSub.textContent = `Tiragem de escala: ${qty} peças`;
+      if (displayTotalVal) displayTotalVal.textContent = fmtBRL(subtotal);
 
-  // Busca dados da API
-  async function fetchLivePrices() {
-    try {
-      const res = await fetch(API_URL);
-      if (!res.ok) throw new Error('Falha no status');
-      const json = await res.json();
-      if (json && json.produtos && json.produtos.length > 0) {
-        calcData = json;
-        if (statusDot) statusDot.className = 'calc-status-dot connected';
-        if (statusText) statusText.textContent = `Preços oficiais atualizados em tempo real (${json.produtos.length} opções)`;
+      if (waBtn) {
+        const text = encodeURIComponent(`Olá, Stampaholics! Gostaria de um orçamento para: ${selectedItem.nome}\n• Quantidade: ${qty} peças\n• Estimativa: ${fmtBRL(subtotal)}`);
+        waBtn.href = `https://wa.me/5511999999999?text=${text}`;
       }
-    } catch (e) {
-      console.warn('Usando tabela local da fábrica:', e);
-      if (statusDot) statusDot.className = 'calc-status-dot connected';
-      if (statusText) statusText.textContent = 'Tabela de preços oficial ativa (Sublipaper)';
-    } finally {
-      renderProductSelect();
-      renderTiers();
     }
   }
 
-  // Event Listeners
+  // Abas
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.getAttribute('data-tab') || 'tecido';
+      populateSelect();
+    });
+  });
+
   if (selectEl) {
     selectEl.addEventListener('change', () => {
       const sku = selectEl.value;
-      selectedProduct = calcData.produtos.find((p) => p.sku === sku) || null;
-
-      if (piecesGroup) {
-        piecesGroup.style.display = (selectedProduct && selectedProduct.porPeca) ? 'flex' : 'none';
-      }
-
-      recalculate();
+      selectedItem = calcData.produtos.find((p) => p.sku === sku) || null;
+      recalc();
     });
   }
 
-  if (metersInput) metersInput.addEventListener('input', recalculate);
-  if (piecesInput) piecesInput.addEventListener('input', recalculate);
+  if (qtyInput) qtyInput.addEventListener('input', recalc);
+  if (laserPiecesInput) laserPiecesInput.addEventListener('input', recalc);
 
-  // Adicionar cálculo à bandeja de orçamento
-  if (addBtn) {
-    addBtn.addEventListener('click', () => {
-      if (!selectedProduct || !metersInput) return;
-      const meters = parseFloat(metersInput.value) || 0;
-      const pieces = piecesInput ? parseFloat(piecesInput.value) || 0 : 0;
-      const totalTxt = resTotalPrice ? resTotalPrice.textContent : '';
-
-      window.dispatchEvent(
-        new CustomEvent('stampaholics:add-to-cart', {
-          detail: {
-            id: `calc-${selectedProduct.sku}`,
-            name: `${selectedProduct.nome} (Cálculo Oficial)`,
-            fabric: selectedProduct.porPeca ? `${pieces} peças cortadas a laser (${meters}m)` : `${meters} metros lineares`,
-            image: '/brand/stampaholics_icon.png',
-            quantity: selectedProduct.porPeca ? pieces : meters,
-            notes: `Estimativa calculada: ${totalTxt}`
-          }
-        })
-      );
-    });
-  }
-
-  fetchLivePrices();
+  populateSelect();
 </script>

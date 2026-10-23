@@ -1,0 +1,46 @@
+[
+  {
+    "id": "festival-verao",
+    "title": "Festival de Verão & Micareta Salvador",
+    "title_en": "Summer Music Festival & Carnival",
+    "client": "Bloco & Produções Artísticas",
+    "segment": "Eventos & Festas",
+    "volume": "15.000 abadás em Dry-Fit",
+    "description": "Desenvolvimento e calandragem contínua de abadás com corte a laser em 5 cores de camarotes distintos, com encaixe milimétrico de estampa e zero desbotamento sob calor intenso.",
+    "description_en": "Continuous sublimation and laser cutting of 15,000 Dry-Fit tank tops across 5 VIP sectors with exact pattern alignment and zero color fade under tropical heat.",
+    "metric": "100% de entrega no prazo"
+  },
+  {
+    "id": "circuito-corrida",
+    "title": "Circuito Noturno de Corrida de Rua 10K",
+    "title_en": "10K Night Street Marathon Circuit",
+    "client": "Federação de Atletismo",
+    "segment": "Esportes & Performance",
+    "volume": "6.000 kits (Camiseta UV50+ e Sacochila)",
+    "description": "Produção de camisetas com tecnologia capilar de secagem instantânea e tintas fluorescentes que reagem sob a iluminação do percurso noturno.",
+    "description_en": "Production of quick-dry running jerseys featuring fluorescent inks reacting under night race lighting, complemented by custom drawstring bags.",
+    "metric": "Respirabilidade 100%"
+  },
+  {
+    "id": "capsula-praia",
+    "title": "Coleção Cápsula Resort & Beach Club",
+    "title_en": "Resort & Beach Club Capsule Collection",
+    "client": "Marca Autoral de Moda Praia",
+    "segment": "Moda & Lifestyle",
+    "volume": "2.400 cangas e echarpes em Silk Satin",
+    "description": "Estamparia digital de altíssima saturação em bases de seda sintética acetinada com bainha italiana finíssima, distribuídas em resorts de Trancoso e Fernando de Noronha.",
+    "description_en": "High-saturation digital printing on silky satin with ultra-fine rolled hems, distributed across luxury coastal resorts.",
+    "metric": "Toque de seda nobre"
+  },
+  {
+    "id": "cenografia-summit",
+    "title": "Cenografia Têxtil Tech Summit Brasil",
+    "title_en": "Tech Summit Stage & Visual Scenography",
+    "client": "Agência de Live Marketing",
+    "segment": "Comunicação & Cenografia",
+    "volume": "850 metros de backdrops sem emenda",
+    "description": "Painéis em microfibra fosca antirreflexo para os palcos principais e transmissão ao vivo em 4K, garantindo fidelidade de cor sem reflexo de holofotes.",
+    "description_en": "Matte anti-glare seamless microfibre backdrops for main conference stages and 4K live broadcasts, ensuring zero glare.",
+    "metric": "Zero reflexo em câmeras"
+  }
+]

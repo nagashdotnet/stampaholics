@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
+import cases from '../data/cases.json';
+---
+
+<Layout title="Clientes & Cases — Stampaholics">
+  <Navbar currentPath="/clientes" />
+
+  <main class="page-content">
+    <div class="container">
+      <div class="page-header">
+        <span class="eyebrow" data-i18n-pt="Portfólio & Parcerias" data-i18n-en="Portfolio & Clients">Portfólio & Parcerias</span>
+        <h1 class="page-title" data-i18n-pt="Clientes & Grandes Produções" data-i18n-en="Clients & Large Scale Projects">Clientes & Grandes Produções</h1>
+        <p class="page-desc" data-i18n-pt="Atendemos agências de live marketing, blocos de carnaval, circuitos de maratona e marcas de vestuário com rigor em prazo e qualidade extrema." data-i18n-en="Trusted by live marketing agencies, major street carnivals, marathon organizers, and apparel brands for on-time delivery and uncompromising quality.">
+          Atendemos agências de live marketing, blocos de carnaval, circuitos de maratona e marcas de vestuário com rigor em prazo e qualidade extrema.
+        </p>
+      </div>
+
+      <div class="cases-vertical-list">
+        {cases.map((c) => (
+          <article class="case-expanded-card">
+            <div class="case-header-line">
+              <span class="case-badge-segment">{c.segment}</span>
+              <span class="case-volume-badge">{c.volume}</span>
+            </div>
+            <h2 class="case-h2">{c.title}</h2>
+            <p class="case-p">{c.description}</p>
+            <div class="case-footer-line">
+              <div class="client-info">
+                <span class="client-label" data-i18n-pt="Perfil do Cliente:" data-i18n-en="Client Profile:">Perfil do Cliente:</span>
+                <span class="client-name">{c.client}</span>
+              </div>
+              <div class="case-metric-highlight">
+                <span>{c.metric}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Chamada para Novos Projetos -->
+      <div class="clients-cta-box">
+        <h3 data-i18n-pt="Tem um evento ou lançamento de coleção em vista?" data-i18n-en="Planning a major event or fashion launch?">Tem um evento ou lançamento de coleção em vista?</h3>
+        <p data-i18n-pt="Converse diretamente com nossos diretores de produção para alinhar gabaritos e prazos prioritários." data-i18n-en="Connect directly with our production leads to align specs, strike-offs, and priority turnarounds.">
+          Converse diretamente com nossos diretores de produção para alinhar gabaritos e prazos prioritários.
+        </p>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20avaliar%20um%20projeto%20comercial%20com%20a%20Stampaholics." target="_blank" rel="noopener noreferrer" class="btn-boutique-primary">
+          <span data-i18n-pt="Falar com a Produção no WhatsApp" data-i18n-en="Talk to Production on WhatsApp">Falar com a Produção no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <WhatsAppButton />
+  <Footer />
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 140px;
+    padding-bottom: 90px;
+  }
+
+  .page-header {
+    max-width: 680px;
+    margin-bottom: 56px;
+  }
+
+  .page-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: 15.5px;
+    color: var(--text-white-muted);
+    line-height: 1.6;
+  }
+
+  .cases-vertical-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-bottom: 64px;
+  }
+
+  .case-expanded-card {
+    background: var(--bg-dark-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .case-header-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .case-badge-segment {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--brand-pink);
+    letter-spacing: 0.05em;
+  }
+
+  .case-volume-badge {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-green);
+    background: rgba(31, 179, 128, 0.08);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .case-h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .case-p {
+    font-size: 14.5px;
+    color: var(--text-white-muted);
+    line-height: 1.65;
+  }
+
+  .case-footer-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-dark);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .client-info {
+    display: flex;
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .client-label {
+    color: var(--text-white-muted);
+  }
+
+  .client-name {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .case-metric-highlight {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-green);
+  }
+
+  .clients-cta-box {
+    background: var(--bg-dark-card);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-lg);
+    padding: 48px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .clients-cta-box h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .clients-cta-box p {
+    font-size: 15px;
+    color: var(--text-white-muted);
+    max-width: 520px;
+  }
+
+  @media (max-width: 640px) {
+    .case-expanded-card {
+      padding: 24px;
+    }
+  }
+</style>
