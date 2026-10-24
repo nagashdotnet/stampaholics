@@ -16,15 +16,15 @@ const { currentPath = '/' } = Astro.props;
 
     <!-- Menu Enxuto e Sóbrio -->
     <nav class="nav-links" aria-label="Navegação">
-      <a href="/sobre" class={`nav-link font-intheknow ${currentPath === '/sobre' ? 'active' : ''}`} data-i18n-pt="Stampaholics" data-i18n-en="About Us">Stampaholics</a>
-      <a href="/produtos" class={`nav-link font-intheknow ${currentPath === '/produtos' ? 'active' : ''}`} data-i18n-pt="Produtos" data-i18n-en="Products">Produtos</a>
-      <a href="/servicos" class={`nav-link font-intheknow ${currentPath === '/servicos' ? 'active' : ''}`} data-i18n-pt="Serviços" data-i18n-en="Services">Serviços</a>
-      <a href="/clientes" class={`nav-link font-intheknow ${currentPath === '/clientes' ? 'active' : ''}`} data-i18n-pt="Clientes" data-i18n-en="Clients">Clientes</a>
+      <a href="/sobre" class={`nav-link ${currentPath === '/sobre' ? 'active' : ''}`} data-i18n-pt="Stampaholics" data-i18n-en="About Us">Stampaholics</a>
+      <a href="/produtos" class={`nav-link ${currentPath === '/produtos' ? 'active' : ''}`} data-i18n-pt="Produtos" data-i18n-en="Products">Produtos</a>
+      <a href="/servicos" class={`nav-link ${currentPath === '/servicos' ? 'active' : ''}`} data-i18n-pt="Serviços" data-i18n-en="Services">Serviços</a>
+      <a href="/clientes" class={`nav-link ${currentPath === '/clientes' ? 'active' : ''}`} data-i18n-pt="Clientes" data-i18n-en="Clients">Clientes</a>
     </nav>
 
     <!-- Idioma e Ações -->
     <div class="nav-right">
-      <div class="lang-switch" id="lang-switch">
+      <div class="lang-switch font-intheknow" id="lang-switch">
         <button class="lang-btn active" data-lang="pt">PT</button>
         <span class="lang-divider">/</span>
         <button class="lang-btn" data-lang="en">EN</button>
@@ -103,10 +103,11 @@ const { currentPath = '/' } = Astro.props;
   }
 
   .nav-link {
-    font-size: 16px;
-    font-weight: normal;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
     color: var(--text-white-muted);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     transition: color 0.2s ease;
     position: relative;
     padding: 6px 0;
@@ -123,7 +124,7 @@ const { currentPath = '/' } = Astro.props;
     bottom: -2px;
     left: 0;
     right: 0;
-    height: 1.5px;
+    height: 2px;
     background: var(--brand-pink);
   }
 
@@ -136,23 +137,25 @@ const { currentPath = '/' } = Astro.props;
   .lang-switch {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-family: var(--font-mono);
-    font-size: 12px;
+    gap: 4px;
+    font-family: var(--font-intheknow);
+    font-size: 17px;
+    letter-spacing: 0.06em;
     color: var(--text-white-muted);
   }
 
   .lang-btn {
+    font-family: var(--font-intheknow);
+    font-size: 17px;
+    letter-spacing: 0.06em;
     color: var(--text-white-muted);
-    font-weight: 500;
     padding: 2px 4px;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.2s;
   }
 
   .lang-btn.active,
   .lang-btn:hover {
-    color: #FFFFFF;
-    font-weight: 700;
+    color: var(--brand-pink);
   }
 
   .lang-divider {

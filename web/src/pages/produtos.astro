@@ -26,13 +26,13 @@ import products from '../data/products.json';
 
         <!-- Filtros Rápidos de Categoria (Sem Barra de Busca) -->
         <div class="category-filters" id="category-filters">
-          <button class="cat-pill active font-intheknow" data-cat="all" data-i18n-pt="todos" data-i18n-en="all">todos</button>
-          <button class="cat-pill font-intheknow" data-cat="Eventos" data-i18n-pt="eventos & festas" data-i18n-en="events & parties">eventos & festas</button>
-          <button class="cat-pill font-intheknow" data-cat="Esportes" data-i18n-pt="esportes & corrida" data-i18n-en="sports & running">esportes & corrida</button>
-          <button class="cat-pill font-intheknow" data-cat="Moda" data-i18n-pt="moda & praia" data-i18n-en="fashion & resort">moda & praia</button>
-          <button class="cat-pill font-intheknow" data-cat="Corporativo" data-i18n-pt="corporativo & brindes" data-i18n-en="corporate & gifts">corporativo & brindes</button>
-          <button class="cat-pill font-intheknow" data-cat="Decoração" data-i18n-pt="decoração & cenografia" data-i18n-en="decor & stage">decoração & cenografia</button>
-          <button class="cat-pill font-intheknow" data-cat="Comunicação" data-i18n-pt="banners & pdv" data-i18n-en="banners & pos">banners & pdv</button>
+          <button class="cat-pill active" data-cat="all" data-i18n-pt="Todos" data-i18n-en="All">Todos</button>
+          <button class="cat-pill" data-cat="Eventos" data-i18n-pt="Eventos & Festas" data-i18n-en="Events & Parties">Eventos & Festas</button>
+          <button class="cat-pill" data-cat="Esportes" data-i18n-pt="Esportes & Corrida" data-i18n-en="Sports & Running">Esportes & Corrida</button>
+          <button class="cat-pill" data-cat="Moda" data-i18n-pt="Moda & Praia" data-i18n-en="Fashion & Resort">Moda & Praia</button>
+          <button class="cat-pill" data-cat="Corporativo" data-i18n-pt="Corporativo & Brindes" data-i18n-en="Corporate & Gifts">Corporativo & Brindes</button>
+          <button class="cat-pill" data-cat="Decoração" data-i18n-pt="Decoração & Cenografia" data-i18n-en="Decor & Stage">Decoração & Cenografia</button>
+          <button class="cat-pill" data-cat="Comunicação" data-i18n-pt="Banners & PDV" data-i18n-en="Banners & POS">Banners & PDV</button>
         </div>
       </div>
     </section>
@@ -92,11 +92,14 @@ import products from '../data/products.json';
   }
 
   .cat-pill {
-    font-size: 17px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--text-white-muted);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 6px 18px;
+    padding: 7px 18px;
     border-radius: 9999px;
     transition: all 0.25s var(--ease-boutique);
     white-space: nowrap;

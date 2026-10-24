@@ -71,6 +71,25 @@
   padding: 0;
 }
 
+ul, ol, menu {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+li::marker {
+  display: none !important;
+  content: '' !important;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -117,15 +136,20 @@ img {
   padding: 0 24px;
 }
 
-/* Utilitários de Tipografia In The Know */
+/* Tipografia In The Know — Estritamente para a Logo e Seletor PT/EN */
 .font-intheknow {
   font-family: var(--font-intheknow);
   letter-spacing: 0.04em;
 }
 
-.eyebrow-intheknow {
-  font-family: var(--font-intheknow);
-  font-size: 17px;
+/* Eyebrows Sóbrios e Legíveis (Montserrat + Tracking) */
+.eyebrow-intheknow,
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--brand-pink);
   display: inline-block;
   margin-bottom: 8px;

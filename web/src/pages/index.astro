@@ -32,8 +32,8 @@ const featuredProducts = products.slice(0, 8);
           </p>
 
           <div class="hero-actions">
-            <a href="/produtos" class="btn-boutique-primary font-intheknow" data-i18n-pt="conhecer produtos" data-i18n-en="explore products">conhecer produtos</a>
-            <a href="#calculadora" class="btn-boutique-ghost font-intheknow" data-i18n-pt="simular orçamento" data-i18n-en="price simulator">simular orçamento</a>
+            <a href="/produtos" class="btn-boutique-primary" data-i18n-pt="Conhecer Produtos" data-i18n-en="Explore Products">Conhecer Produtos</a>
+            <a href="#calculadora" class="btn-boutique-ghost" data-i18n-pt="Simular Orçamento" data-i18n-en="Price Simulator">Simular Orçamento</a>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ const featuredProducts = products.slice(0, 8);
             <span class="eyebrow-intheknow" data-i18n-pt="nossa linha" data-i18n-en="our line">nossa linha</span>
             <h2 class="section-h2" data-i18n-pt="Produtos em Destaque" data-i18n-en="Featured Products">Produtos em Destaque</h2>
           </div>
-          <a href="/produtos" class="section-more-link font-intheknow" data-i18n-pt="ver todos os 24 produtos →" data-i18n-en="view all 24 products →">ver todos os 24 produtos →</a>
+          <a href="/produtos" class="section-more-link" data-i18n-pt="ver todos os 24 produtos →" data-i18n-en="view all 24 products →">ver todos os 24 produtos →</a>
         </div>
 
         <div class="minimal-products-grid">
@@ -73,12 +73,12 @@ const featuredProducts = products.slice(0, 8);
             <span class="eyebrow-intheknow" data-i18n-pt="capacidade fabril" data-i18n-en="plant capacity">capacidade fabril</span>
             <h2 class="section-h2" data-i18n-pt="Nossos Serviços" data-i18n-en="Our Services">Nossos Serviços</h2>
           </div>
-          <a href="/servicos" class="section-more-link font-intheknow" data-i18n-pt="ver guia de tecidos →" data-i18n-en="view fabric guide →">ver guia de tecidos →</a>
+          <a href="/servicos" class="section-more-link" data-i18n-pt="ver guia de tecidos →" data-i18n-en="view fabric guide →">ver guia de tecidos →</a>
         </div>
 
         <div class="services-trio-grid">
           <div class="service-trio-card">
-            <span class="service-index font-intheknow">01</span>
+            <span class="service-index font-mono">01</span>
             <h3 class="service-card-title" data-i18n-pt="Sublimação por Metro" data-i18n-en="Roll Sublimation">Sublimação por Metro</h3>
             <p class="service-card-desc" data-i18n-pt="Calandragem industrial contínua a 210°C em rolos inteiros de tecido sintético, garantindo pretos profundos e toque zero." data-i18n-en="Continuous rotary heat transfer on continuous fabric rolls with deep blacks and vivid colors.">
               Calandragem industrial contínua a 210°C em rolos inteiros de tecido sintético, garantindo pretos profundos e toque zero.
@@ -86,7 +86,7 @@ const featuredProducts = products.slice(0, 8);
           </div>
 
           <div class="service-trio-card">
-            <span class="service-index font-intheknow">02</span>
+            <span class="service-index font-mono">02</span>
             <h3 class="service-card-title" data-i18n-pt="Corte a Laser Óptico" data-i18n-en="Laser Cutting">Corte a Laser Óptico</h3>
             <p class="service-card-desc" data-i18n-pt="Mesas automatizadas com câmeras CCD que leem a estampa e cortam milimetricamente selando as bordas sem desfiar." data-i18n-en="Automated vision-guided laser cutting that seals edges with millimeter precision, eliminating fraying.">
               Mesas automatizadas com câmeras CCD que leem a estampa e cortam milimetricamente selando as bordas sem desfiar.
@@ -94,7 +94,7 @@ const featuredProducts = products.slice(0, 8);
           </div>
 
           <div class="service-trio-card">
-            <span class="service-index font-intheknow">03</span>
+            <span class="service-index font-mono">03</span>
             <h3 class="service-card-title" data-i18n-pt="Confecção Especializada" data-i18n-en="Custom Apparel">Confecção Especializada</h3>
             <p class="service-card-desc" data-i18n-pt="Montagem completa: abadás anatômicos, camisetas esportivas, bolsas e almofadas com costura reforçada e entrega etiquetada." data-i18n-en="Complete apparel assembly: ergonomic tops, sportswear, bags, and cushions delivered individually tagged.">
               Montagem completa: abadás anatômicos, camisetas esportivas, bolsas e almofadas com costura reforçada e entrega etiquetada.
@@ -115,13 +115,13 @@ const featuredProducts = products.slice(0, 8);
             <span class="eyebrow-intheknow" data-i18n-pt="grandes marcas" data-i18n-en="featured clients">grandes marcas</span>
             <h2 class="section-h2" data-i18n-pt="Projetos Entregues" data-i18n-en="Delivered Projects">Projetos Entregues</h2>
           </div>
-          <a href="/clientes" class="section-more-link font-intheknow" data-i18n-pt="ver todos os cases →" data-i18n-en="view all case studies →">ver todos os cases →</a>
+          <a href="/clientes" class="section-more-link" data-i18n-pt="ver todos os cases →" data-i18n-en="view all case studies →">ver todos os cases →</a>
         </div>
 
         <div class="cases-dual-grid">
           {cases.slice(0, 2).map((c) => (
             <div class="case-boutique-card" style="background:#FFFFFF; border: 1px solid rgba(226,232,240,0.9); box-shadow: 0 10px 25px rgba(0,0,0,0.04);">
-              <span class="case-segment font-intheknow">{c.segment}</span>
+              <span class="case-segment">{c.segment}</span>
               <h3 class="case-title" style="color:#0F1D23;">{c.title}</h3>
               <p class="case-desc" style="color:#64748B;">{c.description}</p>
               <div class="case-meta-row" style="border-top-color:#E2E8F0;">

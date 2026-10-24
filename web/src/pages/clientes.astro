@@ -35,7 +35,7 @@ import cases from '../data/cases.json';
           <div class="case-photo-item">
             <img src="/photos/factory-4.jpg" alt="Controle de qualidade e corte" class="case-img" />
             <div class="case-photo-overlay">
-              <span class="font-intheknow">Acabamento & Laser</span>
+              <span class="photo-overlay-title">Acabamento & Laser</span>
               <p>Revisão peça a peça antes do envio</p>
             </div>
           </div>
@@ -43,7 +43,7 @@ import cases from '../data/cases.json';
           <div class="case-photo-item">
             <img src="/photos/factory-5.jpg" alt="Grandes tiragens em rolo" class="case-img" />
             <div class="case-photo-overlay">
-              <span class="font-intheknow">Grandes Volumes</span>
+              <span class="photo-overlay-title">Grandes Volumes</span>
               <p>Produção contínua para eventos e festivais</p>
             </div>
           </div>
@@ -51,7 +51,7 @@ import cases from '../data/cases.json';
           <div class="case-photo-item">
             <img src="/photos/factory-6.jpg" alt="Cores saturadas em alta definição" class="case-img" />
             <div class="case-photo-overlay">
-              <span class="font-intheknow">Fidelidade Cromática</span>
+              <span class="photo-overlay-title">Fidelidade Cromática</span>
               <p>Preto denso e passagem total da estampa</p>
             </div>
           </div>
@@ -66,7 +66,7 @@ import cases from '../data/cases.json';
           {cases.map((c) => (
             <article class="case-expanded-card">
               <div class="case-header-line">
-                <span class="case-badge-segment font-intheknow">{c.segment}</span>
+                <span class="case-badge-segment">{c.segment}</span>
                 <span class="case-volume-badge">{c.volume}</span>
               </div>
               <h2 class="case-h2">{c.title}</h2>
@@ -86,12 +86,12 @@ import cases from '../data/cases.json';
 
         <!-- Box de Chamada -->
         <div class="clients-cta-box">
-          <h3 class="font-intheknow" style="font-size:32px; color:#FFFFFF;" data-i18n-pt="vamos produzir seu próximo projeto?" data-i18n-en="let's manufacture your next project?">vamos produzir seu próximo projeto?</h3>
+          <h3 style="font-family:var(--font-heading); font-size:32px; font-weight:700; color:#FFFFFF;" data-i18n-pt="Vamos produzir seu próximo projeto?" data-i18n-en="Let's manufacture your next project?">Vamos produzir seu próximo projeto?</h3>
           <p data-i18n-pt="Envie seu briefing para nossos técnicos alinharem a base têxtil ideal e o cronograma de entrega." data-i18n-en="Share your briefing with our technical leads to map the best fabric substrate and delivery schedule.">
             Envie seu briefing para nossos técnicos alinharem a base têxtil ideal e o cronograma de entrega.
           </p>
-          <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20comercial%20com%20a%20Stampaholics." target="_blank" rel="noopener noreferrer" class="btn-boutique-primary font-intheknow">
-            <span data-i18n-pt="solicitar orçamento prioritário" data-i18n-en="request priority quote">solicitar orçamento prioritário</span>
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20comercial%20com%20a%20Stampaholics." target="_blank" rel="noopener noreferrer" class="btn-boutique-primary">
+            <span data-i18n-pt="Solicitar Orçamento Prioritário" data-i18n-en="Request Priority Quote">Solicitar Orçamento Prioritário</span>
           </a>
         </div>
       </div>

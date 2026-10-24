@@ -37,7 +37,7 @@ import fabrics from '../data/fabrics.json';
 
         <div class="services-deep-grid">
           <div class="service-process-card">
-            <span class="process-num font-intheknow">01</span>
+            <span class="process-num font-mono">01</span>
             <h3 class="process-title" data-i18n-pt="Sublimação por Metro" data-i18n-en="Roll-to-Roll Sublimation">Sublimação por Metro</h3>
             <p class="process-p" data-i18n-pt="Transferência térmica a 210°C em calandra contínua. As moléculas de pigmento gasoso penetram diretamente no núcleo das fibras, proporcionando toque zero, elasticidade total e lavagem contínua sem desbotar." data-i18n-en="Thermal rotary transfer at 210°C. Gas pigment molecules bond directly to the polymer core, delivering zero hand-feel, full stretch, and permanent wash resistance.">
               Transferência térmica a 210°C em calandra contínua. As moléculas de pigmento gasoso penetram diretamente no núcleo das fibras, proporcionando toque zero, elasticidade total e lavagem contínua sem desbotar.
@@ -50,7 +50,7 @@ import fabrics from '../data/fabrics.json';
           </div>
 
           <div class="service-process-card">
-            <span class="process-num font-intheknow">02</span>
+            <span class="process-num font-mono">02</span>
             <h3 class="process-title" data-i18n-pt="Corte a Laser Óptico" data-i18n-en="Vision Laser Cutting">Corte a Laser Óptico</h3>
             <p class="process-p" data-i18n-pt="Mesas de corte automático com câmeras CCD de visão computacional que escaneiam o tecido impresso em tempo real, compensando qualquer micro-distorção elástica com tolerância milimétrica." data-i18n-en="Automated cutting tables equipped with CCD cameras scanning the printed fabric in real-time, instantly compensating for fabric distortion with millimeter accuracy.">
               Mesas de corte automático com câmeras CCD de visão computacional que escaneiam o tecido impresso em tempo real, compensando qualquer micro-distorção elástica com tolerância milimétrica.
@@ -63,7 +63,7 @@ import fabrics from '../data/fabrics.json';
           </div>
 
           <div class="service-process-card">
-            <span class="process-num font-intheknow">03</span>
+            <span class="process-num font-mono">03</span>
             <h3 class="process-title" data-i18n-pt="Confecção & Acabamento" data-i18n-en="Garment Assembly">Confecção & Acabamento</h3>
             <p class="process-p" data-i18n-pt="Linhas industriais especializadas em vestuário esportivo e moda: golas anatômicas, costura galoneira, overloque de 4 fios, bainha italiana, zíperes invisíveis e ilhoses metálicos." data-i18n-en="Industrial lines specialized in athletic and event apparel: ergonomic collars, flatlock seams, reinforced 4-thread overlock, and hidden zippers.">
               Linhas industriais especializadas em vestuário esportivo e moda: golas anatômicas, costura galoneira, overloque de 4 fios, bainha italiana, zíperes invisíveis e ilhoses metálicos.
@@ -95,7 +95,7 @@ import fabrics from '../data/fabrics.json';
           {fabrics.map((f) => (
             <div class="fabric-item-card" style="background: rgba(14, 45, 39, 0.7); border-color: rgba(31, 179, 128, 0.3);">
               <div class="fabric-top">
-                <h3 class="fabric-title font-intheknow" style="font-size:22px;">{f.name}</h3>
+                <h3 class="fabric-title" style="font-size:20px; font-weight:600; color:#FFFFFF;">{f.name}</h3>
                 <span class="fabric-weight font-mono" style="color:#6EE7B7;">{f.weight}</span>
               </div>
               <p class="fabric-comp-txt" style="color:#D1FAE5;">{f.composition}</p>

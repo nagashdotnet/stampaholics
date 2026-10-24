@@ -19,12 +19,12 @@ import HeartLogo3D from './HeartLogo3D.astro';
     <!-- Centro: Coração 3D Geométrico Oficial com Movimento do Mouse -->
     <div class="footer-center-3d">
       <HeartLogo3D size={180} />
-      <span class="footer-3d-caption font-intheknow">pure textile passion</span>
+      <span class="footer-3d-caption">pure textile passion</span>
     </div>
 
     <!-- Coluna Direita: Suporte, FAQ, Contato & Redes -->
     <div class="footer-side right-side">
-      <h4 class="footer-side-title font-intheknow" data-i18n-pt="canais & suporte" data-i18n-en="support & channels">canais & suporte</h4>
+      <h4 class="footer-side-title" data-i18n-pt="Canais & Suporte" data-i18n-en="Support & Channels">Canais & Suporte</h4>
       <ul class="footer-links-clean">
         <li><a href="/faq" data-i18n-pt="Dúvidas Frequentes (FAQ)" data-i18n-en="Frequently Asked Questions (FAQ)">Dúvidas Frequentes (FAQ)</a></li>
         <li><a href="/contato" data-i18n-pt="Formulário de Contato" data-i18n-en="Direct Contact Form">Formulário de Contato</a></li>
@@ -51,15 +51,17 @@ import HeartLogo3D from './HeartLogo3D.astro';
 
   .footer-central-layout {
     display: grid;
-    grid-template-columns: 1fr 220px 1fr;
+    grid-template-columns: 1.2fr 200px 1.2fr;
     gap: 48px;
     align-items: center;
+    width: 100%;
   }
 
   .footer-side {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    min-width: 0;
   }
 
   .left-side {
@@ -72,16 +74,17 @@ import HeartLogo3D from './HeartLogo3D.astro';
   }
 
   .footer-title {
-    font-size: 32px;
+    font-size: 30px;
     color: #FFFFFF;
     line-height: 1;
     letter-spacing: 0.04em;
+    display: inline-block;
   }
 
   .footer-desc {
     font-size: 13.5px;
     line-height: 1.6;
-    max-width: 360px;
+    max-width: 380px;
     color: var(--text-white-muted);
   }
 
@@ -101,44 +104,65 @@ import HeartLogo3D from './HeartLogo3D.astro';
     align-items: center;
     justify-content: center;
     position: relative;
+    min-width: 180px;
   }
 
   .footer-3d-caption {
-    font-size: 16px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
     color: var(--brand-pink);
-    letter-spacing: 0.06em;
-    margin-top: -6px;
-    opacity: 0.85;
+    letter-spacing: 0.12em;
+    margin-top: 6px;
+    opacity: 0.9;
   }
 
   .footer-side-title {
-    font-size: 20px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: #FFFFFF;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
+  :global(ul.footer-links-clean),
   .footer-links-clean {
     list-style: none !important;
+    list-style-type: none !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
+  :global(ul.footer-links-clean li),
   .footer-links-clean li {
     list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  :global(ul.footer-links-clean li::marker) {
+    display: none !important;
+    content: '' !important;
   }
 
   .footer-links-clean a {
+    font-family: var(--font-body);
     font-size: 13.5px;
     color: #94A3B8;
-    transition: color 0.2s;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
   }
 
   .footer-links-clean a:hover {
     color: var(--brand-pink);
+    transform: translateX(-2px);
   }
 
   .footer-seal {
@@ -158,7 +182,7 @@ import HeartLogo3D from './HeartLogo3D.astro';
     background: var(--brand-green);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 860px) {
     .footer-central-layout {
       grid-template-columns: 1fr;
       text-align: center;
@@ -172,6 +196,10 @@ import HeartLogo3D from './HeartLogo3D.astro';
 
     .footer-desc {
       margin: 0 auto;
+    }
+
+    .footer-links-clean a:hover {
+      transform: none;
     }
   }
 </style>

@@ -8,6 +8,7 @@ const { size = 200 } = Astro.props;
 
 <div class="heart-logo-3d-wrapper" style={`width: ${size}px; height: ${size}px;`}>
   <canvas id="heart-logo-3d-canvas" class="heart-logo-canvas"></canvas>
+  <img src="/brand/stampaholics_icon.png" alt="Stampaholics Heart" class="heart-fallback-img" width="120" height="120" />
 </div>
 
 <style>
@@ -17,6 +18,7 @@ const { size = 200 } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 
   .heart-logo-canvas {
@@ -25,10 +27,27 @@ const { size = 200 } = Astro.props;
     display: block;
     cursor: grab;
     outline: none;
+    position: relative;
+    z-index: 2;
   }
 
   .heart-logo-canvas:active {
     cursor: grabbing;
+  }
+
+  .heart-fallback-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .heart-logo-3d-wrapper.three-loaded .heart-fallback-img {
+    opacity: 0;
+    pointer-events: none;
   }
 </style>
 
@@ -39,24 +58,27 @@ const { size = 200 } = Astro.props;
   const wrapper = canvas?.parentElement;
 
   if (canvas && wrapper) {
-    const scene = new THREE.Scene();
+    try {
+      const scene = new THREE.Scene();
 
-    const w = wrapper.clientWidth || 200;
-    const h = wrapper.clientHeight || 200;
+      const w = wrapper.clientWidth || 180;
+      const h = wrapper.clientHeight || 180;
 
-    const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 50);
-    camera.position.set(0, 0, 6.2);
+      const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 50);
+      camera.position.set(0, 0, 6.2);
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance'
-    });
-    renderer.setSize(w, h);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: true,
+        powerPreference: 'high-performance'
+      });
+      renderer.setSize(w, h, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.1;
+
+      wrapper.classList.add('three-loaded');
 
     // ==========================================
     // GEOMETRIA DOS 6 TRIÂNGULOS EXATOS DO LOGO
@@ -211,5 +233,8 @@ const { size = 200 } = Astro.props;
     }
 
     render();
+    } catch (e) {
+      console.warn('Three.js initialization gracefully bypassed:', e);
+    }
   }
 </script>
